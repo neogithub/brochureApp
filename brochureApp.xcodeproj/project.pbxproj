@@ -15,6 +15,7 @@
 		8270B03B1B0CC2A30018D7BD /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8270B0391B0CC2A30018D7BD /* LaunchScreen.xib */; };
 		8270B0471B0CC2A30018D7BD /* brochureAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8270B0461B0CC2A30018D7BD /* brochureAppTests.m */; };
 		8270B0521B0CC9D00018D7BD /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8270B0511B0CC9D00018D7BD /* DetailViewController.m */; };
+		8270B0561B0CDFB50018D7BD /* CollectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8270B0551B0CDFB50018D7BD /* CollectionHeaderView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +44,8 @@
 		8270B0461B0CC2A30018D7BD /* brochureAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = brochureAppTests.m; sourceTree = "<group>"; };
 		8270B0501B0CC9D00018D7BD /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		8270B0511B0CC9D00018D7BD /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		8270B0541B0CDFB50018D7BD /* CollectionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CollectionHeaderView.h; path = Utilities/CollectionHeaderView.h; sourceTree = "<group>"; };
+		8270B0551B0CDFB50018D7BD /* CollectionHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CollectionHeaderView.m; path = Utilities/CollectionHeaderView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +94,7 @@
 				8270B0501B0CC9D00018D7BD /* DetailViewController.h */,
 				8270B0511B0CC9D00018D7BD /* DetailViewController.m */,
 				8270B0341B0CC2A30018D7BD /* Main.storyboard */,
+				8270B0531B0CDF580018D7BD /* Utilities */,
 				8270B0371B0CC2A30018D7BD /* Images.xcassets */,
 				8270B0391B0CC2A30018D7BD /* LaunchScreen.xib */,
 				8270B02A1B0CC2A30018D7BD /* Supporting Files */,
@@ -122,6 +126,15 @@
 				8270B0451B0CC2A30018D7BD /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		8270B0531B0CDF580018D7BD /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				8270B0541B0CDFB50018D7BD /* CollectionHeaderView.h */,
+				8270B0551B0CDFB50018D7BD /* CollectionHeaderView.m */,
+			);
+			name = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -228,6 +241,7 @@
 				8270B0301B0CC2A30018D7BD /* AppDelegate.m in Sources */,
 				8270B02D1B0CC2A30018D7BD /* main.m in Sources */,
 				8270B0521B0CC9D00018D7BD /* DetailViewController.m in Sources */,
+				8270B0561B0CDFB50018D7BD /* CollectionHeaderView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
