@@ -14,6 +14,7 @@
 		8270B0381B0CC2A30018D7BD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8270B0371B0CC2A30018D7BD /* Images.xcassets */; };
 		8270B03B1B0CC2A30018D7BD /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8270B0391B0CC2A30018D7BD /* LaunchScreen.xib */; };
 		8270B0471B0CC2A30018D7BD /* brochureAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8270B0461B0CC2A30018D7BD /* brochureAppTests.m */; };
+		8270B0521B0CC9D00018D7BD /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8270B0511B0CC9D00018D7BD /* DetailViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,8 @@
 		8270B0401B0CC2A30018D7BD /* brochureAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = brochureAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8270B0451B0CC2A30018D7BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8270B0461B0CC2A30018D7BD /* brochureAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = brochureAppTests.m; sourceTree = "<group>"; };
+		8270B0501B0CC9D00018D7BD /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		8270B0511B0CC9D00018D7BD /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +88,8 @@
 				8270B02F1B0CC2A30018D7BD /* AppDelegate.m */,
 				8270B0311B0CC2A30018D7BD /* ViewController.h */,
 				8270B0321B0CC2A30018D7BD /* ViewController.m */,
+				8270B0501B0CC9D00018D7BD /* DetailViewController.h */,
+				8270B0511B0CC9D00018D7BD /* DetailViewController.m */,
 				8270B0341B0CC2A30018D7BD /* Main.storyboard */,
 				8270B0371B0CC2A30018D7BD /* Images.xcassets */,
 				8270B0391B0CC2A30018D7BD /* LaunchScreen.xib */,
@@ -222,6 +227,7 @@
 				8270B0331B0CC2A30018D7BD /* ViewController.m in Sources */,
 				8270B0301B0CC2A30018D7BD /* AppDelegate.m in Sources */,
 				8270B02D1B0CC2A30018D7BD /* main.m in Sources */,
+				8270B0521B0CC9D00018D7BD /* DetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
