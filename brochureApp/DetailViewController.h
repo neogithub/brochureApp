@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface DetailViewController : UIViewController
-
+@property (readwrite, nonatomic) int         sectionNum;
+@property (readwrite, nonatomic) int         rowNum;
+@property (weak, nonatomic) IBOutlet UILabel *uil_title;
 @end

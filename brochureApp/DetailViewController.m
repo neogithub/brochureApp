@@ -15,10 +15,16 @@
 @end
 
 @implementation DetailViewController
+@synthesize sectionNum, rowNum;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    _uil_title.text = [NSString stringWithFormat:@"Section %i row %i", sectionNum+1, rowNum+1];
 }
 
 - (IBAction)tapOnBackBtn:(id)sender {

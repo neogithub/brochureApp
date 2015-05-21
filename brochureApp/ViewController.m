@@ -82,6 +82,13 @@
 }
 
 - (IBAction)tapPorjectBtns:(id)sender {
+    _uib_project1.selected = NO;
+    _uib_project2.selected = NO;
+    _uib_project3.selected = NO;
+    
+    UIButton *tappedBtn = sender;
+    tappedBtn.selected = YES;
+    
     sectionNum = [sender tag];
     [_uic_mainCollection reloadData];
     [self menuBtnTapped:_uib_menu];
@@ -107,7 +114,6 @@
     }
     return 0;
 }
-
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
                  cellForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -142,6 +148,8 @@
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     _detail_vc = [storyboard instantiateViewControllerWithIdentifier:@"DetailViewController"];
     _detail_vc.view.frame = self.view.bounds;
+    _detail_vc.sectionNum = (int)indexPath.section;
+    _detail_vc.rowNum = (int)indexPath.row;
     [self.view addSubview: _detail_vc.view];
 }
 
