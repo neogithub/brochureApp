@@ -50,9 +50,6 @@
 
 - (void)viewWillLayoutSubviews
 {
-    if (uiv_back) {
-        uiv_back.frame = self.view.frame;
-    }
 }
 
 - (IBAction)menuBtnTapped:(id)sender {
@@ -74,7 +71,41 @@
         tapBackView.numberOfTapsRequired = 1;
         uiv_back.userInteractionEnabled = YES;
         [uiv_back addGestureRecognizer: tapBackView];
+        uiv_back.translatesAutoresizingMaskIntoConstraints = NO;
         [self.view insertSubview:uiv_back aboveSubview:_uic_mainCollection];
+        
+        [self.view addConstraint:[NSLayoutConstraint
+                                  constraintWithItem:uiv_back
+                                  attribute:NSLayoutAttributeRight
+                                  relatedBy:NSLayoutRelationEqual
+                                  toItem:self.view
+                                  attribute:NSLayoutAttributeRight
+                                  multiplier:1.0
+                                  constant:0.0]];
+        [self.view addConstraint:[NSLayoutConstraint
+                                  constraintWithItem:uiv_back
+                                  attribute:NSLayoutAttributeLeft
+                                  relatedBy:NSLayoutRelationEqual
+                                  toItem:self.view
+                                  attribute:NSLayoutAttributeLeft
+                                  multiplier:1.0
+                                  constant:0.0]];
+        [self.view addConstraint:[NSLayoutConstraint
+                                  constraintWithItem:uiv_back
+                                  attribute:NSLayoutAttributeTop
+                                  relatedBy:NSLayoutRelationEqual
+                                  toItem:self.view
+                                  attribute:NSLayoutAttributeTop
+                                  multiplier:1.0
+                                  constant:0.0]];
+        [self.view addConstraint:[NSLayoutConstraint
+                                  constraintWithItem:uiv_back
+                                  attribute:NSLayoutAttributeBottom
+                                  relatedBy:NSLayoutRelationEqual
+                                  toItem:self.view
+                                  attribute:NSLayoutAttributeBottom
+                                  multiplier:1.0
+                                  constant:0.0]];
     }
     
     _uib_menu.selected = !_uib_menu.selected;
