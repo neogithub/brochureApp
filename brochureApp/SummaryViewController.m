@@ -1,38 +1,25 @@
 //
-//  DetailViewController.m
+//  SummaryViewController.m
 //  brochureApp
 //
-//  Created by Xiaohe Hu on 5/20/15.
+//  Created by Xiaohe Hu on 5/21/15.
 //  Copyright (c) 2015 Xiaohe Hu. All rights reserved.
 //
 
-#import "DetailViewController.h"
+#import "SummaryViewController.h"
 
-@interface DetailViewController ()
-
-@property (weak, nonatomic) IBOutlet UIButton *uib_backBtn;
+@interface SummaryViewController ()
 
 @end
 
-@implementation DetailViewController
-@synthesize sectionNum, rowNum;
+@implementation SummaryViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 }
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    _uil_title.text = [NSString stringWithFormat:@"Section %i row %i", sectionNum+1, rowNum+1];
-}
-
-- (IBAction)tapOnBackBtn:(id)sender {
-    [self.view removeFromSuperview];
-    [self removeFromParentViewController];
-}
-- (IBAction)showSummary:(id)sender {
-    
+- (IBAction)closeSummary:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:^(void){}];
 }
 
 - (void)didReceiveMemoryWarning {

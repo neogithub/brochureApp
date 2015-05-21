@@ -47,6 +47,14 @@
     _uic_mainCollection.dataSource = self;
     sectionNum = 3;
 }
+
+- (void)viewWillLayoutSubviews
+{
+    if (uiv_back) {
+        uiv_back.frame = self.view.frame;
+    }
+}
+
 - (IBAction)menuBtnTapped:(id)sender {
     
     if (_uib_menu.selected) {
@@ -60,18 +68,18 @@
         _collectionLeadingConstrain.constant += menuWidth;
         _collectionTailingConstrain.constant += menuWidth;
         _menuBtnLeadingConstrain.constant += menuWidth;
-        uiv_back = [[UIView alloc] initWithFrame:_uic_mainCollection.bounds];
+        uiv_back = [[UIView alloc] initWithFrame:self.view.bounds];
         uiv_back.backgroundColor = [UIColor colorWithWhite:0.8 alpha:0.8];
         UITapGestureRecognizer *tapBackView = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapOnBackView:)];
         tapBackView.numberOfTapsRequired = 1;
         uiv_back.userInteractionEnabled = YES;
         [uiv_back addGestureRecognizer: tapBackView];
-        [_uic_mainCollection addSubview: uiv_back];
+        [self.view insertSubview:uiv_back aboveSubview:_uic_mainCollection];
     }
     
     _uib_menu.selected = !_uib_menu.selected;
 
-    [UIView animateWithDuration:0.5 animations:^(void){
+    [UIView animateWithDuration:0.33 animations:^(void){
         [self.view layoutIfNeeded];
     }];
 }

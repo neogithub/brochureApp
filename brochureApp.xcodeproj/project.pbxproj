@@ -16,6 +16,13 @@
 		8270B0471B0CC2A30018D7BD /* brochureAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8270B0461B0CC2A30018D7BD /* brochureAppTests.m */; };
 		8270B0521B0CC9D00018D7BD /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8270B0511B0CC9D00018D7BD /* DetailViewController.m */; };
 		8270B0561B0CDFB50018D7BD /* CollectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8270B0551B0CDFB50018D7BD /* CollectionHeaderView.m */; };
+		82AA3B741B0E57AB0001020F /* ebZoomingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 82AA3B6B1B0E57AB0001020F /* ebZoomingScrollView.m */; };
+		82AA3B751B0E57AB0001020F /* embDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82AA3B6D1B0E57AB0001020F /* embDataViewController.m */; };
+		82AA3B761B0E57AB0001020F /* embModelController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82AA3B6F1B0E57AB0001020F /* embModelController.m */; };
+		82AA3B771B0E57AB0001020F /* FGalleryPhotoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 82AA3B711B0E57AB0001020F /* FGalleryPhotoView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		82AA3B781B0E57AB0001020F /* XHGalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82AA3B731B0E57AB0001020F /* XHGalleryViewController.m */; };
+		82BE2DDE1B0E1B3B0018D05B /* XHGalleryUIControls.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82BE2DDD1B0E1B3B0018D05B /* XHGalleryUIControls.framework */; };
+		82BE2DE11B0E1DF00018D05B /* SummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82BE2DE01B0E1DF00018D05B /* SummaryViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +53,19 @@
 		8270B0511B0CC9D00018D7BD /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		8270B0541B0CDFB50018D7BD /* CollectionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CollectionHeaderView.h; path = Utilities/CollectionHeaderView.h; sourceTree = "<group>"; };
 		8270B0551B0CDFB50018D7BD /* CollectionHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CollectionHeaderView.m; path = Utilities/CollectionHeaderView.m; sourceTree = "<group>"; };
+		82AA3B6A1B0E57AB0001020F /* ebZoomingScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ebZoomingScrollView.h; path = Utilities/ebZoomingScrollView.h; sourceTree = "<group>"; };
+		82AA3B6B1B0E57AB0001020F /* ebZoomingScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ebZoomingScrollView.m; path = Utilities/ebZoomingScrollView.m; sourceTree = "<group>"; };
+		82AA3B6C1B0E57AB0001020F /* embDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = embDataViewController.h; path = Utilities/embDataViewController.h; sourceTree = "<group>"; };
+		82AA3B6D1B0E57AB0001020F /* embDataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = embDataViewController.m; path = Utilities/embDataViewController.m; sourceTree = "<group>"; };
+		82AA3B6E1B0E57AB0001020F /* embModelController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = embModelController.h; path = Utilities/embModelController.h; sourceTree = "<group>"; };
+		82AA3B6F1B0E57AB0001020F /* embModelController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = embModelController.m; path = Utilities/embModelController.m; sourceTree = "<group>"; };
+		82AA3B701B0E57AB0001020F /* FGalleryPhotoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FGalleryPhotoView.h; path = Utilities/FGalleryPhotoView.h; sourceTree = "<group>"; };
+		82AA3B711B0E57AB0001020F /* FGalleryPhotoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FGalleryPhotoView.m; path = Utilities/FGalleryPhotoView.m; sourceTree = "<group>"; };
+		82AA3B721B0E57AB0001020F /* XHGalleryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XHGalleryViewController.h; path = Utilities/XHGalleryViewController.h; sourceTree = "<group>"; };
+		82AA3B731B0E57AB0001020F /* XHGalleryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XHGalleryViewController.m; path = Utilities/XHGalleryViewController.m; sourceTree = "<group>"; };
+		82BE2DDD1B0E1B3B0018D05B /* XHGalleryUIControls.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = XHGalleryUIControls.framework; sourceTree = "<group>"; };
+		82BE2DDF1B0E1DF00018D05B /* SummaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SummaryViewController.h; sourceTree = "<group>"; };
+		82BE2DE01B0E1DF00018D05B /* SummaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SummaryViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				82BE2DDE1B0E1B3B0018D05B /* XHGalleryUIControls.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,6 +114,8 @@
 				8270B0321B0CC2A30018D7BD /* ViewController.m */,
 				8270B0501B0CC9D00018D7BD /* DetailViewController.h */,
 				8270B0511B0CC9D00018D7BD /* DetailViewController.m */,
+				82BE2DDF1B0E1DF00018D05B /* SummaryViewController.h */,
+				82BE2DE01B0E1DF00018D05B /* SummaryViewController.m */,
 				8270B0341B0CC2A30018D7BD /* Main.storyboard */,
 				8270B0531B0CDF580018D7BD /* Utilities */,
 				8270B0371B0CC2A30018D7BD /* Images.xcassets */,
@@ -105,6 +128,7 @@
 		8270B02A1B0CC2A30018D7BD /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				82BE2DDD1B0E1B3B0018D05B /* XHGalleryUIControls.framework */,
 				8270B02B1B0CC2A30018D7BD /* Info.plist */,
 				8270B02C1B0CC2A30018D7BD /* main.m */,
 			);
@@ -131,10 +155,28 @@
 		8270B0531B0CDF580018D7BD /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				82AA3B791B0E57B10001020F /* xhGallery */,
 				8270B0541B0CDFB50018D7BD /* CollectionHeaderView.h */,
 				8270B0551B0CDFB50018D7BD /* CollectionHeaderView.m */,
 			);
 			name = Utilities;
+			sourceTree = "<group>";
+		};
+		82AA3B791B0E57B10001020F /* xhGallery */ = {
+			isa = PBXGroup;
+			children = (
+				82AA3B6A1B0E57AB0001020F /* ebZoomingScrollView.h */,
+				82AA3B6B1B0E57AB0001020F /* ebZoomingScrollView.m */,
+				82AA3B6C1B0E57AB0001020F /* embDataViewController.h */,
+				82AA3B6D1B0E57AB0001020F /* embDataViewController.m */,
+				82AA3B6E1B0E57AB0001020F /* embModelController.h */,
+				82AA3B6F1B0E57AB0001020F /* embModelController.m */,
+				82AA3B701B0E57AB0001020F /* FGalleryPhotoView.h */,
+				82AA3B711B0E57AB0001020F /* FGalleryPhotoView.m */,
+				82AA3B721B0E57AB0001020F /* XHGalleryViewController.h */,
+				82AA3B731B0E57AB0001020F /* XHGalleryViewController.m */,
+			);
+			name = xhGallery;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -238,10 +280,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				8270B0331B0CC2A30018D7BD /* ViewController.m in Sources */,
+				82AA3B771B0E57AB0001020F /* FGalleryPhotoView.m in Sources */,
 				8270B0301B0CC2A30018D7BD /* AppDelegate.m in Sources */,
+				82AA3B741B0E57AB0001020F /* ebZoomingScrollView.m in Sources */,
 				8270B02D1B0CC2A30018D7BD /* main.m in Sources */,
 				8270B0521B0CC9D00018D7BD /* DetailViewController.m in Sources */,
+				82AA3B781B0E57AB0001020F /* XHGalleryViewController.m in Sources */,
+				82AA3B761B0E57AB0001020F /* embModelController.m in Sources */,
 				8270B0561B0CDFB50018D7BD /* CollectionHeaderView.m in Sources */,
+				82BE2DE11B0E1DF00018D05B /* SummaryViewController.m in Sources */,
+				82AA3B751B0E57AB0001020F /* embDataViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -369,6 +417,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/brochureApp",
+				);
 				INFOPLIST_FILE = brochureApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -379,6 +431,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/brochureApp",
+				);
 				INFOPLIST_FILE = brochureApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -438,6 +494,7 @@
 				8270B04C1B0CC2A30018D7BD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8270B04D1B0CC2A30018D7BD /* Build configuration list for PBXNativeTarget "brochureAppTests" */ = {
 			isa = XCConfigurationList;
@@ -446,6 +503,7 @@
 				8270B04F1B0CC2A30018D7BD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
