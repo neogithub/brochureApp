@@ -9,10 +9,16 @@
 #import "DetailViewController.h"
 #import "embEmailData.h"
 #import <MessageUI/MessageUI.h>
-@interface DetailViewController () <MFMailComposeViewControllerDelegate, MFMailComposeViewControllerDelegate>
+#import "XHGalleryViewController.h"
+@interface DetailViewController () <MFMailComposeViewControllerDelegate, MFMailComposeViewControllerDelegate, XHGalleryDelegate>
+
+{
+    NSArray                     *arr_rawData;
+}
 
 @property (weak, nonatomic) IBOutlet UIButton *uib_backBtn;
 @property (nonatomic, strong) embEmailData                  *emailData;
+@property (nonatomic, strong)   XHGalleryViewController *gallery;
 @end
 
 @implementation DetailViewController
@@ -20,6 +26,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self prepareGalleryData];
     // Do any additional setup after loading the view.
 }
 
@@ -36,6 +43,34 @@
 - (IBAction)tapOnBackBtn:(id)sender {
     [self dismissViewControllerAnimated:YES completion:^(void){ }];
 }
+- (void)prepareGalleryData
+{
+    NSString *url = [[NSBundle mainBundle] pathForResource:@"photoData" ofType:@"plist"];
+    arr_rawData = [[NSArray alloc] initWithContentsOfFile:url];
+}
+- (IBAction)tapGalleryBtn:(id)sender {
+    _gallery = [[XHGalleryViewController alloc] init];
+    _gallery.delegate = self;
+    _gallery.startIndex = 0;
+    _gallery.view.frame = self.view.frame;
+    _gallery.arr_rawData = [arr_rawData objectAtIndex:0];
+    [self addChildViewController:_gallery];
+    [self.view addSubview: _gallery.view];
+}
+
+- (void)didRemoveFromSuperView
+{
+    [UIView animateWithDuration:0.33
+                     animations:^{
+                         _gallery.view.alpha = 0.0;
+                     } completion:^(BOOL finshed){
+                         [_gallery.view removeFromSuperview];
+                         _gallery.view = nil;
+                         [_gallery removeFromParentViewController];
+                         _gallery = nil;
+                     }];
+}
+
 - (IBAction)showSummary:(id)sender {
     
 }

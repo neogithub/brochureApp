@@ -242,6 +242,15 @@
                                     <action selector="tapShareBtn:" destination="qCc-Y6-SPe" eventType="touchUpInside" id="gC7-bc-Xcf"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4i4-8K-f16">
+                                <rect key="frame" x="276" y="328" width="48" height="30"/>
+                                <state key="normal" title="Gallery">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="tapGalleryBtn:" destination="qCc-Y6-SPe" eventType="touchUpInside" id="4xJ-iF-bbQ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -253,7 +262,9 @@
                             <constraint firstItem="78i-aE-eoM" firstAttribute="leading" secondItem="9jB-NY-S5O" secondAttribute="leadingMargin" id="RfR-dQ-FTj"/>
                             <constraint firstAttribute="centerY" secondItem="gL6-ZI-veC" secondAttribute="centerY" id="WRE-JM-RjI"/>
                             <constraint firstItem="czb-Zc-pHJ" firstAttribute="top" secondItem="1Ny-8X-vkm" secondAttribute="bottom" constant="95" id="eRG-YJ-1ZB"/>
+                            <constraint firstAttribute="centerX" secondItem="4i4-8K-f16" secondAttribute="centerX" id="eYt-du-MYv"/>
                             <constraint firstItem="78i-aE-eoM" firstAttribute="top" secondItem="1Ny-8X-vkm" secondAttribute="bottom" constant="8" id="trg-ej-8cg"/>
+                            <constraint firstItem="4i4-8K-f16" firstAttribute="top" secondItem="gL6-ZI-veC" secondAttribute="bottom" constant="18" id="w72-kh-DxP"/>
                             <constraint firstItem="7MJ-Z6-DqQ" firstAttribute="top" secondItem="1Ny-8X-vkm" secondAttribute="bottom" constant="95" id="zRA-Fv-Xev"/>
                         </constraints>
                     </view>
@@ -330,6 +341,23 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a0r-Pv-D86" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="805" y="1062"/>
+        </scene>
+        <!--Emb Data View Controller-->
+        <scene sceneID="JCN-HT-q81">
+            <objects>
+                <viewController restorationIdentifier="embDataViewController" storyboardIdentifier="embDataViewController" id="WIl-CX-tWq" customClass="embDataViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="6e3-uk-2yY"/>
+                        <viewControllerLayoutGuide type="bottom" id="UVN-4p-8Xs"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="EfV-KL-GAP">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="51n-Yr-c5g" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
         </scene>
     </scenes>
 </document>

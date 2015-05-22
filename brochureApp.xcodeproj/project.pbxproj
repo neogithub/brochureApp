@@ -12,6 +12,7 @@
 		8252976D1B0F7AD300E98C42 /* xhWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8252976C1B0F7AD300E98C42 /* xhWebViewController.m */; };
 		825297701B0F7B4900E98C42 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 8252976F1B0F7B4900E98C42 /* Reachability.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		825297721B0FA2A900E98C42 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 825297711B0FA2A900E98C42 /* CFNetwork.framework */; };
+		825297741B0FC90700E98C42 /* photoData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 825297731B0FC90700E98C42 /* photoData.plist */; };
 		8270B02D1B0CC2A30018D7BD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8270B02C1B0CC2A30018D7BD /* main.m */; };
 		8270B0301B0CC2A30018D7BD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8270B02F1B0CC2A30018D7BD /* AppDelegate.m */; };
 		8270B0331B0CC2A30018D7BD /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8270B0321B0CC2A30018D7BD /* ViewController.m */; };
@@ -21,6 +22,8 @@
 		8270B0471B0CC2A30018D7BD /* brochureAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8270B0461B0CC2A30018D7BD /* brochureAppTests.m */; };
 		8270B0521B0CC9D00018D7BD /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8270B0511B0CC9D00018D7BD /* DetailViewController.m */; };
 		8270B0561B0CDFB50018D7BD /* CollectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8270B0551B0CDFB50018D7BD /* CollectionHeaderView.m */; };
+		8279D6861B0FCD550087A7FD /* grfx_launching.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8279D6841B0FCD550087A7FD /* grfx_launching.jpg */; };
+		8279D6871B0FCD550087A7FD /* grfx_launching.png in Resources */ = {isa = PBXBuildFile; fileRef = 8279D6851B0FCD550087A7FD /* grfx_launching.png */; };
 		82AA3B741B0E57AB0001020F /* ebZoomingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 82AA3B6B1B0E57AB0001020F /* ebZoomingScrollView.m */; };
 		82AA3B751B0E57AB0001020F /* embDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82AA3B6D1B0E57AB0001020F /* embDataViewController.m */; };
 		82AA3B761B0E57AB0001020F /* embModelController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82AA3B6F1B0E57AB0001020F /* embModelController.m */; };
@@ -49,6 +52,7 @@
 		8252976E1B0F7B4900E98C42 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Reachability.h; path = Utilities/Reachability.h; sourceTree = "<group>"; };
 		8252976F1B0F7B4900E98C42 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Reachability.m; path = Utilities/Reachability.m; sourceTree = "<group>"; };
 		825297711B0FA2A900E98C42 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		825297731B0FC90700E98C42 /* photoData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = photoData.plist; path = src/photoData.plist; sourceTree = "<group>"; };
 		8270B0271B0CC2A30018D7BD /* brochureApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = brochureApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8270B02B1B0CC2A30018D7BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8270B02C1B0CC2A30018D7BD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -66,6 +70,8 @@
 		8270B0511B0CC9D00018D7BD /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		8270B0541B0CDFB50018D7BD /* CollectionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CollectionHeaderView.h; path = Utilities/CollectionHeaderView.h; sourceTree = "<group>"; };
 		8270B0551B0CDFB50018D7BD /* CollectionHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CollectionHeaderView.m; path = Utilities/CollectionHeaderView.m; sourceTree = "<group>"; };
+		8279D6841B0FCD550087A7FD /* grfx_launching.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = grfx_launching.jpg; path = src/grfx_launching.jpg; sourceTree = "<group>"; };
+		8279D6851B0FCD550087A7FD /* grfx_launching.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = grfx_launching.png; path = src/grfx_launching.png; sourceTree = "<group>"; };
 		82AA3B6A1B0E57AB0001020F /* ebZoomingScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ebZoomingScrollView.h; path = Utilities/ebZoomingScrollView.h; sourceTree = "<group>"; };
 		82AA3B6B1B0E57AB0001020F /* ebZoomingScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ebZoomingScrollView.m; path = Utilities/ebZoomingScrollView.m; sourceTree = "<group>"; };
 		82AA3B6C1B0E57AB0001020F /* embDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = embDataViewController.h; path = Utilities/embDataViewController.h; sourceTree = "<group>"; };
@@ -132,6 +138,9 @@
 				82BE2DDF1B0E1DF00018D05B /* SummaryViewController.h */,
 				82BE2DE01B0E1DF00018D05B /* SummaryViewController.m */,
 				8270B0341B0CC2A30018D7BD /* Main.storyboard */,
+				825297731B0FC90700E98C42 /* photoData.plist */,
+				8279D6841B0FCD550087A7FD /* grfx_launching.jpg */,
+				8279D6851B0FCD550087A7FD /* grfx_launching.png */,
 				8270B0531B0CDF580018D7BD /* Utilities */,
 				8270B0371B0CC2A30018D7BD /* Images.xcassets */,
 				8270B0391B0CC2A30018D7BD /* LaunchScreen.xib */,
@@ -282,9 +291,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8279D6871B0FCD550087A7FD /* grfx_launching.png in Resources */,
 				8270B0361B0CC2A30018D7BD /* Main.storyboard in Resources */,
+				825297741B0FC90700E98C42 /* photoData.plist in Resources */,
 				8270B03B1B0CC2A30018D7BD /* LaunchScreen.xib in Resources */,
 				8270B0381B0CC2A30018D7BD /* Images.xcassets in Resources */,
+				8279D6861B0FCD550087A7FD /* grfx_launching.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
