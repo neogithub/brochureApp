@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "DetailViewController.h"
 #import "CollectionHeaderView.h"
+#import "xhWebViewController.h"
 
 #define menuWidth  200.0;
 
@@ -143,6 +144,16 @@
     [self menuBtnTapped:_uib_menu];
 }
 
+- (IBAction)tapVisitBtn:(id)sender {
+    NSString *theUrl = @"http://www.neoscape.com";
+    xhWebViewController *vc = [[xhWebViewController alloc] init];
+    [vc socialButton:theUrl];
+//    vc.title = @"Neoscape";//@"Username: PCampot_boston   Password: suffolk1";
+    vc.modalPresentationStyle = UIModalPresentationCurrentContext;
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"hideNaviBtn" object:self];
+    [self presentViewController:vc animated:YES completion:nil];
+}
+
 #pragma mark - Collection Delegate Methods
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
@@ -188,18 +199,11 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    
-//    if (_detail_vc != nil) {
-//        [_detail_vc.view removeFromSuperview];
-//        [_detail_vc removeFromParentViewController];
-//        _detail_vc = nil;
-//    }
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     _detail_vc = [storyboard instantiateViewControllerWithIdentifier:@"DetailViewController"];
     _detail_vc.view.frame = self.view.bounds;
     _detail_vc.sectionNum = (int)indexPath.section;
     _detail_vc.rowNum = (int)indexPath.row;
-//    [self.view addSubview: _detail_vc.view];
     [self presentViewController:_detail_vc animated:YES completion:^(void){ }];
 }
 
