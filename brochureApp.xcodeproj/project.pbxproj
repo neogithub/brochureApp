@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		825297681B0F6C3200E98C42 /* embEmailData.m in Sources */ = {isa = PBXBuildFile; fileRef = 825297671B0F6C3200E98C42 /* embEmailData.m */; };
+		8252976A1B0F753D00E98C42 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 825297691B0F753D00E98C42 /* MessageUI.framework */; };
 		8270B02D1B0CC2A30018D7BD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8270B02C1B0CC2A30018D7BD /* main.m */; };
 		8270B0301B0CC2A30018D7BD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8270B02F1B0CC2A30018D7BD /* AppDelegate.m */; };
 		8270B0331B0CC2A30018D7BD /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8270B0321B0CC2A30018D7BD /* ViewController.m */; };
@@ -36,6 +38,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		825297661B0F6C3200E98C42 /* embEmailData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = embEmailData.h; path = Utilities/embEmailData.h; sourceTree = "<group>"; };
+		825297671B0F6C3200E98C42 /* embEmailData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = embEmailData.m; path = Utilities/embEmailData.m; sourceTree = "<group>"; };
+		825297691B0F753D00E98C42 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		8270B0271B0CC2A30018D7BD /* brochureApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = brochureApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8270B02B1B0CC2A30018D7BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8270B02C1B0CC2A30018D7BD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -73,6 +78,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8252976A1B0F753D00E98C42 /* MessageUI.framework in Frameworks */,
 				82BE2DDE1B0E1B3B0018D05B /* XHGalleryUIControls.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -128,6 +134,7 @@
 		8270B02A1B0CC2A30018D7BD /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				825297691B0F753D00E98C42 /* MessageUI.framework */,
 				82BE2DDD1B0E1B3B0018D05B /* XHGalleryUIControls.framework */,
 				8270B02B1B0CC2A30018D7BD /* Info.plist */,
 				8270B02C1B0CC2A30018D7BD /* main.m */,
@@ -156,6 +163,8 @@
 			isa = PBXGroup;
 			children = (
 				82AA3B791B0E57B10001020F /* xhGallery */,
+				825297661B0F6C3200E98C42 /* embEmailData.h */,
+				825297671B0F6C3200E98C42 /* embEmailData.m */,
 				8270B0541B0CDFB50018D7BD /* CollectionHeaderView.h */,
 				8270B0551B0CDFB50018D7BD /* CollectionHeaderView.m */,
 			);
@@ -290,6 +299,7 @@
 				8270B0561B0CDFB50018D7BD /* CollectionHeaderView.m in Sources */,
 				82BE2DE11B0E1DF00018D05B /* SummaryViewController.m in Sources */,
 				82AA3B751B0E57AB0001020F /* embDataViewController.m in Sources */,
+				825297681B0F6C3200E98C42 /* embEmailData.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -425,6 +435,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -440,6 +451,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>00645497-A54A-44F0-8212-70DC285E86E1</string>
 	<key>IDESourceControlProjectName</key>
-	<string>project</string>
+	<string>brochureApp</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>7798563BA2B19C7EFA963ABF76826FAF6FBD5DE7</key>
 		<string>https://github.com/xiaohehu/brochureApp.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>brochureApp.xcodeproj/project.xcworkspace</string>
+	<string>brochureApp.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>7798563BA2B19C7EFA963ABF76826FAF6FBD5DE7</key>

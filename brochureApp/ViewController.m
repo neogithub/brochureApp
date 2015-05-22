@@ -20,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *collectionLeadingConstrain;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *collectionTailingConstrain;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *menuBtnLeadingConstrain;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *menuContainerLeading;
 
 @property (weak, nonatomic) IBOutlet UICollectionView *uic_mainCollection;
 
@@ -50,21 +51,24 @@
 
 - (void)viewWillLayoutSubviews
 {
+    
 }
 
 - (IBAction)menuBtnTapped:(id)sender {
     
     if (_uib_menu.selected) {
         _collectionLeadingConstrain.constant -= menuWidth;
-        _collectionTailingConstrain.constant -= menuWidth;
+        _collectionTailingConstrain.constant += menuWidth;
         _menuBtnLeadingConstrain.constant -= menuWidth;
+        _menuContainerLeading.constant -= menuWidth;
         [uiv_back removeFromSuperview];
         uiv_back = nil;
     }
     else {
         _collectionLeadingConstrain.constant += menuWidth;
-        _collectionTailingConstrain.constant += menuWidth;
+        _collectionTailingConstrain.constant -= menuWidth;
         _menuBtnLeadingConstrain.constant += menuWidth;
+        _menuContainerLeading.constant += menuWidth;
         uiv_back = [[UIView alloc] initWithFrame:self.view.bounds];
         uiv_back.backgroundColor = [UIColor colorWithWhite:0.8 alpha:0.8];
         UITapGestureRecognizer *tapBackView = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapOnBackView:)];
@@ -74,6 +78,7 @@
         uiv_back.translatesAutoresizingMaskIntoConstraints = NO;
         [self.view insertSubview:uiv_back aboveSubview:_uic_mainCollection];
         
+        //X direction constrains
         [self.view addConstraint:[NSLayoutConstraint
                                   constraintWithItem:uiv_back
                                   attribute:NSLayoutAttributeRight
@@ -90,6 +95,7 @@
                                   attribute:NSLayoutAttributeLeft
                                   multiplier:1.0
                                   constant:0.0]];
+        //Y direction constrains
         [self.view addConstraint:[NSLayoutConstraint
                                   constraintWithItem:uiv_back
                                   attribute:NSLayoutAttributeTop
@@ -117,10 +123,14 @@
 
 - (void)tapOnBackView:(UIGestureRecognizer *)gesture
 {
+    [[self view] endEditing:YES];
     [self menuBtnTapped:_uib_menu];
 }
 
 - (IBAction)tapPorjectBtns:(id)sender {
+    
+    [[self view] endEditing:YES];
+    
     _uib_project1.selected = NO;
     _uib_project2.selected = NO;
     _uib_project3.selected = NO;
@@ -179,17 +189,18 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    if (_detail_vc != nil) {
-        [_detail_vc.view removeFromSuperview];
-        [_detail_vc removeFromParentViewController];
-        _detail_vc = nil;
-    }
+//    if (_detail_vc != nil) {
+//        [_detail_vc.view removeFromSuperview];
+//        [_detail_vc removeFromParentViewController];
+//        _detail_vc = nil;
+//    }
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     _detail_vc = [storyboard instantiateViewControllerWithIdentifier:@"DetailViewController"];
     _detail_vc.view.frame = self.view.bounds;
     _detail_vc.sectionNum = (int)indexPath.section;
     _detail_vc.rowNum = (int)indexPath.row;
-    [self.view addSubview: _detail_vc.view];
+//    [self.view addSubview: _detail_vc.view];
+    [self presentViewController:_detail_vc animated:YES completion:^(void){ }];
 }
 
 - (void)didReceiveMemoryWarning {
