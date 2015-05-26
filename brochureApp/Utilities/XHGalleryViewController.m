@@ -371,9 +371,36 @@ static float        kBottomViewHeight   = 45.0;
             break;
         case 1:
             NSLog(@"Should save the image");
+            [self saveImage];
             break;
         default:
             break;
+    }
+}
+
+- (void)saveImage
+{
+    NSString *fileFullName = arr_images[_currentPage];
+    UIImage *saveImage = [UIImage imageNamed: fileFullName];
+    UIImageWriteToSavedPhotosAlbum(saveImage, self, @selector(savedPhotoImage:didFinishSavingWithError:contextInfo:), nil);
+}
+
+-(void) savedPhotoImage:(UIImage *)image
+didFinishSavingWithError:(NSError *)error
+            contextInfo:(void *)contextInfo
+{
+    NSString *message = @"This image cannot be saved to your Photos album";
+    if (error) {
+        message = [error localizedDescription];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Gallery Unavailable!" message:[NSString stringWithFormat:@"Go To Settings --> Privacy -->Photos To Fix!"]
+                                                       delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        [alert show];
+        return;
+    }
+    else{
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Congratulations!" message:[NSString stringWithFormat:@"Current Image is successfully saved in your device!"]
+                                                       delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        [alert show];
     }
 }
 
