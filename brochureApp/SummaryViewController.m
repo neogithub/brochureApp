@@ -19,7 +19,7 @@
     // Do any additional setup after loading the view.
 }
 - (IBAction)closeSummary:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:^(void){}];
+    [self dismissViewControllerAnimated:YES completion:^(void){ }];
 }
 
 - (void)didReceiveMemoryWarning {

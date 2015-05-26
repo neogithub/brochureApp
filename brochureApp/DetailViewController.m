@@ -34,7 +34,9 @@
     [self prepareGalleryData];
     // Do any additional setup after loading the view.
 }
-
+/*
+ * Read data from parent ViewController (sectionIndex & rowIndex)
+ */
 - (void)viewWillAppear:(BOOL)animated
 {
     _uil_title.text = [NSString stringWithFormat:@"Section %i row %i", sectionNum+1, rowNum+1];
@@ -48,11 +50,19 @@
 - (IBAction)tapOnBackBtn:(id)sender {
     [self dismissViewControllerAnimated:YES completion:^(void){ }];
 }
+
+/*
+ * Read gallery data from plist
+ */
 - (void)prepareGalleryData
 {
     NSString *url = [[NSBundle mainBundle] pathForResource:@"photoData" ofType:@"plist"];
     arr_rawData = [[NSArray alloc] initWithContentsOfFile:url];
 }
+
+/*
+ * Load gallery's view
+ */
 - (IBAction)tapGalleryBtn:(id)sender {
     _gallery = [[XHGalleryViewController alloc] init];
     _gallery.delegate = self;
@@ -62,7 +72,9 @@
     [self addChildViewController:_gallery];
     [self.view addSubview: _gallery.view];
 }
-
+/*
+ * Gallery delegate method (Remove gallery's view)
+ */
 - (void)didRemoveFromSuperView
 {
     [UIView animateWithDuration:0.33
@@ -76,9 +88,18 @@
                      }];
 }
 
+/*
+ * Tap on the summery button
+ * The action is defined in storyboard
+ */
 - (IBAction)showSummary:(id)sender {
     
 }
+
+/*
+ * Tap the share(email) button
+ * Currenly all data for email is empty
+ */
 - (IBAction)tapShareBtn:(id)sender {
     _emailData = [[embEmailData alloc] init];
     _emailData.to = nil;

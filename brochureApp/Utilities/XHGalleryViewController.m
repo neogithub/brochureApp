@@ -65,46 +65,54 @@ static float        kBottomViewHeight   = 45.0;
 @synthesize arr_rawData;
 @synthesize startIndex;
 
+- (void)setArr_rawData:(NSArray *)_arr_rawData
+{
+    arr_rawData = _arr_rawData;
+    [self prepareData];
+}
+
+- (void)setStartIndex:(int)_startIndex
+{
+    startIndex = _startIndex;
+    _currentPage = startIndex;
+}
+
 - (BOOL)prefersStatusBarHidden
 {
     return YES;
 }
 
-- (id)init
-{
-    if (self == [super init]) {
-        showNavBar = YES;
-        showCaption = YES;
-        
-        self.view.backgroundColor = [UIColor whiteColor];
-        _modelController = [[embModelController alloc] init];
-        _photoThumbnailViews = [[NSMutableArray alloc] init];
-        [self addGestureToView];
-    }
-    return self;
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    // Prepare data
-    [self prepareData];
-    // Get current view's size
-    view_height = self.view.frame.size.height;
-    view_width = self.view.frame.size.width;
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    /*
+     * Make the Navi bar and caption is shown as default
+     */
+    showNavBar = YES;
+    showCaption = YES;
     
-    // Get images
+    self.view.backgroundColor = [UIColor whiteColor];
+    _modelController = [[embModelController alloc] init];
+    _photoThumbnailViews = [[NSMutableArray alloc] init];
     
-    
-    // Init model controller
-    _modelController = [[embModelController alloc] initWithImage:arr_images];
+    /*
+     * Add tap 1 time and 2 times gestures to view
+     */
+    [self addGestureToView];
     
     // Init thumbs view
     _thumbsView = [[UIScrollView alloc]initWithFrame:self.view.frame];
     int numOfCellEachLine = view_width / (kThumbnailSize + kThumbnailSpacing);
     float blankSapce = (view_width - (kThumbnailSpacing + kThumbnailSize)*numOfCellEachLine + kThumbnailSpacing)/2;
     _thumbsView.contentInset = UIEdgeInsetsMake( kThumbnailSpacing, blankSapce, kThumbnailSpacing, kThumbnailSpacing);
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+
+    // Init model controller
+    _modelController = [[embModelController alloc] initWithImage:arr_images];
+
     [self initPageView:startIndex];
-    _currentPage = startIndex;
     [self setUpThumbsView];
     
     // Check and load top & bottom views
@@ -116,11 +124,6 @@ static float        kBottomViewHeight   = 45.0;
     }
     
     [self.view setAutoresizingMask:UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight];
-}
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    NSLog(@"The view's frame is %@", NSStringFromCGRect(self.view.bounds));
 }
 
 - (void)willRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
@@ -397,15 +400,17 @@ didFinishSavingWithError:(NSError *)error
     NSString *message = @"This image cannot be saved to your Photos album";
     if (error) {
         message = [error localizedDescription];
+        NSString *alertTitle = @"Gallery Unavailable!";
+        NSString *alertBody = @"Go To Settings --> Privacy -->Photos To Fix!";
         float versionNum = [[[UIDevice currentDevice] systemVersion] floatValue];
         if (versionNum < 8.0) {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Gallery Unavailable!" message:[NSString stringWithFormat:@"Go To Settings --> Privacy -->Photos To Fix!"]
-                                                           delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:alertTitle message:alertBody
+                                                           delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
             [alert show];
             alert.delegate = self;
         }
         else {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Gallery Unavailable!" message:[NSString stringWithFormat:@"Go To Settings --> Privacy -->Photos To Fix!"]
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:alertTitle message:alertBody
                                                            delegate:self cancelButtonTitle:@"OK" otherButtonTitles: @"Setting", nil];
             [alert show];
             alert.delegate = self;

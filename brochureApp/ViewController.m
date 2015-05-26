@@ -49,6 +49,9 @@
     // Do any additional setup after loading the view, typically from a nib.
     _uic_mainCollection.delegate = self;
     _uic_mainCollection.dataSource = self;
+    /*
+     Magic num of section numbers
+     */
     sectionNum = 3;
 }
 
@@ -58,7 +61,12 @@
 }
 
 - (IBAction)menuBtnTapped:(id)sender {
-    
+    /*
+     * Status: side menu is unhidden
+     * Hide side menu
+     * Reset constraints of collection view menu button
+     * Remove blured back view
+     */
     if (_uib_menu.selected) {
         _collectionLeadingConstrain.constant -= menuWidth;
         _collectionTailingConstrain.constant += menuWidth;
@@ -67,6 +75,11 @@
         [uiv_back removeFromSuperview];
         uiv_back = nil;
     }
+    /*
+     * Side menu is hidden
+     * Add new constraints to move in side menu and push the collection view
+     * Init the blured back view (tap to hide side menu)
+     */
     else {
         _collectionLeadingConstrain.constant += menuWidth;
         _collectionTailingConstrain.constant -= menuWidth;
@@ -118,17 +131,26 @@
     }
     
     _uib_menu.selected = !_uib_menu.selected;
-
     [UIView animateWithDuration:0.33 animations:^(void){
         [self.view layoutIfNeeded];
     }];
 }
-
+/*
+ * Tap back view to hide side menu 
+ * And reset all view's constraints
+ */
 - (void)tapOnBackView:(UIGestureRecognizer *)gesture
 {
     [[self view] endEditing:YES];
     [self menuBtnTapped:_uib_menu];
 }
+
+/*
+ * Tap side menu's project buttons:
+ * Make the tapped one in selected state
+ * According to tapped button's tag num reload collection view's content
+ * Hide side menu
+ */
 
 - (IBAction)tapPorjectBtns:(id)sender {
     
@@ -145,7 +167,10 @@
     [_uic_mainCollection reloadData];
     [self menuBtnTapped:_uib_menu];
 }
-
+/*
+ * Load web view
+ * With address: www.neoscape.com
+ */
 - (IBAction)tapVisitBtn:(id)sender {
     NSString *theUrl = @"http://www.neoscape.com";
     xhWebViewController *vc = [[xhWebViewController alloc] init];
@@ -163,6 +188,9 @@
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
+    /*
+     * Magic numbers for items in a section (should read from plist or data model)
+     */
     switch (section) {
         case 0:
             return 35;
@@ -198,6 +226,10 @@
     return reusableview;
 }
 
+/*
+ * Tap a cell to presnet detail viewcontroller's content
+ */
+
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
@@ -205,7 +237,7 @@
     _detail_vc.view.frame = self.view.bounds;
     _detail_vc.sectionNum = (int)indexPath.section;
     _detail_vc.rowNum = (int)indexPath.row;
-    [self presentViewController:_detail_vc animated:YES completion:^(void){ }];
+    [self presentViewController:_detail_vc animated:YES completion:^(void){     }];
 }
 
 - (void)didReceiveMemoryWarning {
