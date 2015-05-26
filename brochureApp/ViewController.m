@@ -10,6 +10,7 @@
 #import "DetailViewController.h"
 #import "CollectionHeaderView.h"
 #import "xhWebViewController.h"
+#import <MessageUI/MessageUI.h>
 
 #define menuWidth  200.0;
 
@@ -23,16 +24,17 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *menuBtnLeadingConstrain;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *menuContainerLeading;
 
-@property (weak, nonatomic) IBOutlet UICollectionView *uic_mainCollection;
+@property (weak, nonatomic) IBOutlet UICollectionView   *uic_mainCollection;
 
-@property (weak, nonatomic) IBOutlet UIButton *uib_menu;
-@property (nonatomic, strong) DetailViewController    *detail_vc;
-@property (weak, nonatomic) IBOutlet UIView *uiv_menuContainer;
+@property (weak, nonatomic) IBOutlet UIButton           *uib_menu;
+@property (nonatomic, strong) DetailViewController      *detail_vc;
+@property (weak, nonatomic) IBOutlet UIView             *uiv_menuContainer;
 
 
-@property (weak, nonatomic) IBOutlet UIButton *uib_project1;
-@property (weak, nonatomic) IBOutlet UIButton *uib_project2;
-@property (weak, nonatomic) IBOutlet UIButton *uib_project3;
+@property (weak, nonatomic) IBOutlet UIButton           *uib_project1;
+@property (weak, nonatomic) IBOutlet UIButton           *uib_project2;
+@property (weak, nonatomic) IBOutlet UIButton           *uib_project3;
+
 @end
 
 @implementation ViewController
@@ -148,7 +150,6 @@
     NSString *theUrl = @"http://www.neoscape.com";
     xhWebViewController *vc = [[xhWebViewController alloc] init];
     [vc socialButton:theUrl];
-//    vc.title = @"Neoscape";//@"Username: PCampot_boston   Password: suffolk1";
     vc.modalPresentationStyle = UIModalPresentationCurrentContext;
     [[NSNotificationCenter defaultCenter] postNotificationName:@"hideNaviBtn" object:self];
     [self presentViewController:vc animated:YES completion:nil];

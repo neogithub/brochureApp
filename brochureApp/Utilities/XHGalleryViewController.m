@@ -9,13 +9,15 @@
 #import "XHGalleryViewController.h"
 #import "embModelController.h"
 #import "FGalleryPhotoView.h"
+#import "embEmailData.h"
+#import <MessageUI/MessageUI.h>
 
 #define kThumbnailSize 75
 #define kThumbnailSpacing 4
 static float        kTopViewHeight      = 45.0;
 static float        kBottomViewHeight   = 45.0;
 
-@interface XHGalleryViewController ()<UIPageViewControllerDelegate, FGalleryPhotoViewDelegate, UIActionSheetDelegate>
+@interface XHGalleryViewController ()<UIPageViewControllerDelegate, FGalleryPhotoViewDelegate, UIActionSheetDelegate, MFMailComposeViewControllerDelegate, MFMailComposeViewControllerDelegate>
 {
     int             itemsNum;
     float           view_width;
@@ -46,6 +48,8 @@ static float        kBottomViewHeight   = 45.0;
 @property (nonatomic, strong)           UIScrollView            *thumbsView;
 // play button
 @property (nonatomic, strong)           UIImageView             *uiiv_playMovie;
+// email view
+@property (nonatomic, strong)           embEmailData            *emailData;
 @end
 
 @implementation XHGalleryViewController
@@ -67,7 +71,7 @@ static float        kBottomViewHeight   = 45.0;
         showNavBar = YES;
         showCaption = YES;
         
-        self.view.backgroundColor = [UIColor redColor];
+        self.view.backgroundColor = [UIColor whiteColor];
         _modelController = [[embModelController alloc] init];
         _photoThumbnailViews = [[NSMutableArray alloc] init];
         [self addGestureToView];
@@ -242,7 +246,7 @@ static float        kBottomViewHeight   = 45.0;
     
     _uib_share = [UIButton buttonWithType:UIButtonTypeCustom];
     _uib_share.frame = CGRectMake(self.view.frame.size.width-labelWidth, 0.0, labelWidth, kTopViewHeight);
-    _uib_share.backgroundColor = [UIColor redColor];
+    _uib_share.backgroundColor = [UIColor clearColor];
     [_uib_share setTitle:@"SHARE" forState:UIControlStateNormal];
     [_uib_share setTitleColor:[UIColor colorWithRed:0.0/255.0 green:122.0/255.0 blue:255.0/255.0 alpha:1.0] forState:UIControlStateNormal];
     [_uib_share setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
@@ -252,7 +256,7 @@ static float        kBottomViewHeight   = 45.0;
     _uib_share.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     [_uiv_topView addSubview: _uib_share];
     
-    // Width constraint, 100
+    // Width constraint, less than or equal to 100
     [_uib_share addConstraint:[NSLayoutConstraint constraintWithItem:_uib_share
                                                                attribute:NSLayoutAttributeWidth
                                                                relatedBy:NSLayoutRelationLessThanOrEqual
@@ -290,7 +294,7 @@ static float        kBottomViewHeight   = 45.0;
     
     _uib_thumbView = [UIButton buttonWithType:UIButtonTypeCustom];
     _uib_thumbView.frame = CGRectMake(self.view.frame.size.width-_uib_share.frame.size.width-10, 0.0, labelWidth, kTopViewHeight);
-    _uib_thumbView.backgroundColor = [UIColor redColor];
+    _uib_thumbView.backgroundColor = [UIColor clearColor];
     [_uib_thumbView setTitle:@"SEE ALL" forState:UIControlStateNormal];
     [_uib_thumbView setTitleColor:[UIColor colorWithRed:0.0/255.0 green:122.0/255.0 blue:255.0/255.0 alpha:1.0] forState:UIControlStateNormal];
     [_uib_thumbView setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
@@ -300,7 +304,7 @@ static float        kBottomViewHeight   = 45.0;
     _uib_thumbView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     [_uiv_topView addSubview: _uib_thumbView];
     
-    // Width constraint, 100
+    // Width constraint, less than or equal to 100
     [_uib_thumbView addConstraint:[NSLayoutConstraint constraintWithItem:_uib_thumbView
                                                                attribute:NSLayoutAttributeWidth
                                                                relatedBy:NSLayoutRelationLessThanOrEqual
@@ -318,7 +322,7 @@ static float        kBottomViewHeight   = 45.0;
                                                               multiplier:1.0
                                                                 constant:kTopViewHeight]];
     
-    // X constraint, 0.0
+    // X constraint, horizontal space 10 with share button
     [_uiv_topView addConstraint:[NSLayoutConstraint constraintWithItem:_uib_thumbView
                                                              attribute:NSLayoutAttributeTrailing
                                                              relatedBy:NSLayoutRelationEqual
@@ -357,6 +361,22 @@ static float        kBottomViewHeight   = 45.0;
     [actionSheet showFromRect:frame inView:self.view animated:YES];
 
 }
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    switch (buttonIndex) {
+        case 0:
+            NSLog(@"Should load email view");
+            [self loadEmail];
+            break;
+        case 1:
+            NSLog(@"Should save the image");
+            break;
+        default:
+            break;
+    }
+}
+
 
 //----------------------------------------------------
 #pragma mark Delegate for Back button
@@ -542,16 +562,7 @@ static float        kBottomViewHeight   = 45.0;
     _uiv_bottomView.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.9];
     _uiv_bottomView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
     [self.view addSubview: _uiv_bottomView];
-    
-//    // Width constraint, self.vew width
-//    [_uiv_bottomView addConstraint:[NSLayoutConstraint constraintWithItem:_uiv_bottomView
-//                                                             attribute:NSLayoutAttributeWidth
-//                                                             relatedBy:NSLayoutRelationEqual
-//                                                                toItem:nil
-//                                                             attribute:NSLayoutAttributeWidth
-//                                                            multiplier:1.0
-//                                                              constant:self.view.frame.size.width]];
-    
+       
     // Height constraint, kTopViewHeight
     [_uiv_bottomView addConstraint:[NSLayoutConstraint constraintWithItem:_uiv_bottomView
                                                              attribute:NSLayoutAttributeHeight
@@ -813,6 +824,149 @@ static float        kBottomViewHeight   = 45.0;
     
     [arr_fileType removeAllObjects];
     arr_fileType = nil;
+}
+
+#pragma mark - Load email view
+
+- (void)loadEmail
+{
+    _emailData = [[embEmailData alloc] init];
+    _emailData.to = nil;
+    _emailData.subject = nil;
+    _emailData.body = nil;//kMAILBODY;
+    UIImage *attachedImage = [UIImage imageNamed:arr_images[_currentPage]];
+    _emailData.attachment = @[attachedImage];
+    [self prepareEmailData];
+}
+#pragma mark Email Delegates
+-(void)prepareEmailData
+{
+    if ([MFMailComposeViewController canSendMail] == YES) {
+        
+        MFMailComposeViewController *picker = [[MFMailComposeViewController alloc] init];
+        picker.mailComposeDelegate = self; // &lt;- very important step if you want feedbacks on what the user did with your email sheet
+        
+        if(_emailData.to)
+            [picker setToRecipients:_emailData.to];
+        
+        if(_emailData.cc)
+            [picker setCcRecipients:_emailData.cc];
+        
+        if(_emailData.bcc)
+            [picker setBccRecipients:_emailData.bcc];
+        
+        if(_emailData.subject)
+            [picker setSubject:_emailData.subject];
+        
+        if(_emailData.body)
+            [picker setMessageBody:_emailData.body isHTML:YES]; // depends. Mostly YES, unless you want to send it as plain text (boring)
+        
+        
+        // attachment code
+        if(_emailData.attachment) {
+            
+            NSLog(@"_receivedData.attachment");
+            
+            NSString	*filePath;
+            NSString	*justFileName;
+            NSData		*myData;
+            UIImage		*pngImage;
+            NSString	*newname;
+            //			if (kshowNSLogBOOL) NSLog(@"%@",_receivedData.attachment);
+            
+            for (id file in _emailData.attachment)
+            {
+                
+                // check if it is a uiimage and handle
+                if ([file isKindOfClass:[UIImage class]]) {
+                    
+                    myData = UIImagePNGRepresentation(file);
+                    [picker addAttachmentData:myData mimeType:@"image/png" fileName:@"image.png"];
+                    
+                    // might be nsdata for pdf
+                } else if ([file isKindOfClass:[NSData class]]) {
+                    NSLog(@"pdf");
+                    myData = [NSData dataWithData:file];
+                    NSString *mimeType;
+                    mimeType = @"application/pdf";
+                    newname = @"Brochure.pdf";
+                    [picker addAttachmentData:myData mimeType:mimeType fileName:newname];
+                    
+                    // it must be another file type?
+                } else {
+                    
+                    justFileName = [[file lastPathComponent] stringByDeletingPathExtension];
+                    
+                    NSString *mimeType;
+                    // Determine the MIME type
+                    if ([[file pathExtension] isEqualToString:@"jpg"]) {
+                        mimeType = @"image/jpeg";
+                    } else if ([[file pathExtension] isEqualToString:@"png"]) {
+                        mimeType = @"image/png";
+                        pngImage = [UIImage imageNamed:file];
+                    } else if ([[file pathExtension] isEqualToString:@"doc"]) {
+                        mimeType = @"application/msword";
+                    } else if ([[file pathExtension] isEqualToString:@"ppt"]) {
+                        mimeType = @"application/vnd.ms-powerpoint";
+                    } else if ([[file pathExtension] isEqualToString:@"html"]) {
+                        mimeType = @"text/html";
+                    } else if ([[file pathExtension] isEqualToString:@"pdf"]) {
+                        mimeType = @"application/pdf";
+                    } else if ([[file pathExtension] isEqualToString:@"com"]) {
+                        mimeType = @"text/plain";
+                    }
+                    
+                    filePath= [[NSBundle mainBundle] pathForResource:justFileName ofType:[file pathExtension]];
+                    
+                    if (![[file pathExtension] isEqualToString:@"png"]) {
+                        myData = [NSData dataWithContentsOfFile:filePath];
+                        myData = [NSData dataWithContentsOfFile:filePath];
+                    } else {
+                        myData = UIImagePNGRepresentation(pngImage);
+                    }
+                    [picker addAttachmentData:myData mimeType:mimeType fileName:file];
+                }
+            }
+        }
+        
+        picker.navigationBar.barStyle = UIBarStyleBlack; // choose your style, unfortunately, Translucent colors behave quirky.
+        [self presentViewController:picker animated:YES completion:nil];
+        
+    } else {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Status" message:[NSString stringWithFormat:@"Email needs to be configured before this device can send email."]
+                                                       delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        [alert show];
+    }
+}
+
+- (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error
+{
+    // Notifies users about errors associated with the interface
+    switch (result)
+    {
+        case MFMailComposeResultCancelled:
+            break;
+        case MFMailComposeResultSaved:
+            break;
+        case MFMailComposeResultSent:
+        {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Thank you!" message:@"Email Sent Successfully"
+                                                           delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+            [alert show];
+        }
+            break;
+        case MFMailComposeResultFailed:
+            break;
+            
+        default:
+        {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Status" message:@"Sending Failed - Unknown Error"
+                                                           delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+            [alert show];
+        }
+            break;
+    }
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning {
