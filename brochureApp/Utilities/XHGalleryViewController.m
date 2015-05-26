@@ -237,7 +237,7 @@ static float        kBottomViewHeight   = 45.0;
     _uib_back = [UIButton buttonWithType:UIButtonTypeCustom];
     _uib_back.frame = CGRectMake(0.0, 0.0, labelWidth, kTopViewHeight);
     _uib_back.backgroundColor = [UIColor clearColor];
-    [_uib_back setTitle:@"﹤ BACK" forState:UIControlStateNormal];
+    [_uib_back setTitle:@"﹤ Back" forState:UIControlStateNormal];
     [_uib_back setTitleColor:[UIColor colorWithRed:0.0/255.0 green:122.0/255.0 blue:255.0/255.0 alpha:1.0] forState:UIControlStateNormal];
     [_uib_back setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
     [_uib_back.titleLabel setFont:[UIFont boldSystemFontOfSize:fontSize]];
@@ -247,7 +247,7 @@ static float        kBottomViewHeight   = 45.0;
     _uib_share = [UIButton buttonWithType:UIButtonTypeCustom];
     _uib_share.frame = CGRectMake(self.view.frame.size.width-labelWidth, 0.0, labelWidth, kTopViewHeight);
     _uib_share.backgroundColor = [UIColor clearColor];
-    [_uib_share setTitle:@"SHARE" forState:UIControlStateNormal];
+    [_uib_share setTitle:@"Share" forState:UIControlStateNormal];
     [_uib_share setTitleColor:[UIColor colorWithRed:0.0/255.0 green:122.0/255.0 blue:255.0/255.0 alpha:1.0] forState:UIControlStateNormal];
     [_uib_share setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
     [_uib_share.titleLabel setFont:[UIFont boldSystemFontOfSize:fontSize]];
@@ -295,7 +295,7 @@ static float        kBottomViewHeight   = 45.0;
     _uib_thumbView = [UIButton buttonWithType:UIButtonTypeCustom];
     _uib_thumbView.frame = CGRectMake(self.view.frame.size.width-_uib_share.frame.size.width-10, 0.0, labelWidth, kTopViewHeight);
     _uib_thumbView.backgroundColor = [UIColor clearColor];
-    [_uib_thumbView setTitle:@"SEE ALL" forState:UIControlStateNormal];
+    [_uib_thumbView setTitle:@"See All" forState:UIControlStateNormal];
     [_uib_thumbView setTitleColor:[UIColor colorWithRed:0.0/255.0 green:122.0/255.0 blue:255.0/255.0 alpha:1.0] forState:UIControlStateNormal];
     [_uib_thumbView setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
     [_uib_thumbView.titleLabel setFont:[UIFont boldSystemFontOfSize:fontSize]];
@@ -475,9 +475,11 @@ didFinishSavingWithError:(NSError *)error
     
     if (_isThumbViewShowing) {
         [self hideThumbnailViewWithAnimation:YES];
+        _uib_share.hidden = NO;
     }
     else {
         [self showThumbnailViewWithAnimation:YES];
+        _uib_share.hidden = YES;
     }
 }
 
@@ -578,6 +580,7 @@ didFinishSavingWithError:(NSError *)error
     _uil_numLabel.text = [NSString stringWithFormat:@"%i of %i", (int)_currentPage+1, itemsNum];
     _uil_caption.text = [arr_captions objectAtIndex: _currentPage];
     [self checkPageViewContentType];
+    _uib_share.hidden = NO;
 }
 
 //----------------------------------------------------
