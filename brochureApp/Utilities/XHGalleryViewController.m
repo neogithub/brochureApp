@@ -34,6 +34,7 @@ static float        kBottomViewHeight   = 45.0;
 @property (nonatomic, strong)           UILabel                 *uil_numLabel;
 @property (nonatomic, strong)           UIButton                *uib_back;
 @property (nonatomic, strong)           UIButton                *uib_thumbView;
+@property (nonatomic, strong)           UIButton                *uib_share;
 // Bottom View
 @property (nonatomic, strong)           UIView                  *uiv_bottomView;
 @property (nonatomic, strong)           UILabel                 *uil_caption;
@@ -116,10 +117,6 @@ static float        kBottomViewHeight   = 45.0;
 - (void)willRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
 {
     [self.view layoutIfNeeded];
-    
-//    _uiv_topView.frame = CGRectMake(0.0, 0.0, self.view.frame.size.width, kTopViewHeight);
-//    _uiv_bottomView.frame =CGRectMake(0.0, view_height - kBottomViewHeight, view_width, kBottomViewHeight);
-//    _uil_numLabel.frame = CGRectMake((self.view.frame.size.width-100)/2, 0, 100, kTopViewHeight);
 }
 
 //----------------------------------------------------
@@ -187,6 +184,7 @@ static float        kBottomViewHeight   = 45.0;
     
     float labelWidth = 100; // With for top view's buttons and label
     float fontSize = 15.0;
+    float buttonGap = 10.0;
     _uil_numLabel = [[UILabel alloc] initWithFrame:CGRectMake((_uiv_topView.frame.size.width-labelWidth)/2, 0, labelWidth, kTopViewHeight)];
     _uil_numLabel.translatesAutoresizingMaskIntoConstraints = NO;
     _uil_numLabel.text = [NSString stringWithFormat:@"%i of %i", (int)_currentPage+1, itemsNum];
@@ -243,8 +241,8 @@ static float        kBottomViewHeight   = 45.0;
     [_uib_back addTarget:self action:@selector(tapBackButton:) forControlEvents:UIControlEventTouchUpInside];
     
     _uib_thumbView = [UIButton buttonWithType:UIButtonTypeCustom];
-    _uib_thumbView.frame = CGRectMake(self.view.frame.size.width - labelWidth, 0.0, labelWidth, kTopViewHeight);
-    _uib_thumbView.backgroundColor = [UIColor clearColor];
+    _uib_thumbView.frame = CGRectMake(self.view.frame.size.width-2.0*labelWidth-buttonGap, 0.0, labelWidth, kTopViewHeight);
+    _uib_thumbView.backgroundColor = [UIColor redColor];
     [_uib_thumbView setTitle:@"SEE ALL" forState:UIControlStateNormal];
     [_uib_thumbView setTitleColor:[UIColor colorWithRed:0.0/255.0 green:122.0/255.0 blue:255.0/255.0 alpha:1.0] forState:UIControlStateNormal];
     [_uib_thumbView setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
@@ -278,10 +276,58 @@ static float        kBottomViewHeight   = 45.0;
                                                                 toItem:_uiv_topView
                                                              attribute:NSLayoutAttributeTrailing
                                                             multiplier:1.0
-                                                              constant:0.0]];
+                                                              constant:-labelWidth-buttonGap]];
     
     // Y constraint, 0.0
     [_uiv_topView addConstraint:[NSLayoutConstraint constraintWithItem:_uib_thumbView
+                                                             attribute:NSLayoutAttributeTop
+                                                             relatedBy:NSLayoutRelationEqual
+                                                                toItem:_uiv_topView
+                                                             attribute:NSLayoutAttributeTop
+                                                            multiplier:1.0
+                                                              constant:0.0]];
+    
+    
+    _uib_share = [UIButton buttonWithType:UIButtonTypeCustom];
+    _uib_share.frame = CGRectMake(self.view.frame.size.width-labelWidth, 0.0, labelWidth, kTopViewHeight);
+    _uib_share.backgroundColor = [UIColor redColor];
+    [_uib_share setTitle:@"SHARE" forState:UIControlStateNormal];
+    [_uib_share setTitleColor:[UIColor colorWithRed:0.0/255.0 green:122.0/255.0 blue:255.0/255.0 alpha:1.0] forState:UIControlStateNormal];
+    [_uib_share setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
+    [_uib_share.titleLabel setFont:[UIFont boldSystemFontOfSize:fontSize]];
+    [_uib_share addTarget:self action:@selector(loadThumbsView:) forControlEvents:UIControlEventTouchUpInside];
+    _uib_share.translatesAutoresizingMaskIntoConstraints = NO;
+    [_uiv_topView addSubview: _uib_share];
+    
+    // Width constraint, 100
+    [_uib_share addConstraint:[NSLayoutConstraint constraintWithItem:_uib_share
+                                                               attribute:NSLayoutAttributeWidth
+                                                               relatedBy:NSLayoutRelationEqual
+                                                                  toItem:nil
+                                                               attribute:NSLayoutAttributeWidth
+                                                              multiplier:1.0
+                                                                constant:labelWidth]];
+    
+    // Height constraint, kTopViewHeight
+    [_uib_share addConstraint:[NSLayoutConstraint constraintWithItem:_uib_share
+                                                               attribute:NSLayoutAttributeHeight
+                                                               relatedBy:NSLayoutRelationEqual
+                                                                  toItem:nil
+                                                               attribute:NSLayoutAttributeHeight
+                                                              multiplier:1.0
+                                                                constant:kTopViewHeight]];
+    
+    // X constraint, 0.0
+    [_uiv_topView addConstraint:[NSLayoutConstraint constraintWithItem:_uib_share
+                                                             attribute:NSLayoutAttributeTrailing
+                                                             relatedBy:NSLayoutRelationEqual
+                                                                toItem:_uiv_topView
+                                                             attribute:NSLayoutAttributeTrailing
+                                                            multiplier:1.0
+                                                              constant:0.0]];
+    
+    // Y constraint, 0.0
+    [_uiv_topView addConstraint:[NSLayoutConstraint constraintWithItem:_uib_share
                                                              attribute:NSLayoutAttributeTop
                                                              relatedBy:NSLayoutRelationEqual
                                                                 toItem:_uiv_topView
@@ -307,7 +353,48 @@ static float        kBottomViewHeight   = 45.0;
 {
     _thumbsView.backgroundColor = [UIColor whiteColor];
     _thumbsView.hidden = YES;
+    _thumbsView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
     [self.view addSubview: _thumbsView];
+    //Width Constrain
+    [_thumbsView addConstraint:[NSLayoutConstraint
+                               constraintWithItem:_thumbsView
+                               attribute:NSLayoutAttributeWidth
+                               relatedBy:NSLayoutRelationEqual
+                               toItem:nil
+                               attribute:NSLayoutAttributeWidth
+                               multiplier:1.0
+                               constant:self.view.frame.size.width]];
+    
+    //Height Constrain
+    [_thumbsView addConstraint:[NSLayoutConstraint
+                                constraintWithItem:_thumbsView
+                                attribute:NSLayoutAttributeHeight
+                                relatedBy:NSLayoutRelationEqual
+                                toItem:nil
+                                attribute:NSLayoutAttributeHeight
+                                multiplier:1.0
+                                constant:self.view.frame.size.height]];
+    
+    //Top Constrain
+    [self.view addConstraint:[NSLayoutConstraint
+                                constraintWithItem:_thumbsView
+                                attribute:NSLayoutAttributeTop
+                                relatedBy:NSLayoutRelationEqual
+                                toItem:self.view
+                                attribute:NSLayoutAttributeTop
+                                multiplier:1.0
+                                constant:0.0]];
+    
+    //Leading Constrain
+    [self.view addConstraint:[NSLayoutConstraint
+                                constraintWithItem:_thumbsView
+                              attribute:NSLayoutAttributeLeading
+                                relatedBy:NSLayoutRelationEqual
+                                toItem:self.view
+                                attribute:NSLayoutAttributeLeading
+                                multiplier:1.0
+                                constant:0.0]];
+    
     // create the thumbnail views
     [self buildThumbsViewPhotos];
 }
