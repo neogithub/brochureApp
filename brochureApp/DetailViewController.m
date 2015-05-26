@@ -24,6 +24,11 @@
 @implementation DetailViewController
 @synthesize sectionNum, rowNum;
 
+- (BOOL)prefersStatusBarHidden
+{
+    return YES;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self prepareGalleryData];
@@ -52,7 +57,7 @@
     _gallery = [[XHGalleryViewController alloc] init];
     _gallery.delegate = self;
     _gallery.startIndex = 0;
-    _gallery.view.frame = self.view.frame;
+    _gallery.view.frame = self.view.bounds;
     _gallery.arr_rawData = [arr_rawData objectAtIndex:0];
     [self addChildViewController:_gallery];
     [self.view addSubview: _gallery.view];

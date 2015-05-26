@@ -5,7 +5,7 @@
 	<array>
 		<dict>
 			<key>caption</key>
-			<string>Caption 8</string>
+			<string>Caption</string>
 			<key>file</key>
 			<string>grfx_launching.jpg</string>
 			<key>type</key>
@@ -13,7 +13,7 @@
 		</dict>
 		<dict>
 			<key>caption</key>
-			<string>Caption 9</string>
+			<string>Caption</string>
 			<key>file</key>
 			<string>grfx_launching.png</string>
 			<key>type</key>

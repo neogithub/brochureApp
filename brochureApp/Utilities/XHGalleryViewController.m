@@ -55,6 +55,11 @@ static float        kBottomViewHeight   = 45.0;
 @synthesize arr_rawData;
 @synthesize startIndex;
 
+- (BOOL)prefersStatusBarHidden
+{
+    return YES;
+}
+
 - (id)init
 {
     if (self == [super init]) {
@@ -105,11 +110,13 @@ static float        kBottomViewHeight   = 45.0;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    NSLog(@"The view's frame is %@", NSStringFromCGRect(self.view.bounds));
 }
 
 - (void)willRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
 {
     [self.view layoutIfNeeded];
+    
 //    _uiv_topView.frame = CGRectMake(0.0, 0.0, self.view.frame.size.width, kTopViewHeight);
 //    _uiv_bottomView.frame =CGRectMake(0.0, view_height - kBottomViewHeight, view_width, kBottomViewHeight);
 //    _uil_numLabel.frame = CGRectMake((self.view.frame.size.width-100)/2, 0, 100, kTopViewHeight);
