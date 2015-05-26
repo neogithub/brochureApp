@@ -15,7 +15,7 @@
 static float        kTopViewHeight      = 45.0;
 static float        kBottomViewHeight   = 45.0;
 
-@interface XHGalleryViewController ()<UIPageViewControllerDelegate, FGalleryPhotoViewDelegate>
+@interface XHGalleryViewController ()<UIPageViewControllerDelegate, FGalleryPhotoViewDelegate, UIActionSheetDelegate>
 {
     int             itemsNum;
     float           view_width;
@@ -240,54 +240,6 @@ static float        kBottomViewHeight   = 45.0;
     [_uiv_topView addSubview: _uib_back];
     [_uib_back addTarget:self action:@selector(tapBackButton:) forControlEvents:UIControlEventTouchUpInside];
     
-    _uib_thumbView = [UIButton buttonWithType:UIButtonTypeCustom];
-    _uib_thumbView.frame = CGRectMake(self.view.frame.size.width-2.0*labelWidth-buttonGap, 0.0, labelWidth, kTopViewHeight);
-    _uib_thumbView.backgroundColor = [UIColor redColor];
-    [_uib_thumbView setTitle:@"SEE ALL" forState:UIControlStateNormal];
-    [_uib_thumbView setTitleColor:[UIColor colorWithRed:0.0/255.0 green:122.0/255.0 blue:255.0/255.0 alpha:1.0] forState:UIControlStateNormal];
-    [_uib_thumbView setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
-    [_uib_thumbView.titleLabel setFont:[UIFont boldSystemFontOfSize:fontSize]];
-    [_uib_thumbView addTarget:self action:@selector(loadThumbsView:) forControlEvents:UIControlEventTouchUpInside];
-    _uib_thumbView.translatesAutoresizingMaskIntoConstraints = NO;
-    [_uiv_topView addSubview: _uib_thumbView];
-    
-    // Width constraint, 100
-    [_uib_thumbView addConstraint:[NSLayoutConstraint constraintWithItem:_uib_thumbView
-                                                              attribute:NSLayoutAttributeWidth
-                                                              relatedBy:NSLayoutRelationEqual
-                                                                 toItem:nil
-                                                              attribute:NSLayoutAttributeWidth
-                                                             multiplier:1.0
-                                                               constant:labelWidth]];
-    
-    // Height constraint, kTopViewHeight
-    [_uib_thumbView addConstraint:[NSLayoutConstraint constraintWithItem:_uib_thumbView
-                                                              attribute:NSLayoutAttributeHeight
-                                                              relatedBy:NSLayoutRelationEqual
-                                                                 toItem:nil
-                                                              attribute:NSLayoutAttributeHeight
-                                                             multiplier:1.0
-                                                               constant:kTopViewHeight]];
-    
-    // X constraint, 0.0
-    [_uiv_topView addConstraint:[NSLayoutConstraint constraintWithItem:_uib_thumbView
-                                                             attribute:NSLayoutAttributeTrailing
-                                                             relatedBy:NSLayoutRelationEqual
-                                                                toItem:_uiv_topView
-                                                             attribute:NSLayoutAttributeTrailing
-                                                            multiplier:1.0
-                                                              constant:-labelWidth-buttonGap]];
-    
-    // Y constraint, 0.0
-    [_uiv_topView addConstraint:[NSLayoutConstraint constraintWithItem:_uib_thumbView
-                                                             attribute:NSLayoutAttributeTop
-                                                             relatedBy:NSLayoutRelationEqual
-                                                                toItem:_uiv_topView
-                                                             attribute:NSLayoutAttributeTop
-                                                            multiplier:1.0
-                                                              constant:0.0]];
-    
-    
     _uib_share = [UIButton buttonWithType:UIButtonTypeCustom];
     _uib_share.frame = CGRectMake(self.view.frame.size.width-labelWidth, 0.0, labelWidth, kTopViewHeight);
     _uib_share.backgroundColor = [UIColor redColor];
@@ -295,14 +247,15 @@ static float        kBottomViewHeight   = 45.0;
     [_uib_share setTitleColor:[UIColor colorWithRed:0.0/255.0 green:122.0/255.0 blue:255.0/255.0 alpha:1.0] forState:UIControlStateNormal];
     [_uib_share setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
     [_uib_share.titleLabel setFont:[UIFont boldSystemFontOfSize:fontSize]];
-    [_uib_share addTarget:self action:@selector(loadThumbsView:) forControlEvents:UIControlEventTouchUpInside];
+    [_uib_share addTarget:self action:@selector(loadShareOptions:) forControlEvents:UIControlEventTouchUpInside];
     _uib_share.translatesAutoresizingMaskIntoConstraints = NO;
+    _uib_share.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     [_uiv_topView addSubview: _uib_share];
     
     // Width constraint, 100
     [_uib_share addConstraint:[NSLayoutConstraint constraintWithItem:_uib_share
                                                                attribute:NSLayoutAttributeWidth
-                                                               relatedBy:NSLayoutRelationEqual
+                                                               relatedBy:NSLayoutRelationLessThanOrEqual
                                                                   toItem:nil
                                                                attribute:NSLayoutAttributeWidth
                                                               multiplier:1.0
@@ -335,6 +288,74 @@ static float        kBottomViewHeight   = 45.0;
                                                             multiplier:1.0
                                                               constant:0.0]];
     
+    _uib_thumbView = [UIButton buttonWithType:UIButtonTypeCustom];
+    _uib_thumbView.frame = CGRectMake(self.view.frame.size.width-_uib_share.frame.size.width-10, 0.0, labelWidth, kTopViewHeight);
+    _uib_thumbView.backgroundColor = [UIColor redColor];
+    [_uib_thumbView setTitle:@"SEE ALL" forState:UIControlStateNormal];
+    [_uib_thumbView setTitleColor:[UIColor colorWithRed:0.0/255.0 green:122.0/255.0 blue:255.0/255.0 alpha:1.0] forState:UIControlStateNormal];
+    [_uib_thumbView setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
+    [_uib_thumbView.titleLabel setFont:[UIFont boldSystemFontOfSize:fontSize]];
+    [_uib_thumbView addTarget:self action:@selector(loadThumbsView:) forControlEvents:UIControlEventTouchUpInside];
+    _uib_thumbView.translatesAutoresizingMaskIntoConstraints = NO;
+    _uib_thumbView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+    [_uiv_topView addSubview: _uib_thumbView];
+    
+    // Width constraint, 100
+    [_uib_thumbView addConstraint:[NSLayoutConstraint constraintWithItem:_uib_thumbView
+                                                               attribute:NSLayoutAttributeWidth
+                                                               relatedBy:NSLayoutRelationLessThanOrEqual
+                                                                  toItem:nil
+                                                               attribute:NSLayoutAttributeWidth
+                                                              multiplier:1.0
+                                                                constant:labelWidth]];
+    
+    // Height constraint, kTopViewHeight
+    [_uib_thumbView addConstraint:[NSLayoutConstraint constraintWithItem:_uib_thumbView
+                                                               attribute:NSLayoutAttributeHeight
+                                                               relatedBy:NSLayoutRelationEqual
+                                                                  toItem:nil
+                                                               attribute:NSLayoutAttributeHeight
+                                                              multiplier:1.0
+                                                                constant:kTopViewHeight]];
+    
+    // X constraint, 0.0
+    [_uiv_topView addConstraint:[NSLayoutConstraint constraintWithItem:_uib_thumbView
+                                                             attribute:NSLayoutAttributeTrailing
+                                                             relatedBy:NSLayoutRelationEqual
+                                                                toItem:_uib_share
+                                                             attribute:NSLayoutAttributeLeading
+                                                            multiplier:1.0
+                                                              constant:-buttonGap]];
+    
+    // Y constraint, 0.0
+    [_uiv_topView addConstraint:[NSLayoutConstraint constraintWithItem:_uib_thumbView
+                                                             attribute:NSLayoutAttributeTop
+                                                             relatedBy:NSLayoutRelationEqual
+                                                                toItem:_uiv_topView
+                                                             attribute:NSLayoutAttributeTop
+                                                            multiplier:1.0
+                                                              constant:0.0]];
+}
+
+//----------------------------------------------------
+#pragma mark Load Share menu
+//----------------------------------------------------
+- (void)loadShareOptions:(id)sender
+{
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil
+                                                             delegate:self
+                                                    cancelButtonTitle:@"Cancle"
+                                               destructiveButtonTitle:nil
+                                                    otherButtonTitles:  @"Email",
+                                                                        @"Save to device",
+                                                                        nil];
+    
+    actionSheet.tag = 100;
+    
+    CGRect frame = _uib_share.frame;
+    
+    [actionSheet showFromRect:frame inView:self.view animated:YES];
+
 }
 
 //----------------------------------------------------
