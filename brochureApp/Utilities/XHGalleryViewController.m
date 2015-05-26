@@ -17,7 +17,12 @@
 static float        kTopViewHeight      = 45.0;
 static float        kBottomViewHeight   = 45.0;
 
-@interface XHGalleryViewController ()<UIPageViewControllerDelegate, FGalleryPhotoViewDelegate, UIActionSheetDelegate, MFMailComposeViewControllerDelegate, MFMailComposeViewControllerDelegate>
+@interface XHGalleryViewController ()<  UIPageViewControllerDelegate,
+                                        FGalleryPhotoViewDelegate,
+                                        UIActionSheetDelegate,
+                                        MFMailComposeViewControllerDelegate,
+                                        MFMailComposeViewControllerDelegate,
+                                        UIAlertViewDelegate>
 {
     int             itemsNum;
     float           view_width;
@@ -392,18 +397,34 @@ didFinishSavingWithError:(NSError *)error
     NSString *message = @"This image cannot be saved to your Photos album";
     if (error) {
         message = [error localizedDescription];
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Gallery Unavailable!" message:[NSString stringWithFormat:@"Go To Settings --> Privacy -->Photos To Fix!"]
-                                                       delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
-        [alert show];
+        float versionNum = [[[UIDevice currentDevice] systemVersion] floatValue];
+        if (versionNum < 8.0) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Gallery Unavailable!" message:[NSString stringWithFormat:@"Go To Settings --> Privacy -->Photos To Fix!"]
+                                                           delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [alert show];
+            alert.delegate = self;
+        }
+        else {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Gallery Unavailable!" message:[NSString stringWithFormat:@"Go To Settings --> Privacy -->Photos To Fix!"]
+                                                           delegate:self cancelButtonTitle:@"OK" otherButtonTitles: @"Setting", nil];
+            [alert show];
+            alert.delegate = self;
+        }
         return;
     }
     else{
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Congratulations!" message:[NSString stringWithFormat:@"Current Image is successfully saved in your device!"]
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Congratulations!" message:[NSString stringWithFormat:@"Current image is successfully saved in your device!"]
                                                        delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
         [alert show];
     }
 }
 
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 1) {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
+    }
+}
 
 //----------------------------------------------------
 #pragma mark Delegate for Back button
