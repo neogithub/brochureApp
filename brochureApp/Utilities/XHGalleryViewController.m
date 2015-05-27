@@ -65,6 +65,9 @@ static float        kBottomViewHeight   = 45.0;
 @synthesize arr_rawData;
 @synthesize startIndex;
 
+/*
+ * Get data from parent ViewController
+ */
 - (void)setArr_rawData:(NSArray *)_arr_rawData
 {
     arr_rawData = _arr_rawData;
@@ -129,6 +132,59 @@ static float        kBottomViewHeight   = 45.0;
 - (void)willRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
 {
     [self.view layoutIfNeeded];
+}
+
+//----------------------------------------------------
+#pragma mark - Clean memory
+//----------------------------------------------------
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [_uiv_topView removeFromSuperview];
+    _uiv_topView = nil;
+    
+    [_uil_numLabel removeFromSuperview];
+    _uil_numLabel = nil;
+    
+    [_uib_back removeFromSuperview];
+    _uib_back = nil;
+    
+    [_uiv_bottomView removeFromSuperview];
+    _uiv_bottomView = nil;
+    
+    [_uil_caption removeFromSuperview];
+    _uil_caption = nil;
+    
+    _modelController = nil;
+    
+    [_photoThumbnailViews removeAllObjects];
+    _photoThumbnailViews = nil;
+    
+    [_thumbsView removeFromSuperview];
+    _thumbsView = nil;
+    
+    [_uiiv_playMovie removeFromSuperview];
+    _uiiv_playMovie = nil;
+    
+    _isThumbViewShowing = NO;
+    
+    for (UIView __strong *tmp in [_pageViewController.view subviews]) {
+        [tmp removeFromSuperview];
+        tmp = nil;
+    }
+    
+    [_pageViewController.view removeFromSuperview];
+    _pageViewController.view = nil;
+    [_pageViewController removeFromParentViewController];
+    _pageViewController = nil;
+    
+    [arr_images removeAllObjects];
+    arr_images = nil;
+    
+    [arr_captions removeAllObjects];
+    arr_captions = nil;
+    
+    [arr_fileType removeAllObjects];
+    arr_fileType = nil;
 }
 
 //----------------------------------------------------
@@ -403,6 +459,12 @@ didFinishSavingWithError:(NSError *)error
         NSString *alertTitle = @"Gallery Unavailable!";
         NSString *alertBody = @"Go To Settings --> Privacy -->Photos To Fix!";
         float versionNum = [[[UIDevice currentDevice] systemVersion] floatValue];
+        
+        /*
+         * Check device's iOS version
+         * If it's 8.0 upper, the "Setting" button will lead to device's setting
+         */
+        
         if (versionNum < 8.0) {
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:alertTitle message:alertBody
                                                            delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
@@ -637,8 +699,9 @@ didFinishSavingWithError:(NSError *)error
                                                          multiplier:1.0
                                                            constant:0.0]];
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:_uiv_bottomView
-                                                          attribute:NSLayoutAttributeRight                                                          relatedBy:NSLayoutRelationEqual
-                                                             toItem:self.view
+                                                          attribute:NSLayoutAttributeRight
+                                                          relatedBy:NSLayoutRelationEqual
+                                                          toItem:self.view
                                                           attribute:NSLayoutAttributeRight
                                                          multiplier:1.0
                                                            constant:0.0]];
@@ -827,59 +890,6 @@ didFinishSavingWithError:(NSError *)error
                              _pageViewController.view.backgroundColor = [UIColor whiteColor];
                          }];
     }
-}
-
-//----------------------------------------------------
-#pragma mark - Clean memory
-//----------------------------------------------------
-- (void)viewWillDisappear:(BOOL)animated
-{
-    [_uiv_topView removeFromSuperview];
-    _uiv_topView = nil;
-    
-    [_uil_numLabel removeFromSuperview];
-    _uil_numLabel = nil;
-    
-    [_uib_back removeFromSuperview];
-    _uib_back = nil;
-    
-    [_uiv_bottomView removeFromSuperview];
-    _uiv_bottomView = nil;
-    
-    [_uil_caption removeFromSuperview];
-    _uil_caption = nil;
-    
-    _modelController = nil;
-    
-    [_photoThumbnailViews removeAllObjects];
-    _photoThumbnailViews = nil;
-    
-    [_thumbsView removeFromSuperview];
-    _thumbsView = nil;
-    
-    [_uiiv_playMovie removeFromSuperview];
-    _uiiv_playMovie = nil;
-    
-    _isThumbViewShowing = NO;
-    
-    for (UIView __strong *tmp in [_pageViewController.view subviews]) {
-        [tmp removeFromSuperview];
-        tmp = nil;
-    }
-    
-    [_pageViewController.view removeFromSuperview];
-    _pageViewController.view = nil;
-    [_pageViewController removeFromParentViewController];
-    _pageViewController = nil;
-    
-    [arr_images removeAllObjects];
-    arr_images = nil;
-    
-    [arr_captions removeAllObjects];
-    arr_captions = nil;
-    
-    [arr_fileType removeAllObjects];
-    arr_fileType = nil;
 }
 
 #pragma mark - Load email view

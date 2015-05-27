@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+extern NSString *homePage;
+extern NSString *infoEmail;
+extern NSString *requestEmail;
+
 @interface ViewController : UIViewController
 
 

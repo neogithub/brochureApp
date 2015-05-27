@@ -11,29 +11,31 @@
 #import "CollectionHeaderView.h"
 #import "xhWebViewController.h"
 #import <MessageUI/MessageUI.h>
+#import "XHSideMenuTableViewController.h"
 
 #define menuWidth  200.0;
 
-@interface ViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
+NSString *homePage = @"http://www.neoscape.com";
+NSString *infoEmail = @"info@neoscape.com";
+NSString *requestEmail = @"info@neoscape.com";
+
+@interface ViewController () <UICollectionViewDelegate, UICollectionViewDataSource, sideTableDelegate>
 {
-    NSInteger   sectionNum;
-    UIView      *uiv_back;
+    NSInteger                           sectionNum;
+    UIView                              *uiv_back;
+    XHSideMenuTableViewController       *sideMenuTable;
 }
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *collectionLeadingConstrain;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *collectionTailingConstrain;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *menuBtnLeadingConstrain;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *menuContainerLeading;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint         *collectionLeadingConstrain;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint         *collectionTailingConstrain;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint         *menuBtnLeadingConstrain;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint         *menuContainerLeading;
 
-@property (weak, nonatomic) IBOutlet UICollectionView   *uic_mainCollection;
+@property (weak, nonatomic) IBOutlet UICollectionView           *uic_mainCollection;
 
-@property (weak, nonatomic) IBOutlet UIButton           *uib_menu;
-@property (nonatomic, strong) DetailViewController      *detail_vc;
-@property (weak, nonatomic) IBOutlet UIView             *uiv_menuContainer;
-
-
-@property (weak, nonatomic) IBOutlet UIButton           *uib_project1;
-@property (weak, nonatomic) IBOutlet UIButton           *uib_project2;
-@property (weak, nonatomic) IBOutlet UIButton           *uib_project3;
+@property (weak, nonatomic) IBOutlet UIButton                   *uib_menu;
+@property (nonatomic, strong)        DetailViewController       *detail_vc;
+@property (weak, nonatomic) IBOutlet UIView                     *uiv_menuContainer;
+@property (weak, nonatomic) IBOutlet UIView                *uiv_tableContainer;
 
 @end
 
@@ -55,17 +57,29 @@
     sectionNum = 3;
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+//    [sideMenuTable.tableView reloadData];
+}
+
 - (void)viewWillLayoutSubviews
 {
     
 }
+
+#pragma mark - Action of buttons
 
 - (IBAction)menuBtnTapped:(id)sender {
     /*
      * Status: side menu is unhidden
      * Hide side menu
      * Reset constraints of collection view menu button
-     * Remove blured back view
+     * Remove blurred back view
      */
     if (_uib_menu.selected) {
         _collectionLeadingConstrain.constant -= menuWidth;
@@ -78,7 +92,7 @@
     /*
      * Side menu is hidden
      * Add new constraints to move in side menu and push the collection view
-     * Init the blured back view (tap to hide side menu)
+     * Init the blurred back view (tap to hide side menu)
      */
     else {
         _collectionLeadingConstrain.constant += menuWidth;
@@ -88,7 +102,6 @@
         uiv_back = [[UIView alloc] initWithFrame:self.view.bounds];
         uiv_back.backgroundColor = [UIColor colorWithWhite:0.8 alpha:0.8];
         UITapGestureRecognizer *tapBackView = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapOnBackView:)];
-        tapBackView.numberOfTapsRequired = 1;
         uiv_back.userInteractionEnabled = YES;
         [uiv_back addGestureRecognizer: tapBackView];
         uiv_back.translatesAutoresizingMaskIntoConstraints = NO;
@@ -146,38 +159,33 @@
 }
 
 /*
- * Tap side menu's project buttons:
- * Make the tapped one in selected state
- * According to tapped button's tag num reload collection view's content
- * Hide side menu
- */
-
-- (IBAction)tapPorjectBtns:(id)sender {
-    
-    [[self view] endEditing:YES];
-    
-    _uib_project1.selected = NO;
-    _uib_project2.selected = NO;
-    _uib_project3.selected = NO;
-    
-    UIButton *tappedBtn = sender;
-    tappedBtn.selected = YES;
-    
-    sectionNum = [sender tag];
-    [_uic_mainCollection reloadData];
-    [self menuBtnTapped:_uib_menu];
-}
-/*
  * Load web view
  * With address: www.neoscape.com
  */
 - (IBAction)tapVisitBtn:(id)sender {
-    NSString *theUrl = @"http://www.neoscape.com";
+    NSString *theUrl = homePage;
     xhWebViewController *vc = [[xhWebViewController alloc] init];
     [vc socialButton:theUrl];
     vc.modalPresentationStyle = UIModalPresentationCurrentContext;
     [[NSNotificationCenter defaultCenter] postNotificationName:@"hideNaviBtn" object:self];
     [self presentViewController:vc animated:YES completion:nil];
+}
+
+#pragma mark - Side menu table view
+- (void)setUpSideTableView
+{
+    sideMenuTable = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"XHSideMenuTableViewController"];
+    sideMenuTable.tableView.frame = _uiv_tableContainer.bounds;
+    [_uiv_tableContainer addSubview: sideMenuTable.tableView];
+    sideMenuTable.delegate = self;
+    [self addChildViewController: sideMenuTable];
+}
+/*
+ * Delegate method of side table view
+ */
+- (void)didSelectedTheCell:(NSIndexPath *)index
+{
+    NSLog(@"Should update!");
 }
 
 #pragma mark - Collection Delegate Methods
@@ -219,7 +227,7 @@
     
     if (kind == UICollectionElementKindSectionHeader) {
         CollectionHeaderView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderView" forIndexPath:indexPath];
-        NSString *title = [[NSString alloc]initWithFormat:@"Porject Name #%i", indexPath.section + 1];
+        NSString *title = [[NSString alloc]initWithFormat:@"Porject Name #%i", (int)indexPath.section + 1];
         headerView.title_label.text = title;
         reusableview = headerView;
     }

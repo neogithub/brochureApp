@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		822F075A1B1621BA005EF909 /* XHSideMenuTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 822F07591B1621BA005EF909 /* XHSideMenuTableViewController.m */; };
 		825297681B0F6C3200E98C42 /* embEmailData.m in Sources */ = {isa = PBXBuildFile; fileRef = 825297671B0F6C3200E98C42 /* embEmailData.m */; };
 		8252976A1B0F753D00E98C42 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 825297691B0F753D00E98C42 /* MessageUI.framework */; };
 		8252976D1B0F7AD300E98C42 /* xhWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8252976C1B0F7AD300E98C42 /* xhWebViewController.m */; };
@@ -44,6 +45,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		822F07581B1621BA005EF909 /* XHSideMenuTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XHSideMenuTableViewController.h; path = Utilities/XHSideMenuTableViewController.h; sourceTree = "<group>"; };
+		822F07591B1621BA005EF909 /* XHSideMenuTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XHSideMenuTableViewController.m; path = Utilities/XHSideMenuTableViewController.m; sourceTree = "<group>"; };
 		825297661B0F6C3200E98C42 /* embEmailData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = embEmailData.h; path = Utilities/embEmailData.h; sourceTree = "<group>"; };
 		825297671B0F6C3200E98C42 /* embEmailData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = embEmailData.m; path = Utilities/embEmailData.m; sourceTree = "<group>"; };
 		825297691B0F753D00E98C42 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
@@ -190,6 +193,8 @@
 				8252976C1B0F7AD300E98C42 /* xhWebViewController.m */,
 				8252976E1B0F7B4900E98C42 /* Reachability.h */,
 				8252976F1B0F7B4900E98C42 /* Reachability.m */,
+				822F07581B1621BA005EF909 /* XHSideMenuTableViewController.h */,
+				822F07591B1621BA005EF909 /* XHSideMenuTableViewController.m */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -324,6 +329,7 @@
 				82AA3B761B0E57AB0001020F /* embModelController.m in Sources */,
 				8270B0561B0CDFB50018D7BD /* CollectionHeaderView.m in Sources */,
 				8252976D1B0F7AD300E98C42 /* xhWebViewController.m in Sources */,
+				822F075A1B1621BA005EF909 /* XHSideMenuTableViewController.m in Sources */,
 				825297701B0F7B4900E98C42 /* Reachability.m in Sources */,
 				82BE2DE11B0E1DF00018D05B /* SummaryViewController.m in Sources */,
 				82AA3B751B0E57AB0001020F /* embDataViewController.m in Sources */,
