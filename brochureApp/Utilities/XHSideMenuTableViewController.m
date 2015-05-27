@@ -27,6 +27,7 @@
     
     arr_projects = @[@"All", @"Project 1", @"Project 2", @"Project 3"];
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    [self.tableView setSeparatorInset:UIEdgeInsetsZero];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -63,6 +64,7 @@
 
     cell.backgroundColor = [UIColor redColor];
     [cell.textLabel setText: arr_projects[indexPath.row]];
+    cell.layoutMargins = UIEdgeInsetsZero;
     return cell;
 }
 
