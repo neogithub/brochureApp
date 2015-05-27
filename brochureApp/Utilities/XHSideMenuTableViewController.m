@@ -26,6 +26,7 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     arr_projects = @[@"All", @"Project 1", @"Project 2", @"Project 3"];
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 }
 
 - (void)viewDidAppear:(BOOL)animated

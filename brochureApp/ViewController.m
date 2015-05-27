@@ -51,20 +51,16 @@ NSString *requestEmail = @"info@neoscape.com";
     // Do any additional setup after loading the view, typically from a nib.
     _uic_mainCollection.delegate = self;
     _uic_mainCollection.dataSource = self;
+    [self setUpSideTableView];
     /*
      Magic num of section numbers
      */
     sectionNum = 3;
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
-
-}
-
 - (void)viewDidAppear:(BOOL)animated
 {
-//    [sideMenuTable.tableView reloadData];
+
 }
 
 - (void)viewWillLayoutSubviews
@@ -185,7 +181,14 @@ NSString *requestEmail = @"info@neoscape.com";
  */
 - (void)didSelectedTheCell:(NSIndexPath *)index
 {
-    NSLog(@"Should update!");
+    if (index.row == 0) {
+        sectionNum = 3;
+    }
+    else {
+        sectionNum = 1;
+    }
+    [_uic_mainCollection reloadData];
+    [self tapOnBackView:nil];
 }
 
 #pragma mark - Collection Delegate Methods
