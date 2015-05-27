@@ -676,7 +676,7 @@ didFinishSavingWithError:(NSError *)error
 //----------------------------------------------------
 -(void)createBottomView
 {
-    _uiv_bottomView = [[UIView alloc] initWithFrame:CGRectMake(0.0, view_height - kBottomViewHeight, self.view.frame.size.width, kBottomViewHeight)];
+    _uiv_bottomView = [[UIView alloc] initWithFrame:CGRectMake(0.0, self.view.frame.size.height - kBottomViewHeight, self.view.frame.size.width, kBottomViewHeight)];
     _uiv_bottomView.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.9];
     _uiv_bottomView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
     [self.view addSubview: _uiv_bottomView];
@@ -707,12 +707,12 @@ didFinishSavingWithError:(NSError *)error
                                                            constant:0.0]];
     // Y constraint, 0.0
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:_uiv_bottomView
-                                                          attribute:NSLayoutAttributeTop
+                                                          attribute:NSLayoutAttributeBottom
                                                           relatedBy:NSLayoutRelationEqual
                                                              toItem:self.view
-                                                          attribute:NSLayoutAttributeTop
+                                                          attribute:NSLayoutAttributeBottom
                                                          multiplier:1.0
-                                                           constant:self.view.frame.size.height-kBottomViewHeight]];
+                                                           constant:0.0]];
     
     
     _uil_caption = [[UILabel alloc] initWithFrame:CGRectMake(20.0, 0.0, 200.0, kBottomViewHeight)];
