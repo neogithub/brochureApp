@@ -130,6 +130,16 @@ static float        kBottomViewHeight   = 45.0;
     [self.view setAutoresizingMask:UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight];
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    // Enable iOS 7 back gesture
+    if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
+        self.navigationController.interactivePopGestureRecognizer.enabled = YES;
+        self.navigationController.interactivePopGestureRecognizer.delegate = nil;
+    }
+}
+
 - (void)willRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
 {
     [self.view layoutIfNeeded];
