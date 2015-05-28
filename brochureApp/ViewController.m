@@ -151,9 +151,17 @@ NSString *requestEmail = @"info@neoscape.com";
                                   constant:0.0]];
     }
     
-    _uib_menu.selected = !_uib_menu.selected;
+    
     [UIView animateWithDuration:0.33 animations:^(void){
         [self.view layoutIfNeeded];
+        if (_uib_menu.selected) {
+            _uiv_collectionContainer.transform = CGAffineTransformIdentity;
+        }
+        else {
+            _uiv_collectionContainer.transform = CGAffineTransformMakeScale(0.85, 0.85);
+        }
+    } completion:^(BOOL finished){
+        _uib_menu.selected = !_uib_menu.selected;
     }];
 }
 /*
@@ -242,7 +250,7 @@ NSString *requestEmail = @"info@neoscape.com";
     
     if (kind == UICollectionElementKindSectionHeader) {
         CollectionHeaderView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderView" forIndexPath:indexPath];
-        NSString *title = [[NSString alloc]initWithFormat:@"Porject Name #%i", (int)indexPath.section + 1];
+        NSString *title = [[NSString alloc]initWithFormat:@"Project Name #%i", (int)indexPath.section + 1];
         headerView.title_label.text = title;
         reusableview = headerView;
     }
