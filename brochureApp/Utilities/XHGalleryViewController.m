@@ -499,6 +499,13 @@ didFinishSavingWithError:(NSError *)error
 - (void)tapBackButton:(id)sender
 {
     [self.delegate didRemoveFromSuperView];
+    /*
+     * If the gallery is pushed into a navigation controller
+     * Pop the VC when tap the back button
+     */
+    if (self.navigationController) {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
 }
 
 //----------------------------------------------------

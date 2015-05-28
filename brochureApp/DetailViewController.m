@@ -71,23 +71,24 @@
     _gallery.startIndex = 0;
     _gallery.view.frame = self.view.bounds;
     _gallery.arr_rawData = [arr_rawData objectAtIndex:0];
-    [self addChildViewController:_gallery];
-    [self.view addSubview: _gallery.view];
+//    [self addChildViewController:_gallery];
+//    [self.view addSubview: _gallery.view];
+    [self.navigationController pushViewController:_gallery animated:YES];
 }
 /*
  * Gallery delegate method (Remove gallery's view)
  */
 - (void)didRemoveFromSuperView
 {
-    [UIView animateWithDuration:0.33
-                     animations:^{
-                         _gallery.view.alpha = 0.0;
-                     } completion:^(BOOL finshed){
-                         [_gallery.view removeFromSuperview];
-                         _gallery.view = nil;
-                         [_gallery removeFromParentViewController];
-                         _gallery = nil;
-                     }];
+//    [UIView animateWithDuration:0.33
+//                     animations:^{
+//                         _gallery.view.alpha = 0.0;
+//                     } completion:^(BOOL finshed){
+//                         [_gallery.view removeFromSuperview];
+//                         _gallery.view = nil;
+//                         [_gallery removeFromParentViewController];
+//                         _gallery = nil;
+//                     }];
 }
 
 /*
