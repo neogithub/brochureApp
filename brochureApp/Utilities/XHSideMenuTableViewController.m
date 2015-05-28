@@ -64,7 +64,9 @@
 
     cell.backgroundColor = [UIColor redColor];
     [cell.textLabel setText: arr_projects[indexPath.row]];
-    cell.layoutMargins = UIEdgeInsetsZero;
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0) {
+        cell.layoutMargins = UIEdgeInsetsZero;
+    }
     return cell;
 }
 
