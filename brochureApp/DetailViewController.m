@@ -80,15 +80,10 @@
  */
 - (void)didRemoveFromSuperView
 {
-//    [UIView animateWithDuration:0.33
-//                     animations:^{
-//                         _gallery.view.alpha = 0.0;
-//                     } completion:^(BOOL finshed){
-//                         [_gallery.view removeFromSuperview];
-//                         _gallery.view = nil;
-//                         [_gallery removeFromParentViewController];
-//                         _gallery = nil;
-//                     }];
+ /*
+  * Gallery is removed from Navigation controller
+  * Delegate method doesn't need to do anything
+  */
 }
 
 /*

@@ -173,19 +173,16 @@ static float        kBottomViewHeight   = 45.0;
         tmp = nil;
     }
     
-    [_pageViewController.view removeFromSuperview];
-    _pageViewController.view = nil;
-    [_pageViewController removeFromParentViewController];
-    _pageViewController = nil;
-    
-    [arr_images removeAllObjects];
-    arr_images = nil;
-    
     [arr_captions removeAllObjects];
     arr_captions = nil;
     
     [arr_fileType removeAllObjects];
     arr_fileType = nil;
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+
 }
 
 //----------------------------------------------------

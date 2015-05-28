@@ -248,15 +248,9 @@ NSString *requestEmail = @"info@neoscape.com";
     _detail_vc.view.frame = self.view.bounds;
     _detail_vc.sectionNum = (int)indexPath.section;
     _detail_vc.rowNum = (int)indexPath.row;
-//    [self presentViewController:_detail_vc animated:YES completion:^(void){     }];
-    
     [self.navigationController pushViewController:_detail_vc animated:YES];
-//    UINavigationController *detailNavVC = [[UINavigationController alloc] init];
-//    detailNavVC.view.frame = self.view.bounds;
-//    detailNavVC.view.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
-//    [self addChildViewController: detailNavVC];
-//    [self.view addSubview: detailNavVC.view];
-//    [detailNavVC pushViewController:_detail_vc animated:YES];
+//    [self presentViewController:_detail_vc animated:YES completion:^(void){     }];
+
 }
 
 - (void)didReceiveMemoryWarning {
