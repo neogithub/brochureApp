@@ -61,10 +61,6 @@ NSArray         *arr_demoValues = nil;
     _uic_mainCollection.dataSource = self;
     [self setUpSideTableView];
     
-//    if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
-//        self.navigationController.interactivePopGestureRecognizer.enabled = YES;
-//    }
-    
     /*
      * Init a array as a demo data
      */
@@ -82,9 +78,18 @@ NSArray         *arr_demoValues = nil;
     selectedTableIndex = 0;
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+}
+
 - (void)viewDidAppear:(BOOL)animated
 {
-
+    [super viewDidAppear:animated];
+    if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
+        self.navigationController.interactivePopGestureRecognizer.enabled = NO;
+        self.navigationController.interactivePopGestureRecognizer.delegate = nil;
+    }
 }
 
 - (void)viewWillLayoutSubviews
@@ -231,7 +236,7 @@ NSArray         *arr_demoValues = nil;
     }
     selectedTableIndex = (int)index.row;
     [_uic_mainCollection reloadData];
-    [self tapOnBackView:nil];
+    [self menuBtnTapped:_uib_menu];
 }
 
 #pragma mark - Collection Delegate Methods
