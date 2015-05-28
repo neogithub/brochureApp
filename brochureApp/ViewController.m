@@ -14,6 +14,7 @@
 #import "XHSideMenuTableViewController.h"
 
 #define menuWidth  200.0;
+#define topGap     30;
 
 NSString *homePage = @"http://www.neoscape.com";
 NSString *infoEmail = @"info@neoscape.com";
@@ -25,17 +26,21 @@ NSString *requestEmail = @"info@neoscape.com";
     UIView                              *uiv_back;
     XHSideMenuTableViewController       *sideMenuTable;
 }
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint         *collectionLeadingConstrain;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint         *collectionTailingConstrain;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint         *cvContainerLeadingConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint         *cvContainerTrailingConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint         *cvContainerTopConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint         *cvContainerBtmConstraint;
+
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint         *menuBtnLeadingConstrain;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint         *menuContainerLeading;
 
+@property (weak, nonatomic) IBOutlet UIView                     *uiv_collectionContainer;
 @property (weak, nonatomic) IBOutlet UICollectionView           *uic_mainCollection;
 
 @property (weak, nonatomic) IBOutlet UIButton                   *uib_menu;
 @property (nonatomic, strong)        DetailViewController       *detail_vc;
 @property (weak, nonatomic) IBOutlet UIView                     *uiv_menuContainer;
-@property (weak, nonatomic) IBOutlet UIView                *uiv_tableContainer;
+@property (weak, nonatomic) IBOutlet UIView                     *uiv_tableContainer;
 
 @end
 
@@ -78,10 +83,12 @@ NSString *requestEmail = @"info@neoscape.com";
      * Remove blurred back view
      */
     if (_uib_menu.selected) {
-        _collectionLeadingConstrain.constant -= menuWidth;
-        _collectionTailingConstrain.constant += menuWidth;
-        _menuBtnLeadingConstrain.constant -= menuWidth;
-        _menuContainerLeading.constant -= menuWidth;
+        _cvContainerLeadingConstraint.constant  -= menuWidth;
+        _cvContainerTrailingConstraint.constant += menuWidth;
+        _cvContainerBtmConstraint.constant      -= topGap;
+        _cvContainerTopConstraint.constant      -= topGap;
+        _menuBtnLeadingConstrain.constant       -= menuWidth;
+        _menuContainerLeading.constant          -= menuWidth;
         [uiv_back removeFromSuperview];
         uiv_back = nil;
     }
@@ -91,17 +98,22 @@ NSString *requestEmail = @"info@neoscape.com";
      * Init the blurred back view (tap to hide side menu)
      */
     else {
-        _collectionLeadingConstrain.constant += menuWidth;
-        _collectionTailingConstrain.constant -= menuWidth;
-        _menuBtnLeadingConstrain.constant += menuWidth;
-        _menuContainerLeading.constant += menuWidth;
+        _cvContainerLeadingConstraint.constant  += menuWidth;
+        _cvContainerTrailingConstraint.constant -= menuWidth;
+        _cvContainerTopConstraint.constant      += topGap;
+        _cvContainerBtmConstraint.constant      += topGap;
+        _menuBtnLeadingConstrain.constant       += menuWidth;
+        _menuContainerLeading.constant          += menuWidth;
         uiv_back = [[UIView alloc] initWithFrame:self.view.bounds];
-        uiv_back.backgroundColor = [UIColor colorWithWhite:0.8 alpha:0.8];
+        uiv_back.backgroundColor = [UIColor clearColor];
         UITapGestureRecognizer *tapBackView = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapOnBackView:)];
+        UISwipeGestureRecognizer *swipeLeftBackView = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(tapOnBackView:)];
+        swipeLeftBackView.direction = UISwipeGestureRecognizerDirectionLeft;
         uiv_back.userInteractionEnabled = YES;
         [uiv_back addGestureRecognizer: tapBackView];
+        [uiv_back addGestureRecognizer: swipeLeftBackView];
         uiv_back.translatesAutoresizingMaskIntoConstraints = NO;
-        [self.view insertSubview:uiv_back aboveSubview:_uic_mainCollection];
+        [self.view insertSubview:uiv_back aboveSubview:_uiv_collectionContainer];
         
         //X direction constrains
         [self.view addConstraint:[NSLayoutConstraint
