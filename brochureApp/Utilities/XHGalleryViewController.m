@@ -101,12 +101,6 @@ static float        kBottomViewHeight   = 45.0;
      * Add tap 1 time and 2 times gestures to view
      */
     [self addGestureToView];
-    
-    // Init thumbs view
-    _thumbsView = [[UIScrollView alloc]initWithFrame:self.view.frame];
-    int numOfCellEachLine = view_width / (kThumbnailSize + kThumbnailSpacing);
-    float blankSapce = (view_width - (kThumbnailSpacing + kThumbnailSize)*numOfCellEachLine + kThumbnailSpacing)/2;
-    _thumbsView.contentInset = UIEdgeInsetsMake( kThumbnailSpacing, blankSapce, kThumbnailSpacing, kThumbnailSpacing);
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -116,6 +110,13 @@ static float        kBottomViewHeight   = 45.0;
     _modelController = [[embModelController alloc] initWithImage:arr_images];
 
     [self initPageView:startIndex];
+    
+    // Init thumbs view
+    _thumbsView = [[UIScrollView alloc]initWithFrame:self.view.bounds];
+    int numOfCellEachLine = view_width / (kThumbnailSize + kThumbnailSpacing);
+    float blankSapce = (view_width - (kThumbnailSpacing + kThumbnailSize)*numOfCellEachLine + kThumbnailSpacing)/2;
+    _thumbsView.contentInset = UIEdgeInsetsMake( kThumbnailSpacing, blankSapce, kThumbnailSpacing, kThumbnailSpacing);
+    
     [self setUpThumbsView];
     
     // Check and load top & bottom views
@@ -557,6 +558,7 @@ didFinishSavingWithError:(NSError *)error
                                 attribute:NSLayoutAttributeLeading
                                 multiplier:1.0
                                 constant:0.0]];
+    
     
     // create the thumbnail views
     [self buildThumbsViewPhotos];
