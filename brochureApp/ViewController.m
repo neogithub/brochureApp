@@ -16,15 +16,18 @@
 #define menuWidth  200.0;
 #define topGap     30;
 
-NSString *homePage = @"http://www.neoscape.com";
-NSString *infoEmail = @"info@neoscape.com";
-NSString *requestEmail = @"info@neoscape.com";
+NSString        *homePage = @"http://www.neoscape.com";
+NSString        *infoEmail = @"info@neoscape.com";
+NSString        *requestEmail = @"info@neoscape.com";
+NSArray         *arr_demoKeys = nil;
+NSArray         *arr_demoValues = nil;
 
 @interface ViewController () <UICollectionViewDelegate, UICollectionViewDataSource, sideTableDelegate>
 {
     NSInteger                           sectionNum;
     UIView                              *uiv_back;
     XHSideMenuTableViewController       *sideMenuTable;
+    int                                 selectedTableIndex;
 }
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint         *cvContainerLeadingConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint         *cvContainerTrailingConstraint;
@@ -57,10 +60,22 @@ NSString *requestEmail = @"info@neoscape.com";
     _uic_mainCollection.delegate = self;
     _uic_mainCollection.dataSource = self;
     [self setUpSideTableView];
+    
     /*
-     Magic num of section numbers
+     * Init a array as a demo data
      */
-    sectionNum = 3;
+    arr_demoKeys = [[NSArray alloc] initWithObjects:
+                    @"Project #1",
+                    @"Project #2",
+                    @"Project #3",
+                    nil];
+    arr_demoValues = [[NSArray alloc] initWithObjects:
+                      [NSNumber numberWithInt:35],
+                      [NSNumber numberWithInt:40],
+                      [NSNumber numberWithInt:45],
+                      nil];
+    sectionNum = (int)arr_demoKeys.count;
+    selectedTableIndex = 0;
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -154,6 +169,9 @@ NSString *requestEmail = @"info@neoscape.com";
     
     [UIView animateWithDuration:0.33 animations:^(void){
         [self.view layoutIfNeeded];
+        /*
+         * Scale the collection view as needed
+         */
         if (_uib_menu.selected) {
             _uiv_collectionContainer.transform = CGAffineTransformIdentity;
         }
@@ -202,11 +220,12 @@ NSString *requestEmail = @"info@neoscape.com";
 - (void)didSelectedTheCell:(NSIndexPath *)index
 {
     if (index.row == 0) {
-        sectionNum = 3;
+        sectionNum = (int)arr_demoKeys.count;
     }
     else {
         sectionNum = 1;
     }
+    selectedTableIndex = index.row;
     [_uic_mainCollection reloadData];
     [self tapOnBackView:nil];
 }
@@ -220,18 +239,18 @@ NSString *requestEmail = @"info@neoscape.com";
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
     /*
-     * Magic numbers for items in a section (should read from plist or data model)
+     * If a section is selected, according to tapped table cell index to load data
      */
-    switch (section) {
-        case 0:
-            return 35;
-        case 1:
-            return 40;
-        case 2:
-            return 40;
-        default:
-            break;
+    if (sectionNum == 1) {
+        return [[arr_demoValues objectAtIndex: selectedTableIndex-1] integerValue];
     }
+    /*
+     * If selected "All" load all data from Dictionary
+     */
+    else {
+        return [[arr_demoValues objectAtIndex: section] integerValue];
+    }
+    
     return 0;
 }
 
@@ -250,7 +269,13 @@ NSString *requestEmail = @"info@neoscape.com";
     
     if (kind == UICollectionElementKindSectionHeader) {
         CollectionHeaderView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderView" forIndexPath:indexPath];
-        NSString *title = [[NSString alloc]initWithFormat:@"Project Name #%i", (int)indexPath.section + 1];
+        NSString *title = [NSString new];
+        if (selectedTableIndex == 0) {
+            title = [arr_demoKeys objectAtIndex: indexPath.section];
+        }
+        else {
+            title = [arr_demoKeys objectAtIndex: selectedTableIndex -1];
+        }
         headerView.title_label.text = title;
         reusableview = headerView;
     }
