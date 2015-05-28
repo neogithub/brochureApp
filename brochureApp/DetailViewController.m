@@ -50,7 +50,7 @@
 #pragma mark - Action of buttons
 
 - (IBAction)tapOnBackBtn:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:^(void){ }];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 /*
