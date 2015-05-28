@@ -61,6 +61,10 @@ NSArray         *arr_demoValues = nil;
     _uic_mainCollection.dataSource = self;
     [self setUpSideTableView];
     
+//    if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
+//        self.navigationController.interactivePopGestureRecognizer.enabled = YES;
+//    }
+    
     /*
      * Init a array as a demo data
      */
@@ -70,9 +74,9 @@ NSArray         *arr_demoValues = nil;
                     @"Project #3",
                     nil];
     arr_demoValues = [[NSArray alloc] initWithObjects:
-                      [NSNumber numberWithInt:35],
-                      [NSNumber numberWithInt:40],
-                      [NSNumber numberWithInt:45],
+                      [NSNumber numberWithInt:10],
+                      [NSNumber numberWithInt:30],
+                      [NSNumber numberWithInt:50],
                       nil];
     sectionNum = (int)arr_demoKeys.count;
     selectedTableIndex = 0;
@@ -176,7 +180,7 @@ NSArray         *arr_demoValues = nil;
             _uiv_collectionContainer.transform = CGAffineTransformIdentity;
         }
         else {
-            _uiv_collectionContainer.transform = CGAffineTransformMakeScale(0.85, 0.85);
+            _uiv_collectionContainer.transform = CGAffineTransformMakeScale(0.98, 0.98);
         }
     } completion:^(BOOL finished){
         _uib_menu.selected = !_uib_menu.selected;
@@ -225,7 +229,7 @@ NSArray         *arr_demoValues = nil;
     else {
         sectionNum = 1;
     }
-    selectedTableIndex = index.row;
+    selectedTableIndex = (int)index.row;
     [_uic_mainCollection reloadData];
     [self tapOnBackView:nil];
 }
@@ -270,9 +274,17 @@ NSArray         *arr_demoValues = nil;
     if (kind == UICollectionElementKindSectionHeader) {
         CollectionHeaderView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderView" forIndexPath:indexPath];
         NSString *title = [NSString new];
+        /*
+         * If selected "All" section
+         * Go through all keys
+         */
         if (selectedTableIndex == 0) {
             title = [arr_demoKeys objectAtIndex: indexPath.section];
         }
+        /*
+         * If selected specific one
+         * use "selectedTableIndex" to get the key
+         */
         else {
             title = [arr_demoKeys objectAtIndex: selectedTableIndex -1];
         }

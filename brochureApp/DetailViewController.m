@@ -32,6 +32,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self prepareGalleryData];
+    if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
+        self.navigationController.interactivePopGestureRecognizer.enabled = YES;
+    }
+
     // Do any additional setup after loading the view.
 }
 /*
@@ -40,6 +44,16 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     _uil_title.text = [NSString stringWithFormat:@"Section %i row %i", sectionNum+1, rowNum+1];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    // Enable iOS 7 back gesture
+    if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
+        self.navigationController.interactivePopGestureRecognizer.enabled = YES;
+        self.navigationController.interactivePopGestureRecognizer.delegate = nil;
+    }
 }
 
 - (void)didReceiveMemoryWarning {

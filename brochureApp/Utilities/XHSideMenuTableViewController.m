@@ -10,7 +10,8 @@
 
 @interface XHSideMenuTableViewController ()
 {
-    NSArray     *arr_projects;
+    NSArray             *arr_projects;
+    NSUserDefaults      *selectedIndexDefault;
 }
 @end
 
@@ -28,13 +29,21 @@
     arr_projects = @[@"All", @"Project 1", @"Project 2", @"Project 3"];
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     [self.tableView setSeparatorInset:UIEdgeInsetsZero];
+    selectedIndexDefault = [NSUserDefaults standardUserDefaults];
+    [selectedIndexDefault setObject:[NSNumber numberWithInt:0] forKey:@"selectedIndex"];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    NSIndexPath *indexPath=[NSIndexPath indexPathForRow:0 inSection:0];
-    [self.tableView selectRowAtIndexPath:indexPath animated:YES  scrollPosition:UITableViewScrollPositionBottom];
+    int theIndex = (int)[[selectedIndexDefault objectForKey:@"selectedIndex"] integerValue];
+    NSIndexPath *indexPath=[NSIndexPath indexPathForRow:theIndex inSection:0];
+    [self.tableView selectRowAtIndexPath:indexPath animated:NO  scrollPosition:UITableViewScrollPositionNone];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -72,6 +81,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [selectedIndexDefault setValue:[NSNumber numberWithInt:(int)indexPath.row] forKey:@"selectedIndex"];
     [[self delegate] didSelectedTheCell:indexPath];
 }
 

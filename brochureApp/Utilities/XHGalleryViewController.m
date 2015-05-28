@@ -199,7 +199,7 @@ static float        kBottomViewHeight   = 45.0;
         [arr_captions addObject: [dict_tmp objectForKey:@"caption"]];
         [arr_fileType addObject: [dict_tmp objectForKey:@"type"]];
     }
-    itemsNum = arr_images.count;
+    itemsNum = (int)arr_images.count;
 }
 
 //----------------------------------------------------
