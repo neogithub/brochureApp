@@ -161,7 +161,7 @@ NSString *requestEmail = @"info@neoscape.com";
 - (IBAction)tapVisitBtn:(id)sender {
     NSString *theUrl = homePage;
     xhWebViewController *vc = [[xhWebViewController alloc] init];
-    [vc socialButton:theUrl];
+    [vc loadWebPage:theUrl];
     vc.modalPresentationStyle = UIModalPresentationCurrentContext;
     [[NSNotificationCenter defaultCenter] postNotificationName:@"hideNaviBtn" object:self];
     [self presentViewController:vc animated:YES completion:nil];

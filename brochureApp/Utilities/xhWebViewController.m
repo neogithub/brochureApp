@@ -127,7 +127,7 @@
     }
 }
 
--(IBAction)socialButton:(NSString*)myTag;
+-(IBAction)loadWebPage:(NSString*)myTag;
 {
 	
 	NSLog(@"load %@", myTag);

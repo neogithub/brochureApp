@@ -22,7 +22,7 @@
 @property (nonatomic, retain) IBOutlet UIWebView *webView;
 @property (strong, nonatomic) IBOutlet UILabel *ebTitle;
 
--(IBAction)socialButton:(NSString*)myTag;
+-(IBAction)loadWebPage:(NSString*)myTag;
 
 -(IBAction)dismissModal;
 
