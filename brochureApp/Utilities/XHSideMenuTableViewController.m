@@ -7,10 +7,10 @@
 //
 
 #import "XHSideMenuTableViewController.h"
-
+#import "ViewController.h"
 @interface XHSideMenuTableViewController ()
 {
-    NSArray             *arr_projects;
+    NSMutableArray      *arr_projects;
     NSUserDefaults      *selectedIndexDefault;
 }
 @end
@@ -26,7 +26,8 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
-    arr_projects = @[@"All", @"Project 1", @"Project 2", @"Project 3"];
+    arr_projects = [[NSMutableArray alloc] initWithObjects:@"All", nil];
+    [arr_projects addObjectsFromArray: arr_demoKeys];
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     [self.tableView setSeparatorInset:UIEdgeInsetsZero];
     selectedIndexDefault = [NSUserDefaults standardUserDefaults];

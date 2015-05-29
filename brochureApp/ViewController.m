@@ -56,10 +56,6 @@ NSArray         *arr_demoValues = nil;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
-    _uic_mainCollection.delegate = self;
-    _uic_mainCollection.dataSource = self;
-    [self setUpSideTableView];
     
     /*
      * Init a array as a demo data
@@ -74,6 +70,12 @@ NSArray         *arr_demoValues = nil;
                       [NSNumber numberWithInt:30],
                       [NSNumber numberWithInt:50],
                       nil];
+    
+    
+    // Do any additional setup after loading the view, typically from a nib.
+    _uic_mainCollection.delegate = self;
+    _uic_mainCollection.dataSource = self;
+    [self setUpSideTableView];
     sectionNum = (int)arr_demoKeys.count;
     selectedTableIndex = 0;
     
