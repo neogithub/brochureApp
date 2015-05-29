@@ -262,15 +262,22 @@ NSArray         *arr_demoValues = nil;
 /*
  * Delegate method of side table view
  */
-- (void)didSelectedTheCell:(NSIndexPath *)index
+- (void)didSelectedTheCell:(NSIndexPath *)index withTitle:(NSString *)title
 {
-    if (index.row == 0) {
-        sectionNum = (int)arr_demoKeys.count;
+    if (title == nil) {
+        if (index.row == 0) {
+            sectionNum = (int)arr_demoKeys.count;
+        }
+        else {
+            sectionNum = 1;
+        }
+        selectedTableIndex = (int)index.row;
     }
     else {
         sectionNum = 1;
+        NSLog(@"\n\n Selected cell title is %@", title);
+        selectedTableIndex = [arr_demoKeys indexOfObject:title]+1;
     }
-    selectedTableIndex = (int)index.row;
     [_uic_mainCollection reloadData];
     [self menuBtnTapped:_uib_menu];
 }

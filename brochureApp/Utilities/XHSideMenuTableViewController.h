@@ -10,7 +10,7 @@
 
 @protocol sideTableDelegate <NSObject>
 @required
-- (void)didSelectedTheCell:(NSIndexPath *)index;
+- (void)didSelectedTheCell:(NSIndexPath *)index withTitle:(NSString *)title;
 @end
 
 

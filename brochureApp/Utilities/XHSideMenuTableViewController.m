@@ -97,8 +97,14 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [selectedIndexDefault setValue:[NSNumber numberWithInt:(int)indexPath.row] forKey:@"selectedIndex"];
-    [[self delegate] didSelectedTheCell:indexPath];
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+        UITableViewCell *theCell = [tableView cellForRowAtIndexPath:indexPath];
+        [[self delegate] didSelectedTheCell:nil withTitle:theCell.textLabel.text];
+    }
+    else {
+        [selectedIndexDefault setValue:[NSNumber numberWithInt:(int)indexPath.row] forKey:@"selectedIndex"];
+        [[self delegate] didSelectedTheCell:indexPath withTitle:nil];
+    }
 }
 
 #pragma mark Content Filtering
