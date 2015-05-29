@@ -119,7 +119,14 @@ NSArray         *arr_demoValues = nil;
         _menuContainerLeading.constant          -= menuWidth;
         [uiv_back removeFromSuperview];
         uiv_back = nil;
+        
+        /*
+         * Hide the keyborad (if is shown)
+         */
         [[self view] endEditing:YES];
+        /*
+         * Make the search view controller in talbe inactive
+         */
         [sideMenuTable.searchDisplayController setActive:NO];
     }
     /*
