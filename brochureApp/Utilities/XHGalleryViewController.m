@@ -95,7 +95,6 @@ static float        kBottomViewHeight   = 45.0;
     
     self.view.backgroundColor = [UIColor whiteColor];
     _modelController = [[embModelController alloc] init];
-    _photoThumbnailViews = [[NSMutableArray alloc] init];
     
     /*
      * Add tap 1 time and 2 times gestures to view
@@ -105,6 +104,10 @@ static float        kBottomViewHeight   = 45.0;
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    if (_thumbsView.hidden == NO && _thumbsView != nil) {
+        NSLog(@"thumb view is showing");
+        return;
+    }
 
     // Init model controller
     _modelController = [[embModelController alloc] initWithImage:arr_images];
@@ -112,15 +115,16 @@ static float        kBottomViewHeight   = 45.0;
     [self initPageView:startIndex];
     
     // Init thumbs view
-    [_thumbsView removeFromSuperview];
-    _thumbsView = nil;
-    _isThumbViewShowing = NO;
-    _thumbsView = [[UIScrollView alloc]initWithFrame:self.view.bounds];
-    int numOfCellEachLine = view_width / (kThumbnailSize + kThumbnailSpacing);
-    float blankSapce = (view_width - (kThumbnailSpacing + kThumbnailSize)*numOfCellEachLine + kThumbnailSpacing)/2;
-    _thumbsView.contentInset = UIEdgeInsetsMake( kThumbnailSpacing, blankSapce, kThumbnailSpacing, kThumbnailSpacing);
-        
-    [self setUpThumbsView];
+    if (_thumbsView == nil) {
+        [_thumbsView removeFromSuperview];
+        _thumbsView = nil;
+        _isThumbViewShowing = NO;
+        _thumbsView = [[UIScrollView alloc]initWithFrame:self.view.bounds];
+        int numOfCellEachLine = view_width / (kThumbnailSize + kThumbnailSpacing);
+        float blankSapce = (view_width - (kThumbnailSpacing + kThumbnailSize)*numOfCellEachLine + kThumbnailSpacing)/2;
+        _thumbsView.contentInset = UIEdgeInsetsMake( kThumbnailSpacing, blankSapce, kThumbnailSpacing, kThumbnailSpacing);
+        [self setUpThumbsView];
+    }
     
     // Check and load top & bottom views
     if (showCaption) {
@@ -175,16 +179,16 @@ static float        kBottomViewHeight   = 45.0;
     
     _modelController = nil;
     
-    [_photoThumbnailViews removeAllObjects];
-    _photoThumbnailViews = nil;
-    
-    [_thumbsView removeFromSuperview];
-    _thumbsView = nil;
+    if (_thumbsView.hidden == YES) {
+        [_thumbsView removeFromSuperview];
+        _thumbsView = nil;
+        _isThumbViewShowing = NO;
+        [_photoThumbnailViews removeAllObjects];
+        _photoThumbnailViews = nil;
+    }
     
     [_uiiv_playMovie removeFromSuperview];
     _uiiv_playMovie = nil;
-    
-    _isThumbViewShowing = NO;
     
     for (UIView __strong *tmp in [_pageViewController.view subviews]) {
         [tmp removeFromSuperview];
@@ -633,6 +637,9 @@ didFinishSavingWithError:(NSError *)error
 - (void)buildThumbsViewPhotos
 {
     NSUInteger i, count = itemsNum;
+    [_photoThumbnailViews removeAllObjects];
+    _photoThumbnailViews = nil;
+    _photoThumbnailViews = [[NSMutableArray alloc] init];
     for (i = 0; i < count; i++) {
         
         FGalleryPhotoView *thumbView = [[FGalleryPhotoView alloc] initWithFrame:CGRectZero target:self action:@selector(handleThumbClick:)];
