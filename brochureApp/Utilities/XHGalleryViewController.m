@@ -150,6 +150,11 @@ static float        kBottomViewHeight   = 45.0;
 //----------------------------------------------------
 - (void)viewWillDisappear:(BOOL)animated
 {
+
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
     [_uiv_topView removeFromSuperview];
     _uiv_topView = nil;
     
@@ -188,11 +193,6 @@ static float        kBottomViewHeight   = 45.0;
     
     [arr_fileType removeAllObjects];
     arr_fileType = nil;
-}
-
-- (void)viewDidDisappear:(BOOL)animated
-{
-
 }
 
 //----------------------------------------------------

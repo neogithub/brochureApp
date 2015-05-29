@@ -76,6 +76,8 @@ NSArray         *arr_demoValues = nil;
                       nil];
     sectionNum = (int)arr_demoKeys.count;
     selectedTableIndex = 0;
+    
+    [self addScreenEdgeGesture];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -212,6 +214,37 @@ NSArray         *arr_demoValues = nil;
     vc.modalPresentationStyle = UIModalPresentationCurrentContext;
     [[NSNotificationCenter defaultCenter] postNotificationName:@"hideNaviBtn" object:self];
     [self presentViewController:vc animated:YES completion:nil];
+}
+
+/*
+ * Add screen edge gesture to collection view container
+ * Swipe to right to open side menu
+ */
+- (void)addScreenEdgeGesture
+{
+    UIScreenEdgePanGestureRecognizer *openSideMenu = [[UIScreenEdgePanGestureRecognizer alloc] initWithTarget:self action:@selector(swipeLeftEdge:)];
+    [openSideMenu setEdges: UIRectEdgeLeft];
+    _uiv_collectionContainer.userInteractionEnabled = YES;
+    [_uiv_collectionContainer addGestureRecognizer: openSideMenu];
+    
+    UISwipeGestureRecognizer *swipRightOnCollectionView = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeRightOnCollectionView:)];
+    swipRightOnCollectionView.direction = UISwipeGestureRecognizerDirectionRight;
+    [_uic_mainCollection addGestureRecognizer:swipRightOnCollectionView];
+}
+
+- (void)swipeLeftEdge:(UIGestureRecognizer *)gesture
+{
+    if (gesture.state == UIGestureRecognizerStateBegan) {
+        [self menuBtnTapped:_uib_menu];
+        return;
+    }
+    else
+        return;
+}
+
+- (void)swipeRightOnCollectionView:(UIGestureRecognizer *)gesture
+{
+    [self menuBtnTapped:_uib_menu];
 }
 
 #pragma mark - Side menu table view
