@@ -97,6 +97,10 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    /*
+     * If in search mode send selected cell's title to the delegate method
+     * Else only sent the index of the cell.
+     */
     if (tableView == self.searchDisplayController.searchResultsTableView) {
         UITableViewCell *theCell = [tableView cellForRowAtIndexPath:indexPath];
         [[self delegate] didSelectedTheCell:nil withTitle:theCell.textLabel.text];
