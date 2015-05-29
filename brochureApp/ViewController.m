@@ -120,6 +120,7 @@ NSArray         *arr_demoValues = nil;
         [uiv_back removeFromSuperview];
         uiv_back = nil;
         [[self view] endEditing:YES];
+        [sideMenuTable.searchDisplayController setActive:NO];
     }
     /*
      * Side menu is hidden
@@ -275,7 +276,7 @@ NSArray         *arr_demoValues = nil;
     }
     else {
         sectionNum = 1;
-        selectedTableIndex = [arr_demoKeys indexOfObject:title]+1;
+        selectedTableIndex = (int)[arr_demoKeys indexOfObject:title]+1;
     }
     /*
      * Searched "All" is not in keys array

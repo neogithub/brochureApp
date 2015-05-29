@@ -16,4 +16,5 @@
 
 @interface XHSideMenuTableViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, weak) id<sideTableDelegate> delegate;
+@property (weak, nonatomic) IBOutlet UISearchBar *projectSearchBar;
 @end

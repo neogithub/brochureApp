@@ -14,7 +14,7 @@
     NSUserDefaults      *selectedIndexDefault;
     NSMutableArray      *searchResult;
 }
-@property (weak, nonatomic) IBOutlet UISearchBar *projectSearchBar;
+
 @end
 
 @implementation XHSideMenuTableViewController
