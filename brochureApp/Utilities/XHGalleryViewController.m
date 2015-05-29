@@ -112,11 +112,14 @@ static float        kBottomViewHeight   = 45.0;
     [self initPageView:startIndex];
     
     // Init thumbs view
+    [_thumbsView removeFromSuperview];
+    _thumbsView = nil;
+    _isThumbViewShowing = NO;
     _thumbsView = [[UIScrollView alloc]initWithFrame:self.view.bounds];
     int numOfCellEachLine = view_width / (kThumbnailSize + kThumbnailSpacing);
     float blankSapce = (view_width - (kThumbnailSpacing + kThumbnailSize)*numOfCellEachLine + kThumbnailSpacing)/2;
     _thumbsView.contentInset = UIEdgeInsetsMake( kThumbnailSpacing, blankSapce, kThumbnailSpacing, kThumbnailSpacing);
-    
+        
     [self setUpThumbsView];
     
     // Check and load top & bottom views
