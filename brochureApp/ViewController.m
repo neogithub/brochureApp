@@ -275,11 +275,17 @@ NSArray         *arr_demoValues = nil;
     }
     else {
         sectionNum = 1;
-        NSLog(@"\n\n Selected cell title is %@", title);
         selectedTableIndex = [arr_demoKeys indexOfObject:title]+1;
     }
+    /*
+     * Searched "All" is not in keys array
+     * Close the menu and return
+     */
+    if (selectedTableIndex < 0) {
+        [self menuBtnTapped:_uib_menu];
+        return;
+    }
     [_uic_mainCollection reloadData];
-    [self menuBtnTapped:_uib_menu];
 }
 
 #pragma mark - Collection Delegate Methods
