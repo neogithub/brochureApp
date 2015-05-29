@@ -104,8 +104,12 @@ static float        kBottomViewHeight   = 45.0;
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    /*
+     * If screen edge pan gesture is cancled,
+     * Thumb view is sill on screnn
+     * Do nothing in viewWillAppear
+     */
     if (_thumbsView.hidden == NO && _thumbsView != nil) {
-        NSLog(@"thumb view is showing");
         return;
     }
 
@@ -179,13 +183,11 @@ static float        kBottomViewHeight   = 45.0;
     
     _modelController = nil;
     
-    if (_thumbsView.hidden == YES) {
-        [_thumbsView removeFromSuperview];
-        _thumbsView = nil;
-        _isThumbViewShowing = NO;
-        [_photoThumbnailViews removeAllObjects];
-        _photoThumbnailViews = nil;
-    }
+    [_thumbsView removeFromSuperview];
+    _thumbsView = nil;
+    _isThumbViewShowing = NO;
+    [_photoThumbnailViews removeAllObjects];
+    _photoThumbnailViews = nil;
     
     [_uiiv_playMovie removeFromSuperview];
     _uiiv_playMovie = nil;
