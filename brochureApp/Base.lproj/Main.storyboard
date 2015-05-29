@@ -110,10 +110,6 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fah-Q6-HRF" userLabel="Menu_Container">
                                 <rect key="frame" x="-200" y="0.0" width="200" height="600"/>
                                 <subviews>
-                                    <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="DWM-wu-vFS">
-                                        <rect key="frame" x="0.0" y="8" width="200" height="44"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </searchBar>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jWi-IU-xVU">
                                         <rect key="frame" x="74" y="543" width="52" height="30"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -131,16 +127,13 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.43529411764705883" green="0.44313725490196076" blue="0.47450980392156861" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstItem="Snk-I5-Jw6" firstAttribute="top" secondItem="fah-Q6-HRF" secondAttribute="top" constant="70" id="1bO-eb-dXt"/>
                                     <constraint firstItem="jWi-IU-xVU" firstAttribute="top" secondItem="Snk-I5-Jw6" secondAttribute="bottom" constant="44" id="4Pe-35-1TW"/>
                                     <constraint firstAttribute="trailing" secondItem="Snk-I5-Jw6" secondAttribute="trailing" id="7Hs-1f-hhV"/>
                                     <constraint firstItem="Snk-I5-Jw6" firstAttribute="leading" secondItem="fah-Q6-HRF" secondAttribute="leading" id="G1H-yg-quR"/>
-                                    <constraint firstItem="DWM-wu-vFS" firstAttribute="top" secondItem="fah-Q6-HRF" secondAttribute="top" constant="8" id="H51-WF-gBm"/>
                                     <constraint firstAttribute="bottom" secondItem="jWi-IU-xVU" secondAttribute="bottom" constant="27" id="JDQ-KN-YfW"/>
                                     <constraint firstAttribute="centerX" secondItem="jWi-IU-xVU" secondAttribute="centerX" id="JZ5-3y-qpP"/>
-                                    <constraint firstItem="DWM-wu-vFS" firstAttribute="leading" secondItem="fah-Q6-HRF" secondAttribute="leading" id="OIi-wc-8sL"/>
-                                    <constraint firstItem="Snk-I5-Jw6" firstAttribute="top" secondItem="DWM-wu-vFS" secondAttribute="bottom" constant="18" id="SVi-lm-Ejq"/>
                                     <constraint firstAttribute="width" constant="200" id="ZnA-Xw-i6q"/>
-                                    <constraint firstAttribute="trailing" secondItem="DWM-wu-vFS" secondAttribute="trailing" id="hVx-bS-LGP"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ndi-HU-AaS">
@@ -377,6 +370,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" id="QUh-DH-a7j">
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <outlet property="delegate" destination="hPL-za-jBJ" id="Kdb-W1-3FW"/>
+                            </connections>
+                        </searchBar>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="tableCell" id="3np-C1-s6z">
                                 <autoresizingMask key="autoresizingMask"/>
@@ -391,8 +392,21 @@
                             <outlet property="delegate" destination="hPL-za-jBJ" id="w52-2F-BJD"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="projectSearchBar" destination="QUh-DH-a7j" id="1kb-5f-c3R"/>
+                        <outlet property="searchDisplayController" destination="R0V-GT-PW7" id="FXv-ny-Nu1"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MSz-Nb-kL9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="R0V-GT-PW7">
+                    <connections>
+                        <outlet property="delegate" destination="hPL-za-jBJ" id="c4d-gF-v1X"/>
+                        <outlet property="searchBar" destination="QUh-DH-a7j" id="hat-KB-aMc"/>
+                        <outlet property="searchContentsController" destination="hPL-za-jBJ" id="iNI-D5-7Of"/>
+                        <outlet property="searchResultsDataSource" destination="hPL-za-jBJ" id="Xhh-b6-BXI"/>
+                        <outlet property="searchResultsDelegate" destination="hPL-za-jBJ" id="PsW-mX-Z0k"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="1196" y="1139"/>
         </scene>

@@ -8,11 +8,13 @@
 
 #import "XHSideMenuTableViewController.h"
 #import "ViewController.h"
-@interface XHSideMenuTableViewController ()
+@interface XHSideMenuTableViewController () <UISearchBarDelegate, UISearchDisplayDelegate>
 {
     NSMutableArray      *arr_projects;
     NSUserDefaults      *selectedIndexDefault;
+    NSMutableArray      *searchResult;
 }
+@property (weak, nonatomic) IBOutlet UISearchBar *projectSearchBar;
 @end
 
 @implementation XHSideMenuTableViewController
@@ -28,6 +30,7 @@
     
     arr_projects = [[NSMutableArray alloc] initWithObjects:@"All", nil];
     [arr_projects addObjectsFromArray: arr_demoKeys];
+    searchResult = [[NSMutableArray alloc] initWithArray:arr_projects];
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     [self.tableView setSeparatorInset:UIEdgeInsetsZero];
     selectedIndexDefault = [NSUserDefaults standardUserDefaults];
@@ -61,19 +64,31 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    return arr_projects.count;
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+        return [searchResult count];
+    } else {
+        return [arr_projects count];
+    }
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"tableCell" forIndexPath:indexPath];
-
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"tableCell"];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"tableCell"];
     }
-
+    
     cell.backgroundColor = [UIColor redColor];
-    [cell.textLabel setText: arr_projects[indexPath.row]];
+    
+    
+//    [cell.textLabel setText: arr_projects[indexPath.row]];
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+        [cell.textLabel setText: searchResult[indexPath.row]];
+    } else {
+        [cell.textLabel setText: arr_projects[indexPath.row]];
+    }
+    
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0) {
         cell.layoutMargins = UIEdgeInsetsZero;
     }
@@ -86,7 +101,31 @@
     [[self delegate] didSelectedTheCell:indexPath];
 }
 
+#pragma mark Content Filtering
+-(void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope {
+    // Update the filtered array based on the search text and scope.
+    // Remove all objects from the filtered search array
+    [searchResult removeAllObjects];
+    // Filter the array using NSPredicate
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"self contains[c] %@",searchText];
+    searchResult = [NSMutableArray arrayWithArray:[arr_projects filteredArrayUsingPredicate:predicate]];
+}
+#pragma mark - UISearchDisplayController Delegate Methods
+-(BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString {
+    // Tells the table data source to reload when text changes
+    [self filterContentForSearchText:searchString scope:
+     [[self.searchDisplayController.searchBar scopeButtonTitles] objectAtIndex:[self.searchDisplayController.searchBar selectedScopeButtonIndex]]];
+    // Return YES to cause the search result table view to be reloaded.
+    return YES;
+}
 
+-(BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchScope:(NSInteger)searchOption {
+    // Tells the table data source to reload when scope bar selection changes
+    [self filterContentForSearchText:self.searchDisplayController.searchBar.text scope:
+     [[self.searchDisplayController.searchBar scopeButtonTitles] objectAtIndex:searchOption]];
+    // Return YES to cause the search result table view to be reloaded.
+    return YES;
+}
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {

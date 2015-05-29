@@ -119,6 +119,7 @@ NSArray         *arr_demoValues = nil;
         _menuContainerLeading.constant          -= menuWidth;
         [uiv_back removeFromSuperview];
         uiv_back = nil;
+        [[self view] endEditing:YES];
     }
     /*
      * Side menu is hidden
