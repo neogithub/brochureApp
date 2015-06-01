@@ -16,9 +16,9 @@
     NSArray                     *arr_rawData;
 }
 
-@property (weak, nonatomic) IBOutlet UIButton *uib_backBtn;
-@property (nonatomic, strong) embEmailData                  *emailData;
-@property (nonatomic, strong)   XHGalleryViewController *gallery;
+@property (weak, nonatomic) IBOutlet    UIButton                    *uib_backBtn;
+@property (nonatomic, strong)           embEmailData                *emailData;
+@property (nonatomic, strong)           XHGalleryViewController     *gallery;
 @end
 
 @implementation DetailViewController

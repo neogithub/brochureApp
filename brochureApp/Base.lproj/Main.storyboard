@@ -121,19 +121,32 @@
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Snk-I5-Jw6">
-                                        <rect key="frame" x="0.0" y="70" width="200" height="429"/>
+                                        <rect key="frame" x="0.0" y="70" width="200" height="403"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hqi-Pd-qtE">
+                                        <rect key="frame" x="41" y="490" width="119" height="30"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <state key="normal" title="Ask a missing file">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="askForAMissingFile:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qd8-ar-CbA"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.43529411764705883" green="0.44313725490196076" blue="0.47450980392156861" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstItem="hqi-Pd-qtE" firstAttribute="top" secondItem="Snk-I5-Jw6" secondAttribute="bottom" constant="17" id="0g2-qb-etV"/>
                                     <constraint firstItem="Snk-I5-Jw6" firstAttribute="top" secondItem="fah-Q6-HRF" secondAttribute="top" constant="70" id="1bO-eb-dXt"/>
-                                    <constraint firstItem="jWi-IU-xVU" firstAttribute="top" secondItem="Snk-I5-Jw6" secondAttribute="bottom" constant="44" id="4Pe-35-1TW"/>
+                                    <constraint firstItem="jWi-IU-xVU" firstAttribute="top" secondItem="Snk-I5-Jw6" secondAttribute="bottom" constant="70" id="4Pe-35-1TW"/>
                                     <constraint firstAttribute="trailing" secondItem="Snk-I5-Jw6" secondAttribute="trailing" id="7Hs-1f-hhV"/>
                                     <constraint firstItem="Snk-I5-Jw6" firstAttribute="leading" secondItem="fah-Q6-HRF" secondAttribute="leading" id="G1H-yg-quR"/>
                                     <constraint firstAttribute="bottom" secondItem="jWi-IU-xVU" secondAttribute="bottom" constant="27" id="JDQ-KN-YfW"/>
                                     <constraint firstAttribute="centerX" secondItem="jWi-IU-xVU" secondAttribute="centerX" id="JZ5-3y-qpP"/>
                                     <constraint firstAttribute="width" constant="200" id="ZnA-Xw-i6q"/>
+                                    <constraint firstAttribute="centerX" secondItem="hqi-Pd-qtE" secondAttribute="centerX" id="dbu-xV-XfM"/>
+                                    <constraint firstItem="jWi-IU-xVU" firstAttribute="top" secondItem="hqi-Pd-qtE" secondAttribute="bottom" constant="23" id="sgV-fw-5Vt"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ndi-HU-AaS">
@@ -173,6 +186,7 @@
                         <outlet property="menuBtnLeadingConstrain" destination="rQt-U0-T3F" id="7RR-Ag-Ezg"/>
                         <outlet property="menuContainerLeading" destination="eCn-m7-9Wy" id="sE2-25-8Hv"/>
                         <outlet property="uib_menu" destination="ndi-HU-AaS" id="HOc-T0-sye"/>
+                        <outlet property="uib_missingFile" destination="hqi-Pd-qtE" id="Row-tY-nEU"/>
                         <outlet property="uic_mainCollection" destination="Y1i-Vi-dyV" id="fH3-b6-yQP"/>
                         <outlet property="uiv_collectionContainer" destination="iu9-uW-Omc" id="cdS-MF-STq"/>
                         <outlet property="uiv_menuContainer" destination="fah-Q6-HRF" id="8oR-Yy-knb"/>
