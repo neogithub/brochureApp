@@ -10,6 +10,7 @@
 #import "ViewController.h"
 @interface XHSideMenuTableViewController () <UISearchBarDelegate, UISearchDisplayDelegate>
 {
+    NSString            *selectedSearchResult;
     NSMutableArray      *arr_projects;
     NSUserDefaults      *selectedIndexDefault;
     NSMutableArray      *searchResult;
@@ -103,9 +104,11 @@
      */
     if (tableView == self.searchDisplayController.searchResultsTableView) {
         UITableViewCell *theCell = [tableView cellForRowAtIndexPath:indexPath];
+        selectedSearchResult = [[NSString alloc] initWithString:theCell.textLabel.text];
         [[self delegate] didSelectedTheCell:nil withTitle:theCell.textLabel.text];
     }
     else {
+        selectedSearchResult = nil;
         [selectedIndexDefault setValue:[NSNumber numberWithInt:(int)indexPath.row] forKey:@"selectedIndex"];
         [[self delegate] didSelectedTheCell:indexPath withTitle:nil];
     }
@@ -136,6 +139,22 @@
     // Return YES to cause the search result table view to be reloaded.
     return YES;
 }
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
+{
+
+}
+
+- (void)searchDisplayControllerDidEndSearch:(UISearchDisplayController *)controller
+{
+    if (selectedSearchResult != nil) {
+        int rowNum = (int)[arr_projects indexOfObject:selectedSearchResult];
+        NSIndexPath *indexOfWholeTable = [NSIndexPath indexPathForRow:rowNum inSection:0];
+        [self.tableView selectRowAtIndexPath:indexOfWholeTable animated:NO scrollPosition:UITableViewScrollPositionNone];
+    }
+
+}
+
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
