@@ -236,6 +236,17 @@ NSArray         *arr_demoValues = nil;
 }
 
 /*
+ * Tap request a missing file button
+ */
+- (IBAction)askForAMissingFile:(id)sender {
+    _emailData = [[embEmailData alloc] init];
+    _emailData.to = @[@"evan.buxton@neoscape.com", @"xiaohe.hu@neoscape.com"];
+    _emailData.subject = @"Missing Brochure File Needed";
+    _emailData.body = @"Project Name: \n\nFinished Time: \n\nPlease add the file, thank you!";
+    [self prepareEmailData];
+}
+
+/*
  * Add screen edge gesture to collection view container
  * Swipe to right to open side menu
  */
@@ -380,14 +391,6 @@ NSArray         *arr_demoValues = nil;
 
 }
 
-- (IBAction)askForAMissingFile:(id)sender {
-    _emailData = [[embEmailData alloc] init];
-    _emailData.to = nil;
-    _emailData.subject = nil;
-    _emailData.body = nil;//kMAILBODY;
-    [self prepareEmailData];
-}
-
 #pragma mark - Email Delegates
 -(void)prepareEmailData
 {
@@ -409,7 +412,7 @@ NSArray         *arr_demoValues = nil;
             [picker setSubject:_emailData.subject];
         
         if(_emailData.body)
-            [picker setMessageBody:_emailData.body isHTML:YES]; // depends. Mostly YES, unless you want to send it as plain text (boring)
+            [picker setMessageBody:_emailData.body isHTML:NO]; // depends. Mostly YES, unless you want to send it as plain text (boring)
         
         
         // attachment code
