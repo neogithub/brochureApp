@@ -50,9 +50,42 @@
         brochure_sample3.projectCompanies = @[@"company1", @"company2"];
         brochure_sample3.projectThumb = nil;
         
+        Brochure *brochure_sample4 = [[Brochure alloc] init];
+        brochure_sample4.projectName = @"1325 Boylston";
+        brochure_sample4.projectDate = @"06-30-2014";
+        brochure_sample4.projectType = @"master plan";
+        brochure_sample4.projectSummary = @"1325 Boylston Summary";
+        brochure_sample4.projectUrl = @"www.neoscape.com";
+        brochure_sample4.projectGallery = @[@"image1", @"image2"];
+        brochure_sample4.projectCompanies = @[@"company1", @"company2"];
+        brochure_sample4.projectThumb = nil;
+        
+        Brochure *brochure_sample5 = [[Brochure alloc] init];
+        brochure_sample5.projectName = @"1325 Boylston";
+        brochure_sample5.projectDate = @"06-30-2014";
+        brochure_sample5.projectType = @"master plan";
+        brochure_sample5.projectSummary = @"1325 Boylston Summary";
+        brochure_sample5.projectUrl = @"www.neoscape.com";
+        brochure_sample5.projectGallery = @[@"image1", @"image2"];
+        brochure_sample5.projectCompanies = @[@"company1", @"company2"];
+        brochure_sample5.projectThumb = nil;
+        
+        Brochure *brochure_sample6 = [[Brochure alloc] init];
+        brochure_sample6.projectName = @"1325 Boylston";
+        brochure_sample6.projectDate = @"06-30-2014";
+        brochure_sample6.projectType = @"master plan";
+        brochure_sample6.projectSummary = @"1325 Boylston Summary";
+        brochure_sample6.projectUrl = @"www.neoscape.com";
+        brochure_sample6.projectGallery = @[@"image1", @"image2"];
+        brochure_sample6.projectCompanies = @[@"company1", @"company2"];
+        brochure_sample6.projectThumb = nil;
+        
         [brochures addObject: brochure_sample1];
         [brochures addObject: brochure_sample2];
         [brochures addObject: brochure_sample3];
+        [brochures addObject: brochure_sample4];
+        [brochures addObject: brochure_sample5];
+        [brochures addObject: brochure_sample6];
 	}
 	return self;
 }
