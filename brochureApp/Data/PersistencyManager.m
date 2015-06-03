@@ -68,8 +68,8 @@
 	NSMutableArray *arr_names= [[NSMutableArray alloc] init];
 	
 	for (int i = 0; i < [brochures count]; i++) {
-		NSDictionary *hotspotItem = brochures [i];
-		[arr_names addObject:[hotspotItem objectForKey:@"name"]];
+		Brochure *tmpBrochure = brochures [i];
+		[arr_names addObject:tmpBrochure.projectName];
 	}
 	
 	return arr_names;

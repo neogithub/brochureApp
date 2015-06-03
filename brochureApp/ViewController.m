@@ -13,6 +13,7 @@
 #import "embEmailData.h"
 #import <MessageUI/MessageUI.h>
 #import "XHSideMenuTableViewController.h"
+#import "LibraryAPI.h"
 
 #define menuWidth  200.0;
 #define topGap     30;
@@ -68,11 +69,8 @@ NSArray         *arr_demoValues = nil;
     /*
      * Init a array as a demo data
      */
-    arr_demoKeys = [[NSArray alloc] initWithObjects:
-                    @"Project #1",
-                    @"Project #2",
-                    @"Project #3",
-                    nil];
+    arr_demoKeys = [[NSArray alloc] initWithArray:[[LibraryAPI sharedInstance] getCompanyNames]];
+    
     arr_demoValues = [[NSArray alloc] initWithObjects:
                       [NSNumber numberWithInt:10],
                       [NSNumber numberWithInt:30],

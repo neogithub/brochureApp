@@ -56,10 +56,12 @@
 {
     return [persistencyManager getSelectedProjectByCompanyName:name];
 }
+
 - (NSArray *)getSelectedProjectByType:(NSString *)projectType
 {
     return [persistencyManager getSelectedProjectByType:projectType];
 }
+
 - (Brochure *)getSelectedBrochureData
 {
     return [persistencyManager getSelectedBrochureData];
