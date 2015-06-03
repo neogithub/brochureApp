@@ -49,6 +49,8 @@
     int theIndex = (int)[[selectedIndexDefault objectForKey:@"selectedIndex"] integerValue];
     NSIndexPath *indexPath=[NSIndexPath indexPathForRow:theIndex inSection:0];
     [self.tableView selectRowAtIndexPath:indexPath animated:NO  scrollPosition:UITableViewScrollPositionNone];
+    
+    [self.tableView setContentOffset:CGPointMake(0.0, self.searchDisplayController.searchBar.frame.size.height)];
 }
 
 - (void)didReceiveMemoryWarning {
