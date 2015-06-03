@@ -40,8 +40,19 @@
         brochure_sample2.projectCompanies = @[@"company1", @"company2"];
         brochure_sample2.projectThumb = nil;
         
+        Brochure *brochure_sample3 = [[Brochure alloc] init];
+        brochure_sample3.projectName = @"1325 Boylston";
+        brochure_sample3.projectDate = @"06-30-2014";
+        brochure_sample3.projectType = @"Master Plan";
+        brochure_sample3.projectSummary = @"1325 Boylston Summary";
+        brochure_sample3.projectUrl = @"www.neoscape.com";
+        brochure_sample3.projectGallery = @[@"image1", @"image2"];
+        brochure_sample3.projectCompanies = @[@"company1", @"company2"];
+        brochure_sample3.projectThumb = nil;
+        
         [brochures addObject: brochure_sample1];
         [brochures addObject: brochure_sample2];
+        [brochures addObject: brochure_sample3];
 	}
 	return self;
 }
