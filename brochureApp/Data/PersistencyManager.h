@@ -25,6 +25,8 @@
 
 - (NSArray *)getSelectedProjectByType:(NSString *)projectType;
 
+- (NSArray *)getFilterdPorjectsNames:(NSArray *)filteredProjects;
+
 - (Brochure *)getSelectedBrochureData;
 
 @end

@@ -14,11 +14,19 @@
 @property (nonatomic, retain) Brochure *selectedBrochure;
 
 + (LibraryAPI*)sharedInstance;
+
 - (NSArray*)getCompanies;
+
 - (NSMutableArray*)getCompanyNames;
+
 - (NSArray *)getSelectedProjectByName:(NSString *)name;
+
 - (NSArray*)getSelectedCompanyNamed:(NSString*)name;
+
 - (NSArray *)getSelectedProjectByType:(NSString *)projectType;
+
+- (NSArray *)getFilterdPorjectsNames:(NSArray *)filteredProjects;
+
 - (Brochure *)getSelectedBrochureData;
 
 @end

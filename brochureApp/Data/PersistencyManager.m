@@ -67,7 +67,8 @@
 	
 	NSMutableArray *arr_names= [[NSMutableArray alloc] init];
 	
-	for (int i = 0; i < [brochures count]; i++) {
+	for (int i = 0; i < [brochures count]; i++)
+    {
 		Brochure *tmpBrochure = brochures [i];
 		[arr_names addObject:tmpBrochure.projectName];
 	}
@@ -77,7 +78,7 @@
 
 - (NSArray*)getSelectedProjectByName:(NSString*)name
 {
-	NSArray *filtered = [brochures filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(name == %@)", name]];
+	NSArray *filtered = [brochures filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(projectName == %@)", name]];
 	
 	NSDictionary *data = filtered[0];
 	
@@ -110,9 +111,18 @@
 }
 - (NSArray *)getSelectedProjectByType:(NSString *)projectType
 {
-    NSPredicate *typePredicate = [NSPredicate predicateWithFormat:@"companies contains[c] %@", projectType];
+    NSPredicate *typePredicate = [NSPredicate predicateWithFormat:@"(projectType == %@)", projectType];
     _typeFilterArray = [[NSArray alloc] initWithArray:[brochures filteredArrayUsingPredicate:typePredicate]];
     return _typeFilterArray;
+}
+
+- (NSArray *)getFilterdPorjectsNames:(NSArray *)filteredProjects
+{
+    NSMutableArray *projectNames = [NSMutableArray new];
+    for (Brochure *tmpBrochure in filteredProjects) {
+        [projectNames addObject: tmpBrochure.projectName];
+    }
+    return projectNames;
 }
 
 -(Brochure*)getSelectedBrochureData

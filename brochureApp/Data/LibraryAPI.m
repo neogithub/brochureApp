@@ -9,7 +9,8 @@
 #import "LibraryAPI.h"
 #import "PersistencyManager.h"
 
-@implementation LibraryAPI {
+@implementation LibraryAPI
+{
 	PersistencyManager *persistencyManager;
 }
 
@@ -60,6 +61,11 @@
 - (NSArray *)getSelectedProjectByType:(NSString *)projectType
 {
     return [persistencyManager getSelectedProjectByType:projectType];
+}
+
+- (NSArray *)getFilterdPorjectsNames:(NSArray *)filteredProjects
+{
+    return [persistencyManager getFilterdPorjectsNames:filteredProjects];
 }
 
 - (Brochure *)getSelectedBrochureData

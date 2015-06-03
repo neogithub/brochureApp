@@ -280,8 +280,26 @@ NSArray         *arr_demoValues = nil;
 - (IBAction)selectFilter:(id)sender
 {
     int selectedIndex = (int)[sender tag]-1;
+    /*
+     * Get the type name for filter
+     */
     NSString *typeName = arr_typeFilters[selectedIndex];
-    NSLog(@"The selected type is %@", typeName);
+    /*
+     * According to selected type name to get an array of Brochure objects
+     */
+    NSArray *filteredBrochureArrray = [[LibraryAPI sharedInstance] getSelectedProjectByType:typeName];
+    /*
+     * Use the filtered Brochure objects array to get an array of names
+     */
+    NSArray *filteredNamesArray = [[LibraryAPI sharedInstance] getFilterdPorjectsNames:filteredBrochureArrray];
+    /*
+     * Use the names array to update content of table view in side menu
+     */
+    [sideMenuTable updateTableContent:filteredNamesArray];
+    /*
+     * Updated collection view's content
+     */
+    [_uic_mainCollection reloadData];
 }
 
 /*

@@ -58,6 +58,22 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - Updated table's content accroding to input array
+
+- (void)updateTableContent:(NSArray *)newContent
+{
+    [arr_projects removeAllObjects];
+    [arr_projects addObject:@"All"];
+    [arr_projects addObjectsFromArray:newContent];
+    [self.tableView reloadData];
+    
+    [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]
+                    animated:NO
+                    scrollPosition:UITableViewScrollPositionNone];
+    
+    [self.tableView setContentOffset:CGPointMake(0.0, self.searchDisplayController.searchBar.frame.size.height)];
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
