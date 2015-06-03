@@ -12,16 +12,18 @@
 
 @synthesize projectName;
 
-@synthesize projectData;
+@synthesize projectDate;
 
 @synthesize projectSummary;
 
 @synthesize projectType;
 
+@synthesize projectUrl;
+
 @synthesize projectThumb;
 
 @synthesize projectGallery;
 
-@synthesize projectCompany;
+@synthesize projectCompanies;
 
 @end

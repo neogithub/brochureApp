@@ -12,16 +12,18 @@
 
 @property (nonatomic, retain) NSString 	*projectName;
 
-@property (nonatomic, retain) NSString 	*projectData;    //mm-dd-yyyy
+@property (nonatomic, retain) NSString 	*projectDate;       //mm-dd-yyyy
 
 @property (nonatomic, retain) NSString 	*projectSummary;
 
-@property (nonatomic, retain) NSString 	*projectType;
+@property (nonatomic, retain) NSString 	*projectType;       // Residence, Commercial, Mixed...
 
-@property (nonatomic, retain) NSData	*projectThumb;   //image data
+@property (nonatomic, retain) NSString  *projectUrl;        // The link to fentch pdf data
 
-@property (nonatomic, retain) NSArray	*projectGallery; // array of image data
+@property (nonatomic, retain) NSData	*projectThumb;      //image data
 
-@property (nonatomic, retain) NSArray	*projectCompany; // array of strings for company names
+@property (nonatomic, retain) NSArray	*projectGallery;    // array of image data
+
+@property (nonatomic, retain) NSArray	*projectCompanies;  // array of strings for company names
 
 @end

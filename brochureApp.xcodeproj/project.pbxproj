@@ -14,6 +14,8 @@
 		825297701B0F7B4900E98C42 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 8252976F1B0F7B4900E98C42 /* Reachability.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		825297721B0FA2A900E98C42 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 825297711B0FA2A900E98C42 /* CFNetwork.framework */; };
 		825297741B0FC90700E98C42 /* photoData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 825297731B0FC90700E98C42 /* photoData.plist */; };
+		825C05791B1F3FB700830ADB /* LibraryAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 825C05761B1F3FB700830ADB /* LibraryAPI.m */; };
+		825C057A1B1F3FB700830ADB /* PersistencyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 825C05781B1F3FB700830ADB /* PersistencyManager.m */; };
 		8270B02D1B0CC2A30018D7BD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8270B02C1B0CC2A30018D7BD /* main.m */; };
 		8270B0301B0CC2A30018D7BD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8270B02F1B0CC2A30018D7BD /* AppDelegate.m */; };
 		8270B0331B0CC2A30018D7BD /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8270B0321B0CC2A30018D7BD /* ViewController.m */; };
@@ -57,6 +59,10 @@
 		8252976F1B0F7B4900E98C42 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Reachability.m; path = Utilities/Reachability.m; sourceTree = "<group>"; };
 		825297711B0FA2A900E98C42 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		825297731B0FC90700E98C42 /* photoData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = photoData.plist; path = src/photoData.plist; sourceTree = "<group>"; };
+		825C05751B1F3FB700830ADB /* LibraryAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LibraryAPI.h; path = Data/LibraryAPI.h; sourceTree = "<group>"; };
+		825C05761B1F3FB700830ADB /* LibraryAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LibraryAPI.m; path = Data/LibraryAPI.m; sourceTree = "<group>"; };
+		825C05771B1F3FB700830ADB /* PersistencyManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PersistencyManager.h; path = Data/PersistencyManager.h; sourceTree = "<group>"; };
+		825C05781B1F3FB700830ADB /* PersistencyManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PersistencyManager.m; path = Data/PersistencyManager.m; sourceTree = "<group>"; };
 		8270B0271B0CC2A30018D7BD /* brochureApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = brochureApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8270B02B1B0CC2A30018D7BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8270B02C1B0CC2A30018D7BD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -208,6 +214,10 @@
 			children = (
 				8280BCE71B1F310000085E70 /* Brochure.h */,
 				8280BCE81B1F310000085E70 /* Brochure.m */,
+				825C05751B1F3FB700830ADB /* LibraryAPI.h */,
+				825C05761B1F3FB700830ADB /* LibraryAPI.m */,
+				825C05771B1F3FB700830ADB /* PersistencyManager.h */,
+				825C05781B1F3FB700830ADB /* PersistencyManager.m */,
 			);
 			name = Data;
 			sourceTree = "<group>";
@@ -336,12 +346,14 @@
 				82AA3B771B0E57AB0001020F /* FGalleryPhotoView.m in Sources */,
 				8270B0301B0CC2A30018D7BD /* AppDelegate.m in Sources */,
 				82AA3B741B0E57AB0001020F /* ebZoomingScrollView.m in Sources */,
+				825C05791B1F3FB700830ADB /* LibraryAPI.m in Sources */,
 				8270B02D1B0CC2A30018D7BD /* main.m in Sources */,
 				8270B0521B0CC9D00018D7BD /* DetailViewController.m in Sources */,
 				82AA3B781B0E57AB0001020F /* XHGalleryViewController.m in Sources */,
 				82AA3B761B0E57AB0001020F /* embModelController.m in Sources */,
 				8270B0561B0CDFB50018D7BD /* CollectionHeaderView.m in Sources */,
 				8252976D1B0F7AD300E98C42 /* xhWebViewController.m in Sources */,
+				825C057A1B1F3FB700830ADB /* PersistencyManager.m in Sources */,
 				822F075A1B1621BA005EF909 /* XHSideMenuTableViewController.m in Sources */,
 				825297701B0F7B4900E98C42 /* Reachability.m in Sources */,
 				82BE2DE11B0E1DF00018D05B /* SummaryViewController.m in Sources */,
