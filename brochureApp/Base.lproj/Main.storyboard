@@ -107,8 +107,8 @@
                                     <constraint firstAttribute="bottom" secondItem="Y1i-Vi-dyV" secondAttribute="bottom" id="xTO-V0-M1k"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fah-Q6-HRF" userLabel="Menu_Container">
-                                <rect key="frame" x="-200" y="0.0" width="200" height="600"/>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fah-Q6-HRF" userLabel="Menu_Container">
+                                <rect key="frame" x="0.0" y="0.0" width="200" height="600"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jWi-IU-xVU">
                                         <rect key="frame" x="74" y="543" width="52" height="30"/>
@@ -134,6 +134,52 @@
                                             <action selector="askForAMissingFile:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qd8-ar-CbA"/>
                                         </connections>
                                     </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wJH-zy-Sxd" userLabel="View - Filter_Container">
+                                        <rect key="frame" x="0.0" y="313" width="200" height="146"/>
+                                        <subviews>
+                                            <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TN3-TK-cOL">
+                                                <rect key="frame" x="0.0" y="8" width="42" height="45"/>
+                                                <color key="backgroundColor" red="0.45098039220000002" green="0.5568627451" blue="0.68235294120000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                <state key="normal" title="Mixed">
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="selectFilter:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cDQ-PK-VGT"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XFr-WY-gus">
+                                                <rect key="frame" x="128" y="8" width="72" height="45"/>
+                                                <color key="backgroundColor" red="0.45098039220000002" green="0.5568627451" blue="0.68235294120000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                <state key="normal" title="Residence">
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="selectFilter:" destination="BYZ-38-t0r" eventType="touchUpInside" id="M7N-Yt-6u8"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OZZ-Iy-aco">
+                                                <rect key="frame" x="0.0" y="93" width="82" height="45"/>
+                                                <color key="backgroundColor" red="0.45098039220000002" green="0.5568627451" blue="0.68235294120000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                <state key="normal" title="Master Plan">
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="selectFilter:" destination="BYZ-38-t0r" eventType="touchUpInside" id="UUd-F8-8X7"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="4" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8y9-K6-iU7">
+                                                <rect key="frame" x="117" y="93" width="83" height="45"/>
+                                                <color key="backgroundColor" red="0.45098039220000002" green="0.5568627451" blue="0.68235294120000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                <state key="normal" title="Commercial">
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="selectFilter:" destination="BYZ-38-t0r" eventType="touchUpInside" id="LD3-QD-Iuh"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" red="0.43529411764705883" green="0.44313725490196076" blue="0.47450980392156861" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -143,8 +189,12 @@
                                     <constraint firstItem="Snk-I5-Jw6" firstAttribute="leading" secondItem="fah-Q6-HRF" secondAttribute="leading" id="G1H-yg-quR"/>
                                     <constraint firstAttribute="bottom" secondItem="jWi-IU-xVU" secondAttribute="bottom" constant="27" id="JDQ-KN-YfW"/>
                                     <constraint firstAttribute="centerX" secondItem="jWi-IU-xVU" secondAttribute="centerX" id="JZ5-3y-qpP"/>
+                                    <constraint firstItem="wJH-zy-Sxd" firstAttribute="top" secondItem="Snk-I5-Jw6" secondAttribute="bottom" constant="31" id="Ujy-pO-XHM"/>
                                     <constraint firstAttribute="width" constant="200" id="ZnA-Xw-i6q"/>
+                                    <constraint firstItem="hqi-Pd-qtE" firstAttribute="top" secondItem="wJH-zy-Sxd" secondAttribute="bottom" constant="31" id="d5e-Jm-TdD"/>
                                     <constraint firstAttribute="centerX" secondItem="hqi-Pd-qtE" secondAttribute="centerX" id="dbu-xV-XfM"/>
+                                    <constraint firstItem="wJH-zy-Sxd" firstAttribute="leading" secondItem="fah-Q6-HRF" secondAttribute="leading" id="lYX-I0-LPf"/>
+                                    <constraint firstAttribute="trailing" secondItem="wJH-zy-Sxd" secondAttribute="trailing" id="lrl-JS-XIY"/>
                                     <constraint firstItem="jWi-IU-xVU" firstAttribute="top" secondItem="Snk-I5-Jw6" secondAttribute="bottom" constant="261" id="sVc-X8-2HK"/>
                                     <constraint firstItem="jWi-IU-xVU" firstAttribute="top" secondItem="hqi-Pd-qtE" secondAttribute="bottom" constant="23" id="sgV-fw-5Vt"/>
                                 </constraints>
@@ -185,10 +235,15 @@
                         <outlet property="cvContainerTrailingConstraint" destination="8L1-Wq-tjD" id="6sl-07-fin"/>
                         <outlet property="menuBtnLeadingConstrain" destination="rQt-U0-T3F" id="7RR-Ag-Ezg"/>
                         <outlet property="menuContainerLeading" destination="eCn-m7-9Wy" id="sE2-25-8Hv"/>
+                        <outlet property="uib_filterCommercial" destination="8y9-K6-iU7" id="oUB-WH-mb9"/>
+                        <outlet property="uib_filterMaster" destination="OZZ-Iy-aco" id="xPY-cN-kOn"/>
+                        <outlet property="uib_filterMixed" destination="TN3-TK-cOL" id="CB4-Pa-r6d"/>
+                        <outlet property="uib_filterResi" destination="XFr-WY-gus" id="N3q-Dx-1I1"/>
                         <outlet property="uib_menu" destination="ndi-HU-AaS" id="HOc-T0-sye"/>
                         <outlet property="uib_missingFile" destination="hqi-Pd-qtE" id="Row-tY-nEU"/>
                         <outlet property="uic_mainCollection" destination="Y1i-Vi-dyV" id="fH3-b6-yQP"/>
                         <outlet property="uiv_collectionContainer" destination="iu9-uW-Omc" id="cdS-MF-STq"/>
+                        <outlet property="uiv_filterContainer" destination="wJH-zy-Sxd" id="z3A-Aj-YOq"/>
                         <outlet property="uiv_menuContainer" destination="fah-Q6-HRF" id="8oR-Yy-knb"/>
                         <outlet property="uiv_tableContainer" destination="Snk-I5-Jw6" id="bCo-73-AaP"/>
                     </connections>

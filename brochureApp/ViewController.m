@@ -34,6 +34,7 @@ NSArray         *arr_demoValues = nil;
     UIView                              *uiv_back;
     XHSideMenuTableViewController       *sideMenuTable;
     int                                 selectedTableIndex;
+    NSArray                             *arr_typeFilters;
 }
 @property (nonatomic, strong)        embEmailData               *emailData;
 @property (weak, nonatomic) IBOutlet UIButton                   *uib_missingFile;
@@ -53,6 +54,13 @@ NSArray         *arr_demoValues = nil;
 @property (nonatomic, strong)        DetailViewController       *detail_vc;
 @property (weak, nonatomic) IBOutlet UIView                     *uiv_menuContainer;
 @property (weak, nonatomic) IBOutlet UIView                     *uiv_tableContainer;
+
+@property (weak, nonatomic) IBOutlet UIView                     *uiv_filterContainer;
+@property (weak, nonatomic) IBOutlet UIButton                   *uib_filterResi;
+@property (weak, nonatomic) IBOutlet UIButton                   *uib_filterMixed;
+@property (weak, nonatomic) IBOutlet UIButton                   *uib_filterCommercial;
+@property (weak, nonatomic) IBOutlet UIButton                   *uib_filterMaster;
+
 
 @end
 
@@ -76,15 +84,30 @@ NSArray         *arr_demoValues = nil;
                       [NSNumber numberWithInt:30],
                       [NSNumber numberWithInt:50],
                       nil];
-    
-    
-    // Do any additional setup after loading the view, typically from a nib.
+    /*
+     * Set collection view's delegate & datasource
+     */
     _uic_mainCollection.delegate = self;
     _uic_mainCollection.dataSource = self;
+    
+    /*
+     * Set up side menu's table view
+     */
     [self setUpSideTableView];
     sectionNum = (int)arr_demoKeys.count;
     selectedTableIndex = 0;
     
+    /*
+     * Create type filter array
+     */
+    arr_typeFilters = @[@"mixed",
+                        @"residence",
+                        @"master plan",
+                        @"commercial"];
+    
+    /*
+     * Create edge gesture to load side menu
+     */
     [self addScreenEdgeGesture];
 }
 
@@ -96,7 +119,8 @@ NSArray         *arr_demoValues = nil;
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
+    if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)])
+    {
         self.navigationController.interactivePopGestureRecognizer.enabled = NO;
         self.navigationController.interactivePopGestureRecognizer.delegate = nil;
     }
@@ -109,14 +133,16 @@ NSArray         *arr_demoValues = nil;
 
 #pragma mark - Action of buttons
 
-- (IBAction)menuBtnTapped:(id)sender {
+- (IBAction)menuBtnTapped:(id)sender
+{
     /*
      * Status: side menu is unhidden
      * Hide side menu
      * Reset constraints of collection view menu button
      * Remove blurred back view
      */
-    if (_uib_menu.selected) {
+    if (_uib_menu.selected)
+    {
         _cvContainerLeadingConstraint.constant  -= menuWidth;
         _cvContainerTrailingConstraint.constant += menuWidth;
         _cvContainerBtmConstraint.constant      -= topGap;
@@ -195,15 +221,18 @@ NSArray         *arr_demoValues = nil;
     }
     
     
-    [UIView animateWithDuration:0.33 animations:^(void){
+    [UIView animateWithDuration:0.33 animations:^(void)
+    {
         [self.view layoutIfNeeded];
         /*
          * Scale the collection view as needed
          */
-        if (_uib_menu.selected) {
+        if (_uib_menu.selected)
+        {
             _uiv_collectionContainer.transform = CGAffineTransformIdentity;
         }
-        else {
+        else
+        {
             _uiv_collectionContainer.transform = CGAffineTransformMakeScale(0.98, 0.98);
         }
     } completion:^(BOOL finished){
@@ -224,7 +253,8 @@ NSArray         *arr_demoValues = nil;
  * Load web view
  * With address: www.neoscape.com
  */
-- (IBAction)tapVisitBtn:(id)sender {
+- (IBAction)tapVisitBtn:(id)sender
+{
     NSString *theUrl = homePage;
     xhWebViewController *vc = [[xhWebViewController alloc] init];
     [vc loadWebPage:theUrl];
@@ -242,6 +272,16 @@ NSArray         *arr_demoValues = nil;
     _emailData.subject = @"Missing Brochure File Needed";
     _emailData.body = @"Project Name: \n\nFinished Time: \n\nPlease add the file, thank you!";
     [self prepareEmailData];
+}
+
+/*
+ * Tap project filter buttons aciton
+ */
+- (IBAction)selectFilter:(id)sender
+{
+    int selectedIndex = (int)[sender tag]-1;
+    NSString *typeName = arr_typeFilters[selectedIndex];
+    NSLog(@"The selected type is %@", typeName);
 }
 
 /*
