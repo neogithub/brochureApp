@@ -43,9 +43,14 @@
 	return [persistencyManager getBrochures];
 }
 
-- (NSMutableArray*)getCompanyNames
+- (NSMutableArray*)getProjectNames
 {
 	return [persistencyManager getProjectNames];
+}
+
+- (NSArray *)getProjectTypes
+{
+    return [persistencyManager getProjectTypes];
 }
 
 - (NSArray*)getSelectedCompanyNamed:(NSString*)name

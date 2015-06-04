@@ -19,6 +19,8 @@
 
 - (NSMutableArray *)getProjectNames;
 
+- (NSArray *)getProjectTypes;
+
 - (NSArray *)getSelectedProjectByName:(NSString *)name;
 
 - (NSArray *)getSelectedProjectByCompanyName:(NSString *)companyName;

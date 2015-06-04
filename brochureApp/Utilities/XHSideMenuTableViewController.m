@@ -30,7 +30,7 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     arr_projects = [[NSMutableArray alloc] initWithObjects:@"All", nil];
-    [arr_projects addObjectsFromArray: arr_demoKeys];
+    [arr_projects addObjectsFromArray: arr_projectNames];
     searchResult = [[NSMutableArray alloc] initWithArray:arr_projects];
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     [self.tableView setSeparatorInset:UIEdgeInsetsZero];

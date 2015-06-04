@@ -11,8 +11,10 @@
 extern NSString             *homePage;
 extern NSString             *infoEmail;
 extern NSString             *requestEmail;
-extern NSArray              *arr_demoKeys;
-extern NSArray              *arr_demoValues;
+extern NSArray              *arr_projectNames;
+extern NSArray              *arr_porjectTypes;
+extern NSMutableDictionary  *dict_projectByTypes;
+extern NSArray              *arr_projectOfAType;
 
 @interface ViewController : UIViewController
 

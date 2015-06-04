@@ -18,11 +18,13 @@
 #define menuWidth  200.0;
 #define topGap     30;
 
-NSString        *homePage = @"http://www.neoscape.com";
-NSString        *infoEmail = @"info@neoscape.com";
-NSString        *requestEmail = @"info@neoscape.com";
-NSArray         *arr_demoKeys = nil;
-NSArray         *arr_demoValues = nil;
+NSString                *homePage = @"http://www.neoscape.com";
+NSString                *infoEmail = @"info@neoscape.com";
+NSString                *requestEmail = @"info@neoscape.com";
+NSArray                 *arr_projectNames = nil;
+NSArray                 *arr_projectOfAType = nil;
+NSArray                 *arr_porjectTypes = nil;
+NSMutableDictionary     *dict_projectByTypes = nil;
 
 @interface ViewController ()    <UICollectionViewDelegate,
                                 UICollectionViewDataSource,
@@ -77,13 +79,25 @@ NSArray         *arr_demoValues = nil;
     /*
      * Init a array as a demo data
      */
-    arr_demoKeys = [[NSArray alloc] initWithArray:[[LibraryAPI sharedInstance] getCompanyNames]];
+    arr_projectNames = [[NSArray alloc] initWithArray:[[LibraryAPI sharedInstance] getProjectNames]];
     
-    arr_demoValues = [[NSArray alloc] initWithObjects:
-                      [NSNumber numberWithInt:10],
-                      [NSNumber numberWithInt:30],
-                      [NSNumber numberWithInt:50],
-                      nil];
+    arr_porjectTypes = [[NSArray alloc] initWithArray:[[LibraryAPI sharedInstance] getProjectTypes]];
+    [arr_porjectTypes sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
+    
+    NSMutableArray *typeGroupes = [[NSMutableArray alloc] init];
+    for (int i = 0; i < arr_porjectTypes.count; i++) {
+        [typeGroupes addObject:[[LibraryAPI sharedInstance] getSelectedProjectByType:arr_porjectTypes[i]]];
+    }
+    
+    arr_projectOfAType = [[NSArray alloc] initWithArray:typeGroupes];
+    
+    dict_projectByTypes = [[NSMutableDictionary alloc] init];
+    for (int i = 0; i < arr_porjectTypes.count; i++) {
+        [dict_projectByTypes setObject:arr_projectOfAType[i] forKey:arr_porjectTypes[i]];
+    }
+    
+    NSLog(@"\n\n%@",dict_projectByTypes);
+    
     /*
      * Set collection view's delegate & datasource
      */
@@ -94,7 +108,7 @@ NSArray         *arr_demoValues = nil;
      * Set up side menu's table view
      */
     [self setUpSideTableView];
-    sectionNum = (int)arr_demoKeys.count;
+    sectionNum = (int)arr_porjectTypes.count;
     selectedTableIndex = 0;
     
     /*
@@ -349,7 +363,7 @@ NSArray         *arr_demoValues = nil;
 {
     if (title == nil) {
         if (index.row == 0) {
-            sectionNum = (int)arr_demoKeys.count;
+            sectionNum = (int)arr_projectNames.count;
         }
         else {
             sectionNum = 1;
@@ -358,7 +372,7 @@ NSArray         *arr_demoValues = nil;
     }
     else {
         sectionNum = 1;
-        selectedTableIndex = (int)[arr_demoKeys indexOfObject:title]+1;
+        selectedTableIndex = (int)[arr_projectNames indexOfObject:title]+1;
     }
     /*
      * Searched "All" is not in keys array
@@ -383,13 +397,13 @@ NSArray         *arr_demoValues = nil;
      * If a section is selected, according to tapped table cell index to load data
      */
     if (sectionNum == 1) {
-        return [[arr_demoValues objectAtIndex: selectedTableIndex-1] integerValue];
+        return [[arr_projectOfAType objectAtIndex: selectedTableIndex-1] integerValue];
     }
     /*
      * If selected "All" load all data from Dictionary
      */
     else {
-        return [[arr_demoValues objectAtIndex: section] integerValue];
+        return [[arr_projectOfAType objectAtIndex: section] count];
     }
     
     return 0;
@@ -416,16 +430,16 @@ NSArray         *arr_demoValues = nil;
          * Go through all keys
          */
         if (selectedTableIndex == 0) {
-            title = [arr_demoKeys objectAtIndex: indexPath.section];
+            title = [arr_porjectTypes objectAtIndex: indexPath.section];
         }
         /*
          * If selected specific one
          * use "selectedTableIndex" to get the key
          */
         else {
-            title = [arr_demoKeys objectAtIndex: selectedTableIndex -1];
+            title = [arr_porjectTypes objectAtIndex: selectedTableIndex -1];
         }
-        headerView.title_label.text = title;
+        headerView.title_label.text = [title uppercaseString];
         reusableview = headerView;
     }
     return reusableview;
