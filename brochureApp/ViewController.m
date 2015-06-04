@@ -359,6 +359,9 @@ NSMutableDictionary     *dict_projectByTypes = nil;
             sectionNum = (int)arr_porjectTypes.count;
             selectedItemType = nil;
             selectedItemName = nil;
+            [_uic_mainCollection reloadData];
+            [self menuBtnTapped:_uib_menu];
+            return;
         }
         else {
             sectionNum = 1;
