@@ -28,6 +28,7 @@
 		8279D6861B0FCD550087A7FD /* grfx_launching.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8279D6841B0FCD550087A7FD /* grfx_launching.jpg */; };
 		8279D6871B0FCD550087A7FD /* grfx_launching.png in Resources */ = {isa = PBXBuildFile; fileRef = 8279D6851B0FCD550087A7FD /* grfx_launching.png */; };
 		8280BCE91B1F310000085E70 /* Brochure.m in Sources */ = {isa = PBXBuildFile; fileRef = 8280BCE81B1F310000085E70 /* Brochure.m */; };
+		82882A781B20A00800631FE0 /* galleryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 82882A771B20A00800631FE0 /* galleryCell.m */; };
 		82AA3B741B0E57AB0001020F /* ebZoomingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 82AA3B6B1B0E57AB0001020F /* ebZoomingScrollView.m */; };
 		82AA3B751B0E57AB0001020F /* embDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82AA3B6D1B0E57AB0001020F /* embDataViewController.m */; };
 		82AA3B761B0E57AB0001020F /* embModelController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82AA3B6F1B0E57AB0001020F /* embModelController.m */; };
@@ -84,6 +85,8 @@
 		8279D6851B0FCD550087A7FD /* grfx_launching.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = grfx_launching.png; path = src/grfx_launching.png; sourceTree = "<group>"; };
 		8280BCE71B1F310000085E70 /* Brochure.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Brochure.h; path = Data/Brochure.h; sourceTree = "<group>"; };
 		8280BCE81B1F310000085E70 /* Brochure.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Brochure.m; path = Data/Brochure.m; sourceTree = "<group>"; };
+		82882A761B20A00800631FE0 /* galleryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = galleryCell.h; path = Utilities/galleryCell.h; sourceTree = "<group>"; };
+		82882A771B20A00800631FE0 /* galleryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = galleryCell.m; path = Utilities/galleryCell.m; sourceTree = "<group>"; };
 		82AA3B6A1B0E57AB0001020F /* ebZoomingScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ebZoomingScrollView.h; path = Utilities/ebZoomingScrollView.h; sourceTree = "<group>"; };
 		82AA3B6B1B0E57AB0001020F /* ebZoomingScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ebZoomingScrollView.m; path = Utilities/ebZoomingScrollView.m; sourceTree = "<group>"; };
 		82AA3B6C1B0E57AB0001020F /* embDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = embDataViewController.h; path = Utilities/embDataViewController.h; sourceTree = "<group>"; };
@@ -205,6 +208,8 @@
 				8252976F1B0F7B4900E98C42 /* Reachability.m */,
 				822F07581B1621BA005EF909 /* XHSideMenuTableViewController.h */,
 				822F07591B1621BA005EF909 /* XHSideMenuTableViewController.m */,
+				82882A761B20A00800631FE0 /* galleryCell.h */,
+				82882A771B20A00800631FE0 /* galleryCell.m */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -356,6 +361,7 @@
 				825C057A1B1F3FB700830ADB /* PersistencyManager.m in Sources */,
 				822F075A1B1621BA005EF909 /* XHSideMenuTableViewController.m in Sources */,
 				825297701B0F7B4900E98C42 /* Reachability.m in Sources */,
+				82882A781B20A00800631FE0 /* galleryCell.m in Sources */,
 				82BE2DE11B0E1DF00018D05B /* SummaryViewController.m in Sources */,
 				82AA3B751B0E57AB0001020F /* embDataViewController.m in Sources */,
 				825297681B0F6C3200E98C42 /* embEmailData.m in Sources */,

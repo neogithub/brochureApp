@@ -14,7 +14,7 @@
 #import <MessageUI/MessageUI.h>
 #import "XHSideMenuTableViewController.h"
 #import "LibraryAPI.h"
-
+#import "galleryCell.h"
 #define menuWidth  200.0;
 #define topGap     30;
 
@@ -36,7 +36,6 @@ NSMutableDictionary     *dict_projectByTypes = nil;
     UIView                              *uiv_back;
     XHSideMenuTableViewController       *sideMenuTable;
     int                                 selectedTableIndex;
-    NSArray                             *arr_typeFilters;
 }
 @property (nonatomic, strong)        embEmailData               *emailData;
 @property (weak, nonatomic) IBOutlet UIButton                   *uib_missingFile;
@@ -110,14 +109,6 @@ NSMutableDictionary     *dict_projectByTypes = nil;
     [self setUpSideTableView];
     sectionNum = (int)arr_porjectTypes.count;
     selectedTableIndex = 0;
-    
-    /*
-     * Create type filter array
-     */
-    arr_typeFilters = @[@"mixed",
-                        @"residence",
-                        @"master plan",
-                        @"commercial"];
     
     /*
      * Create edge gesture to load side menu
@@ -297,7 +288,7 @@ NSMutableDictionary     *dict_projectByTypes = nil;
     /*
      * Get the type name for filter
      */
-    NSString *typeName = arr_typeFilters[selectedIndex];
+    NSString *typeName = arr_porjectTypes[selectedIndex];
     /*
      * According to selected type name to get an array of Brochure objects
      */
@@ -397,7 +388,7 @@ NSMutableDictionary     *dict_projectByTypes = nil;
      * If a section is selected, according to tapped table cell index to load data
      */
     if (sectionNum == 1) {
-        return [[arr_projectOfAType objectAtIndex: selectedTableIndex-1] integerValue];
+        return [[arr_projectOfAType objectAtIndex: selectedTableIndex-1] count];
     }
     /*
      * If selected "All" load all data from Dictionary
@@ -412,9 +403,13 @@ NSMutableDictionary     *dict_projectByTypes = nil;
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
                  cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    UICollectionViewCell *galleryCell = [collectionView
+    galleryCell *galleryCell = [collectionView
                                        dequeueReusableCellWithReuseIdentifier:@"myCell"
                                        forIndexPath:indexPath];
+    Brochure *tmp = [[arr_projectOfAType objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+    galleryCell.titleLabel.text = tmp.projectName;
+    [galleryCell.titleLabel setFont:[UIFont systemFontOfSize:14]];
+    
     return galleryCell;
 }
 
