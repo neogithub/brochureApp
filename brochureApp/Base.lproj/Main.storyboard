@@ -118,8 +118,8 @@
                                     <constraint firstAttribute="bottom" secondItem="Y1i-Vi-dyV" secondAttribute="bottom" id="xTO-V0-M1k"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fah-Q6-HRF" userLabel="Menu_Container">
-                                <rect key="frame" x="0.0" y="0.0" width="200" height="600"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fah-Q6-HRF" userLabel="Menu_Container">
+                                <rect key="frame" x="-200" y="0.0" width="200" height="600"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jWi-IU-xVU">
                                         <rect key="frame" x="74" y="543" width="52" height="30"/>

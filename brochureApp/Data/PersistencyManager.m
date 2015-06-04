@@ -149,7 +149,7 @@
 
 - (NSArray *)getSelectedProjectByCompanyName:(NSString *)companyName
 {
-    NSPredicate *companyPredicate = [NSPredicate predicateWithFormat:@"companies contains[c] %@", companyName];
+    NSPredicate *companyPredicate = [NSPredicate predicateWithFormat:@"(projectName == %@)", companyName];
     _companyFilterArray = [[NSArray alloc] initWithArray:[brochures filteredArrayUsingPredicate:companyPredicate]];
     return _companyFilterArray;
 }

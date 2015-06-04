@@ -36,6 +36,7 @@ NSMutableDictionary     *dict_projectByTypes = nil;
     UIView                              *uiv_back;
     XHSideMenuTableViewController       *sideMenuTable;
     int                                 selectedTableIndex;
+    NSString                            *selectedItemType;
 }
 @property (nonatomic, strong)        embEmailData               *emailData;
 @property (weak, nonatomic) IBOutlet UIButton                   *uib_missingFile;
@@ -81,6 +82,7 @@ NSMutableDictionary     *dict_projectByTypes = nil;
     arr_projectNames = [[NSArray alloc] initWithArray:[[LibraryAPI sharedInstance] getProjectNames]];
     
     arr_porjectTypes = [[NSArray alloc] initWithArray:[[LibraryAPI sharedInstance] getProjectTypes]];
+    
     [arr_porjectTypes sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
     
     NSMutableArray *typeGroupes = [[NSMutableArray alloc] init];
@@ -94,8 +96,6 @@ NSMutableDictionary     *dict_projectByTypes = nil;
     for (int i = 0; i < arr_porjectTypes.count; i++) {
         [dict_projectByTypes setObject:arr_projectOfAType[i] forKey:arr_porjectTypes[i]];
     }
-    
-    NSLog(@"\n\n%@",dict_projectByTypes);
     
     /*
      * Set collection view's delegate & datasource
@@ -354,16 +354,25 @@ NSMutableDictionary     *dict_projectByTypes = nil;
 {
     if (title == nil) {
         if (index.row == 0) {
-            sectionNum = (int)arr_projectNames.count;
+            sectionNum = (int)arr_porjectTypes.count;
+            selectedItemType = nil;
         }
         else {
             sectionNum = 1;
+            Brochure *theBrocure = [[[LibraryAPI sharedInstance]
+                                     getSelectedCompanyNamed:[arr_projectNames objectAtIndex: index.row -1]] objectAtIndex:0];
+            selectedItemType = nil;
+            selectedItemType = [[NSString alloc] initWithString:theBrocure.projectType];
         }
         selectedTableIndex = (int)index.row;
     }
     else {
         sectionNum = 1;
         selectedTableIndex = (int)[arr_projectNames indexOfObject:title]+1;
+        Brochure *theBrocure = [[[LibraryAPI sharedInstance]
+                                 getSelectedCompanyNamed:title] objectAtIndex:0];
+        selectedItemType = nil;
+        selectedItemType = [[NSString alloc] initWithString:theBrocure.projectType];
     }
     /*
      * Searched "All" is not in keys array
@@ -388,7 +397,9 @@ NSMutableDictionary     *dict_projectByTypes = nil;
      * If a section is selected, according to tapped table cell index to load data
      */
     if (sectionNum == 1) {
-        return [[arr_projectOfAType objectAtIndex: selectedTableIndex-1] count];
+        int typeIndex = [arr_porjectTypes indexOfObject: selectedItemType];
+        NSLog(@"\n\n\n %i",[[arr_projectOfAType objectAtIndex: typeIndex] count]);
+        return [[arr_projectOfAType objectAtIndex: typeIndex] count];        
     }
     /*
      * If selected "All" load all data from Dictionary
@@ -406,10 +417,18 @@ NSMutableDictionary     *dict_projectByTypes = nil;
     galleryCell *galleryCell = [collectionView
                                        dequeueReusableCellWithReuseIdentifier:@"myCell"
                                        forIndexPath:indexPath];
-    Brochure *tmp = [[arr_projectOfAType objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+    Brochure *tmp;
+    if (sectionNum == 1)
+    {
+        NSArray *projects = [dict_projectByTypes objectForKey: selectedItemType];
+        tmp = [projects objectAtIndex:indexPath.row];
+    }
+    else
+    {
+        tmp = [[arr_projectOfAType objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+    }
     galleryCell.titleLabel.text = tmp.projectName;
     [galleryCell.titleLabel setFont:[UIFont systemFontOfSize:14]];
-    
     return galleryCell;
 }
 
@@ -432,7 +451,7 @@ NSMutableDictionary     *dict_projectByTypes = nil;
          * use "selectedTableIndex" to get the key
          */
         else {
-            title = [arr_porjectTypes objectAtIndex: selectedTableIndex -1];
+            title = selectedItemType;
         }
         headerView.title_label.text = [title uppercaseString];
         reusableview = headerView;
