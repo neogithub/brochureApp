@@ -398,7 +398,6 @@ NSMutableDictionary     *dict_projectByTypes = nil;
      */
     if (sectionNum == 1) {
         int typeIndex = [arr_porjectTypes indexOfObject: selectedItemType];
-        NSLog(@"\n\n\n %i",[[arr_projectOfAType objectAtIndex: typeIndex] count]);
         return [[arr_projectOfAType objectAtIndex: typeIndex] count];        
     }
     /*
@@ -428,7 +427,7 @@ NSMutableDictionary     *dict_projectByTypes = nil;
         tmp = [[arr_projectOfAType objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
     }
     galleryCell.titleLabel.text = tmp.projectName;
-    [galleryCell.titleLabel setFont:[UIFont systemFontOfSize:14]];
+    [galleryCell.titleLabel setFont:[UIFont systemFontOfSize:16]];
     return galleryCell;
 }
 
