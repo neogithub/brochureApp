@@ -37,6 +37,7 @@ NSMutableDictionary     *dict_projectByTypes = nil;
     XHSideMenuTableViewController       *sideMenuTable;
     int                                 selectedTableIndex;
     NSString                            *selectedItemType;
+    NSString                            *selectedItemName;
 }
 @property (nonatomic, strong)        embEmailData               *emailData;
 @property (weak, nonatomic) IBOutlet UIButton                   *uib_missingFile;
@@ -79,7 +80,8 @@ NSMutableDictionary     *dict_projectByTypes = nil;
     /*
      * Init a array as a demo data
      */
-    arr_projectNames = [[NSArray alloc] initWithArray:[[LibraryAPI sharedInstance] getProjectNames]];
+    arr_projectNames = [[NSArray alloc] initWithArray:[[[LibraryAPI sharedInstance] getProjectNames]
+                                                       sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)]];
     
     arr_porjectTypes = [[NSArray alloc] initWithArray:[[LibraryAPI sharedInstance] getProjectTypes]];
     
@@ -356,6 +358,7 @@ NSMutableDictionary     *dict_projectByTypes = nil;
         if (index.row == 0) {
             sectionNum = (int)arr_porjectTypes.count;
             selectedItemType = nil;
+            selectedItemName = nil;
         }
         else {
             sectionNum = 1;
@@ -363,6 +366,7 @@ NSMutableDictionary     *dict_projectByTypes = nil;
                                      getSelectedCompanyNamed:[arr_projectNames objectAtIndex: index.row -1]] objectAtIndex:0];
             selectedItemType = nil;
             selectedItemType = [[NSString alloc] initWithString:theBrocure.projectType];
+            selectedItemName = [[NSString alloc] initWithString:theBrocure.projectName];
         }
         selectedTableIndex = (int)index.row;
     }
@@ -373,6 +377,7 @@ NSMutableDictionary     *dict_projectByTypes = nil;
                                  getSelectedCompanyNamed:title] objectAtIndex:0];
         selectedItemType = nil;
         selectedItemType = [[NSString alloc] initWithString:theBrocure.projectType];
+        selectedItemName = [[NSString alloc] initWithString:theBrocure.projectName];
     }
     /*
      * Searched "All" is not in keys array
@@ -383,6 +388,15 @@ NSMutableDictionary     *dict_projectByTypes = nil;
         return;
     }
     [_uic_mainCollection reloadData];
+    [self menuBtnTapped: _uib_menu];
+    int tapIndex = 0;
+    NSArray *brochureArray = [dict_projectByTypes objectForKeyedSubscript: selectedItemType];
+    for (Brochure *tmp in brochureArray) {
+        if ([tmp.projectName isEqualToString: selectedItemName]) {
+            tapIndex = [brochureArray indexOfObjectIdenticalTo: tmp];
+        }
+    }
+    [self collectionView:_uic_mainCollection didSelectItemAtIndexPath:[NSIndexPath indexPathForRow:tapIndex inSection:0]];
 }
 
 #pragma mark - Collection Delegate Methods
