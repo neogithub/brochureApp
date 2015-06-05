@@ -83,7 +83,7 @@
 
 - (void)tapOnPdfThumb:(UIGestureRecognizer *)gesture
 {
-    NSString *fileToOpen = [[NSBundle mainBundle] pathForResource:@"ballston leasing book with cards-2" ofType:@"pdf"];
+    NSString *fileToOpen = [[NSBundle mainBundle] pathForResource:[projectBrochure.projectPdfFile stringByDeletingPathExtension] ofType:@"pdf"];
     NSURL *url = [NSURL fileURLWithPath:fileToOpen];
     UIDocumentInteractionController* preview = [UIDocumentInteractionController interactionControllerWithURL:url];
     preview.delegate = self;
