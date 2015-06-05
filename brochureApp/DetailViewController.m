@@ -61,7 +61,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     _uil_title.text = projectBrochure.projectName;
-    arr_collectionData = projectBrochure.projectGallery;
+    arr_collectionData = [projectBrochure.projectGallery valueForKey:@"file"];
 }
 
 - (void)viewDidAppear:(BOOL)animated

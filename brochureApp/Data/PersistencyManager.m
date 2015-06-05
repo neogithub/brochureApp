@@ -20,102 +20,127 @@
 	if (self) {
         brochures = [[NSMutableArray alloc] init];
 		
-        Brochure *brochure_sample1 = [[Brochure alloc] init];
-        brochure_sample1.projectName = @"Victory Center";
-        brochure_sample1.projectDate = @"04-15-2015";
-        brochure_sample1.projectType = @"residence";
-        brochure_sample1.projectPdfFile = @"ballston leasing book with cards-2.pdf";
-        brochure_sample1.projectSummary = @{
-                                            @"location" : @"the location of this project",
-                                            @"price" : @"the price of this project",
-                                            @"description" : @"the description of this project"
-                                            };
-        brochure_sample1.projectUrl = @"http://www.urartuuniversity.com/content_images/pdf-sample.pdf";
-        brochure_sample1.projectGallery = @[@"grfx_launching.jpg", @"grfx_launching.png"];
-        brochure_sample1.projectCompanies = @[@"company1", @"company2"];
-        brochure_sample1.projectThumb = nil;
+        NSData *allCoursesData = [[NSData alloc] initWithContentsOfURL:
+                                  [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"brochure" ofType:@"json"]]];
+        NSError *error;
+        NSArray *rawData = [NSJSONSerialization
+                                           JSONObjectWithData:allCoursesData
+                                           options:NSJSONReadingMutableContainers
+                                           error:&error];
         
-        Brochure *brochure_sample2 = [[Brochure alloc] init];
-        brochure_sample2.projectName = @"Ballston Quarter";
-        brochure_sample2.projectDate = @"05-30-2015";
-        brochure_sample2.projectType = @"commercial";
-        brochure_sample2.projectPdfFile = @"ballston leasing book with cards-2.pdf";
-        brochure_sample2.projectSummary = @{
-                                            @"location" : @"the location of this project",
-                                            @"price" : @"the price of this project",
-                                            @"description" : @"the description of this project"
-                                            };
-        brochure_sample2.projectUrl = @"www.neoscape.com";
-        brochure_sample2.projectGallery = @[@"grfx_launching.jpg", @"grfx_launching.png"];
-        brochure_sample2.projectCompanies = @[@"company1", @"company2"];
-        brochure_sample2.projectThumb = nil;
+        for (int i = 0; i < rawData.count; i++) {
+            Brochure *brochure = [[Brochure alloc] init];
+            NSDictionary *brochureData = rawData[i];
+            brochure.projectName = brochureData[@"name"];
+            brochure.projectDate = brochureData[@"date"];
+            brochure.projectType = brochureData[@"type"];
+            brochure.projectPdfFile = brochureData[@"pdf"];
+            brochure.projectSummary = brochureData[@"summary"];
+            brochure.projectUrl = brochureData[@"shareUrl"];
+            brochure.projectGallery = brochureData[@"gallery"];
+            //Need to add to json
+            brochure.projectCompanies = @[@"company1", @"company2"];
+            //Need to add to json
+            brochure.projectThumb = nil;
+            [brochures addObject:brochure];
+        }
         
-        Brochure *brochure_sample3 = [[Brochure alloc] init];
-        brochure_sample3.projectName = @"1325 Boylston";
-        brochure_sample3.projectDate = @"06-30-2014";
-        brochure_sample3.projectType = @"master plan";
-        brochure_sample3.projectPdfFile = @"ballston leasing book with cards-2.pdf";
-        brochure_sample3.projectSummary = @{
-                                            @"location" : @"the location of this project",
-                                            @"price" : @"the price of this project",
-                                            @"description" : @"the description of this project"
-                                            };
-        brochure_sample3.projectUrl = @"www.neoscape.com";
-        brochure_sample3.projectGallery = @[@"grfx_launching.jpg", @"grfx_launching.png"];
-        brochure_sample3.projectCompanies = @[@"company1", @"company2"];
-        brochure_sample3.projectThumb = nil;
-        
-        Brochure *brochure_sample4 = [[Brochure alloc] init];
-        brochure_sample4.projectName = @"Pike and Rose";
-        brochure_sample4.projectDate = @"01-30-2012";
-        brochure_sample4.projectType = @"mixed";
-        brochure_sample4.projectPdfFile = @"ballston leasing book with cards-2.pdf";
-        brochure_sample4.projectSummary = @{
-                                            @"location" : @"the location of this project",
-                                            @"price" : @"the price of this project",
-                                            @"description" : @"the description of this project"
-                                            };
-        brochure_sample4.projectUrl = @"www.neoscape.com";
-        brochure_sample4.projectGallery = @[@"grfx_launching.jpg", @"grfx_launching.png"];
-        brochure_sample4.projectCompanies = @[@"company1", @"company2"];
-        brochure_sample4.projectThumb = nil;
-        
-        Brochure *brochure_sample5 = [[Brochure alloc] init];
-        brochure_sample5.projectName = @"Assembly Row";
-        brochure_sample5.projectDate = @"09-30-2012";
-        brochure_sample5.projectType = @"master plan";
-        brochure_sample5.projectPdfFile = @"ballston leasing book with cards-2.pdf";
-        brochure_sample5.projectSummary = @{
-                                            @"location" : @"the location of this project",
-                                            @"price" : @"the price of this project",
-                                            @"description" : @"the description of this project"
-                                            };
-        brochure_sample5.projectUrl = @"www.neoscape.com";
-        brochure_sample5.projectGallery = @[@"grfx_launching.jpg", @"grfx_launching.png"];
-        brochure_sample5.projectCompanies = @[@"company1", @"company2"];
-        brochure_sample5.projectThumb = nil;
-        
-        Brochure *brochure_sample6 = [[Brochure alloc] init];
-        brochure_sample6.projectName = @"Skanska";
-        brochure_sample6.projectDate = @"11-30-2014";
-        brochure_sample6.projectType = @"master plan";
-        brochure_sample6.projectPdfFile = @"ballston leasing book with cards-2.pdf";
-        brochure_sample6.projectSummary = @{
-                                            @"location" : @"the location of this project",
-                                            @"price" : @"the price of this project",
-                                            @"description" : @"the description of this project"
-                                            };
-        brochure_sample6.projectUrl = @"www.neoscape.com";
-        brochure_sample6.projectGallery = @[@"grfx_launching.jpg", @"grfx_launching.png"];
-        brochure_sample6.projectCompanies = @[@"company1", @"company2"];
-        brochure_sample6.projectThumb = nil;
-        
-        [brochures addObject: brochure_sample1];
-        [brochures addObject: brochure_sample2];
-        [brochures addObject: brochure_sample3];
-        [brochures addObject: brochure_sample4];
-        [brochures addObject: brochure_sample5];
-        [brochures addObject: brochure_sample6];
+//        Brochure *brochure_sample1 = [[Brochure alloc] init];
+//        brochure_sample1.projectName = @"Victory Center";
+//        brochure_sample1.projectDate = @"04-15-2015";
+//        brochure_sample1.projectType = @"residence";
+//        brochure_sample1.projectPdfFile = @"ballston leasing book with cards-2.pdf";
+//        brochure_sample1.projectSummary = @{
+//                                            @"location" : @"the location of this project",
+//                                            @"price" : @"the price of this project",
+//                                            @"description" : @"the description of this project"
+//                                            };
+//        brochure_sample1.projectUrl = @"www.neoscape.com";
+//        brochure_sample1.projectGallery = @[@"grfx_launching.jpg", @"grfx_launching.png"];
+//        brochure_sample1.projectCompanies = @[@"company1", @"company2"];
+//        brochure_sample1.projectThumb = nil;
+//        
+//        Brochure *brochure_sample2 = [[Brochure alloc] init];
+//        brochure_sample2.projectName = @"Ballston Quarter";
+//        brochure_sample2.projectDate = @"05-30-2015";
+//        brochure_sample2.projectType = @"commercial";
+//        brochure_sample2.projectPdfFile = @"ballston leasing book with cards-2.pdf";
+//        brochure_sample2.projectSummary = @{
+//                                            @"location" : @"the location of this project",
+//                                            @"price" : @"the price of this project",
+//                                            @"description" : @"the description of this project"
+//                                            };
+//        brochure_sample2.projectUrl = @"www.neoscape.com";
+//        brochure_sample2.projectGallery = @[@"grfx_launching.jpg", @"grfx_launching.png"];
+//        brochure_sample2.projectCompanies = @[@"company1", @"company2"];
+//        brochure_sample2.projectThumb = nil;
+//        
+//        Brochure *brochure_sample3 = [[Brochure alloc] init];
+//        brochure_sample3.projectName = @"1325 Boylston";
+//        brochure_sample3.projectDate = @"06-30-2014";
+//        brochure_sample3.projectType = @"master plan";
+//        brochure_sample3.projectPdfFile = @"ballston leasing book with cards-2.pdf";
+//        brochure_sample3.projectSummary = @{
+//                                            @"location" : @"the location of this project",
+//                                            @"price" : @"the price of this project",
+//                                            @"description" : @"the description of this project"
+//                                            };
+//        brochure_sample3.projectUrl = @"www.neoscape.com";
+//        brochure_sample3.projectGallery = @[@"grfx_launching.jpg", @"grfx_launching.png"];
+//        brochure_sample3.projectCompanies = @[@"company1", @"company2"];
+//        brochure_sample3.projectThumb = nil;
+//        
+//        Brochure *brochure_sample4 = [[Brochure alloc] init];
+//        brochure_sample4.projectName = @"Pike and Rose";
+//        brochure_sample4.projectDate = @"01-30-2012";
+//        brochure_sample4.projectType = @"mixed";
+//        brochure_sample4.projectPdfFile = @"ballston leasing book with cards-2.pdf";
+//        brochure_sample4.projectSummary = @{
+//                                            @"location" : @"the location of this project",
+//                                            @"price" : @"the price of this project",
+//                                            @"description" : @"the description of this project"
+//                                            };
+//        brochure_sample4.projectUrl = @"www.neoscape.com";
+//        brochure_sample4.projectGallery = @[@"grfx_launching.jpg", @"grfx_launching.png"];
+//        brochure_sample4.projectCompanies = @[@"company1", @"company2"];
+//        brochure_sample4.projectThumb = nil;
+//        
+//        Brochure *brochure_sample5 = [[Brochure alloc] init];
+//        brochure_sample5.projectName = @"Assembly Row";
+//        brochure_sample5.projectDate = @"09-30-2012";
+//        brochure_sample5.projectType = @"master plan";
+//        brochure_sample5.projectPdfFile = @"ballston leasing book with cards-2.pdf";
+//        brochure_sample5.projectSummary = @{
+//                                            @"location" : @"the location of this project",
+//                                            @"price" : @"the price of this project",
+//                                            @"description" : @"the description of this project"
+//                                            };
+//        brochure_sample5.projectUrl = @"www.neoscape.com";
+//        brochure_sample5.projectGallery = @[@"grfx_launching.jpg", @"grfx_launching.png"];
+//        brochure_sample5.projectCompanies = @[@"company1", @"company2"];
+//        brochure_sample5.projectThumb = nil;
+//        
+//        Brochure *brochure_sample6 = [[Brochure alloc] init];
+//        brochure_sample6.projectName = @"Skanska";
+//        brochure_sample6.projectDate = @"11-30-2014";
+//        brochure_sample6.projectType = @"master plan";
+//        brochure_sample6.projectPdfFile = @"ballston leasing book with cards-2.pdf";
+//        brochure_sample6.projectSummary = @{
+//                                            @"location" : @"the location of this project",
+//                                            @"price" : @"the price of this project",
+//                                            @"description" : @"the description of this project"
+//                                            };
+//        brochure_sample6.projectUrl = @"www.neoscape.com";
+//        brochure_sample6.projectGallery = @[@"grfx_launching.jpg", @"grfx_launching.png"];
+//        brochure_sample6.projectCompanies = @[@"company1", @"company2"];
+//        brochure_sample6.projectThumb = nil;
+//        
+//        [brochures addObject: brochure_sample1];
+//        [brochures addObject: brochure_sample2];
+//        [brochures addObject: brochure_sample3];
+//        [brochures addObject: brochure_sample4];
+//        [brochures addObject: brochure_sample5];
+//        [brochures addObject: brochure_sample6];
 	}
 	return self;
 }

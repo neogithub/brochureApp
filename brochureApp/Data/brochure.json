@@ -3,7 +3,8 @@
 		"name" : "Victory Center",
 		"date" : "04-15-2015",
 		"type" : "residence",
-		"share_url"  : "www.neoscape.com",
+		"shareUrl"  : "www.neoscape.com",
+		"pdf" : "ballston leasing book with cards-2.pdf",
 		"summary" : 
 			{
 				"location" : "the location",
@@ -28,7 +29,112 @@
 		"name" : "Ballston Quarter",
 		"date" : "05-30-2015",
 		"type" : "commercial",
-		"share_url"  : "www.neoscape.com",
+		"shareUrl"  : "www.neoscape.com",
+		"pdf" : "ballston leasing book with cards-2.pdf",
+		"summary" : 
+			{
+				"location" : "the location",
+				"price" : "the price",
+				"description" : "the description",
+			},
+		"gallery" : 
+			[
+				{
+					"caption" : "Caption",
+					"file" : "grfx_launching.jpg",
+					"type" : "image"
+				},
+				{
+					"caption" : "Caption",
+					"file" : "grfx_launching.png",
+					"type" : "image"
+				}
+			]
+	},
+	{
+		"name" : "1325 Boylston",
+		"date" : "06-30-2014",
+		"type" : "master plan",
+		"shareUrl"  : "www.neoscape.com",
+		"pdf" : "ballston leasing book with cards-2.pdf",
+		"summary" : 
+			{
+				"location" : "the location",
+				"price" : "the price",
+				"description" : "the description",
+			},
+		"gallery" : 
+			[
+				{
+					"caption" : "Caption",
+					"file" : "grfx_launching.jpg",
+					"type" : "image"
+				},
+				{
+					"caption" : "Caption",
+					"file" : "grfx_launching.png",
+					"type" : "image"
+				}
+			]
+	},
+	{
+		"name" : "Pike and Rose",
+		"date" : "05-30-2015",
+		"type" : "commercial",
+		"shareUrl"  : "www.neoscape.com",
+		"pdf" : "ballston leasing book with cards-2.pdf",
+		"summary" : 
+			{
+				"location" : "the location",
+				"price" : "the price",
+				"description" : "the description",
+			},
+		"gallery" : 
+			[
+				{
+					"caption" : "Caption",
+					"file" : "grfx_launching.jpg",
+					"type" : "image"
+				},
+				{
+					"caption" : "Caption",
+					"file" : "grfx_launching.png",
+					"type" : "image"
+				}
+			]
+	},
+	{
+		"name" : "Assembly Row",
+		"date" : "05-30-2015",
+		"type" : "commercial",
+		"shareUrl"  : "www.neoscape.com",
+		"pdf" : "ballston leasing book with cards-2.pdf",
+		"summary" : 
+			{
+				"location" : "the location",
+				"price" : "the price",
+				"description" : "the description",
+			},
+		"gallery" : 
+			[
+				{
+					"caption" : "Caption",
+					"file" : "grfx_launching.jpg",
+					"type" : "image"
+				},
+				{
+					"caption" : "Caption",
+					"file" : "grfx_launching.png",
+					"type" : "image"
+				}
+			]
+	},
+	{
+		"name" : "Skanska",
+		"date" : "05-30-2015",
+		"type" : "commercial",
+		"shareUrl"  : "www.neoscape.com",
+		"pdf" : "ballston leasing book with cards-2.pdf",
 		"summary" : 
 			{
 				"location" : "the location",
