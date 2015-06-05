@@ -24,6 +24,7 @@
         brochure_sample1.projectName = @"Victory Center";
         brochure_sample1.projectDate = @"04-15-2015";
         brochure_sample1.projectType = @"residence";
+        brochure_sample1.projectPdfFile = @"ballston leasing book with cards-2.pdf";
         brochure_sample1.projectSummary = @{
                                             @"location" : @"the location of this project",
                                             @"price" : @"the price of this project",
@@ -38,6 +39,7 @@
         brochure_sample2.projectName = @"Ballston Quarter";
         brochure_sample2.projectDate = @"05-30-2015";
         brochure_sample2.projectType = @"commercial";
+        brochure_sample2.projectPdfFile = @"ballston leasing book with cards-2.pdf";
         brochure_sample2.projectSummary = @{
                                             @"location" : @"the location of this project",
                                             @"price" : @"the price of this project",
@@ -52,6 +54,7 @@
         brochure_sample3.projectName = @"1325 Boylston";
         brochure_sample3.projectDate = @"06-30-2014";
         brochure_sample3.projectType = @"master plan";
+        brochure_sample3.projectPdfFile = @"ballston leasing book with cards-2.pdf";
         brochure_sample3.projectSummary = @{
                                             @"location" : @"the location of this project",
                                             @"price" : @"the price of this project",
@@ -66,6 +69,7 @@
         brochure_sample4.projectName = @"Pike and Rose";
         brochure_sample4.projectDate = @"01-30-2012";
         brochure_sample4.projectType = @"mixed";
+        brochure_sample4.projectPdfFile = @"ballston leasing book with cards-2.pdf";
         brochure_sample4.projectSummary = @{
                                             @"location" : @"the location of this project",
                                             @"price" : @"the price of this project",
@@ -80,6 +84,7 @@
         brochure_sample5.projectName = @"Assembly Row";
         brochure_sample5.projectDate = @"09-30-2012";
         brochure_sample5.projectType = @"master plan";
+        brochure_sample5.projectPdfFile = @"ballston leasing book with cards-2.pdf";
         brochure_sample5.projectSummary = @{
                                             @"location" : @"the location of this project",
                                             @"price" : @"the price of this project",
@@ -94,6 +99,7 @@
         brochure_sample6.projectName = @"Skanska";
         brochure_sample6.projectDate = @"11-30-2014";
         brochure_sample6.projectType = @"master plan";
+        brochure_sample6.projectPdfFile = @"ballston leasing book with cards-2.pdf";
         brochure_sample6.projectSummary = @{
                                             @"location" : @"the location of this project",
                                             @"price" : @"the price of this project",

@@ -28,6 +28,7 @@
 		8279D6861B0FCD550087A7FD /* grfx_launching.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8279D6841B0FCD550087A7FD /* grfx_launching.jpg */; };
 		8279D6871B0FCD550087A7FD /* grfx_launching.png in Resources */ = {isa = PBXBuildFile; fileRef = 8279D6851B0FCD550087A7FD /* grfx_launching.png */; };
 		8280BCE91B1F310000085E70 /* Brochure.m in Sources */ = {isa = PBXBuildFile; fileRef = 8280BCE81B1F310000085E70 /* Brochure.m */; };
+		8286995D1B221E2400BDE47F /* ballston leasing book with cards-2.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 8286995C1B221E2400BDE47F /* ballston leasing book with cards-2.pdf */; };
 		82882A781B20A00800631FE0 /* galleryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 82882A771B20A00800631FE0 /* galleryCell.m */; };
 		82AA3B741B0E57AB0001020F /* ebZoomingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 82AA3B6B1B0E57AB0001020F /* ebZoomingScrollView.m */; };
 		82AA3B751B0E57AB0001020F /* embDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82AA3B6D1B0E57AB0001020F /* embDataViewController.m */; };
@@ -85,6 +86,7 @@
 		8279D6851B0FCD550087A7FD /* grfx_launching.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = grfx_launching.png; path = src/grfx_launching.png; sourceTree = "<group>"; };
 		8280BCE71B1F310000085E70 /* Brochure.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Brochure.h; path = Data/Brochure.h; sourceTree = "<group>"; };
 		8280BCE81B1F310000085E70 /* Brochure.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Brochure.m; path = Data/Brochure.m; sourceTree = "<group>"; };
+		8286995C1B221E2400BDE47F /* ballston leasing book with cards-2.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = "ballston leasing book with cards-2.pdf"; path = "src/ballston leasing book with cards-2.pdf"; sourceTree = "<group>"; };
 		82882A761B20A00800631FE0 /* galleryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = galleryCell.h; path = Utilities/galleryCell.h; sourceTree = "<group>"; };
 		82882A771B20A00800631FE0 /* galleryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = galleryCell.m; path = Utilities/galleryCell.m; sourceTree = "<group>"; };
 		82AA3B6A1B0E57AB0001020F /* ebZoomingScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ebZoomingScrollView.h; path = Utilities/ebZoomingScrollView.h; sourceTree = "<group>"; };
@@ -153,9 +155,7 @@
 				82BE2DDF1B0E1DF00018D05B /* SummaryViewController.h */,
 				82BE2DE01B0E1DF00018D05B /* SummaryViewController.m */,
 				8270B0341B0CC2A30018D7BD /* Main.storyboard */,
-				8279D6841B0FCD550087A7FD /* grfx_launching.jpg */,
-				8279D6851B0FCD550087A7FD /* grfx_launching.png */,
-				825297731B0FC90700E98C42 /* photoData.plist */,
+				8286995E1B221E2D00BDE47F /* src */,
 				8280BCEA1B1F310A00085E70 /* Data */,
 				8270B0531B0CDF580018D7BD /* Utilities */,
 				8270B0371B0CC2A30018D7BD /* Images.xcassets */,
@@ -225,6 +225,17 @@
 				825C05781B1F3FB700830ADB /* PersistencyManager.m */,
 			);
 			name = Data;
+			sourceTree = "<group>";
+		};
+		8286995E1B221E2D00BDE47F /* src */ = {
+			isa = PBXGroup;
+			children = (
+				8286995C1B221E2400BDE47F /* ballston leasing book with cards-2.pdf */,
+				8279D6841B0FCD550087A7FD /* grfx_launching.jpg */,
+				8279D6851B0FCD550087A7FD /* grfx_launching.png */,
+				825297731B0FC90700E98C42 /* photoData.plist */,
+			);
+			name = src;
 			sourceTree = "<group>";
 		};
 		82AA3B791B0E57B10001020F /* xhGallery */ = {
@@ -327,6 +338,7 @@
 				8279D6871B0FCD550087A7FD /* grfx_launching.png in Resources */,
 				8270B0361B0CC2A30018D7BD /* Main.storyboard in Resources */,
 				825297741B0FC90700E98C42 /* photoData.plist in Resources */,
+				8286995D1B221E2400BDE47F /* ballston leasing book with cards-2.pdf in Resources */,
 				8270B03B1B0CC2A30018D7BD /* LaunchScreen.xib in Resources */,
 				8270B0381B0CC2A30018D7BD /* Images.xcassets in Resources */,
 				8279D6861B0FCD550087A7FD /* grfx_launching.jpg in Resources */,
