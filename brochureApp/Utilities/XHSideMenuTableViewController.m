@@ -118,16 +118,21 @@
      * If in search mode send selected cell's title to the delegate method
      * Else only sent the index of the cell.
      */
-    if (tableView == self.searchDisplayController.searchResultsTableView) {
-        UITableViewCell *theCell = [tableView cellForRowAtIndexPath:indexPath];
-        selectedSearchResult = [[NSString alloc] initWithString:theCell.textLabel.text];
-        [[self delegate] didSelectedTheCell:nil withTitle:theCell.textLabel.text];
-    }
-    else {
-        selectedSearchResult = nil;
-        [selectedIndexDefault setValue:[NSNumber numberWithInt:(int)indexPath.row] forKey:@"selectedIndex"];
-        [[self delegate] didSelectedTheCell:indexPath withTitle:nil];
-    }
+//    if (tableView == self.searchDisplayController.searchResultsTableView) {
+//        UITableViewCell *theCell = [tableView cellForRowAtIndexPath:indexPath];
+//        selectedSearchResult = [[NSString alloc] initWithString:theCell.textLabel.text];
+//        [[self delegate] didSelectedTheCell:nil withTitle:theCell.textLabel.text];
+//    }
+//    else {
+//        selectedSearchResult = nil;
+//        [selectedIndexDefault setValue:[NSNumber numberWithInt:(int)indexPath.row] forKey:@"selectedIndex"];
+//        [[self delegate] didSelectedTheCell:indexPath withTitle:nil];
+//    }
+    
+    
+    UITableViewCell *theCell = [tableView cellForRowAtIndexPath:indexPath];
+    selectedSearchResult = [[NSString alloc] initWithString:theCell.textLabel.text];
+    [[self delegate] didSelectedTheCell:nil withTitle:theCell.textLabel.text];
 }
 
 #pragma mark Content Filtering

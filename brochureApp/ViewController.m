@@ -362,55 +362,55 @@ NSMutableDictionary     *dict_projectByTypes = nil;
     /*
      * Under normal mode (no search)
      */
-    if (title == nil) {
-        if (index.row == 0) {
-            sectionNum = (int)arr_porjectTypes.count;
-            selectedItemType = nil;
-            selectedItemName = nil;
-            [_uic_mainCollection reloadData];
-            [self menuBtnTapped:_uib_menu];
-            return;
-        }
-        else {
-            sectionNum = 1;
-            Brochure *theBrocure = [[[LibraryAPI sharedInstance]
-                                     getSelectedCompanyNamed:[arr_projectNames objectAtIndex: index.row -1]] objectAtIndex:0];
-            selectedItemType = nil;
-            selectedItemType = [[NSString alloc] initWithString:theBrocure.projectType];
-            selectedItemName = [[NSString alloc] initWithString:theBrocure.projectName];
-        }
-        selectedTableIndex = (int)index.row;
-    }
-    /*
-     * Tap a cell under search mode
-     */
-    else {
+//    if (title == nil) {
+//        if (index.row == 0) {
+//            sectionNum = (int)arr_porjectTypes.count;
+//            selectedItemType = nil;
+//            selectedItemName = nil;
+//            [_uic_mainCollection reloadData];
+//            [self menuBtnTapped:_uib_menu];
+//            return;
+//        }
+//        else {
+//            sectionNum = 1;
+//            Brochure *theBrocure = [[[LibraryAPI sharedInstance]
+//                                     getSelectedCompanyNamed:[arr_projectNames objectAtIndex: index.row -1]] objectAtIndex:0];
+//            selectedItemType = nil;
+//            selectedItemType = [[NSString alloc] initWithString:theBrocure.projectType];
+//            selectedItemName = [[NSString alloc] initWithString:theBrocure.projectName];
+//        }
+//        selectedTableIndex = (int)index.row;
+//    }
+//    /*
+//     * Tap a cell under search mode
+//     */
+//    else {
         sectionNum = 1;
-        selectedTableIndex = (int)[arr_projectNames indexOfObject:title]+1;
+        selectedTableIndex = (int)[arr_projectNames indexOfObject:title];
         Brochure *theBrocure = [[[LibraryAPI sharedInstance]
                                  getSelectedCompanyNamed:title] objectAtIndex:0];
         selectedItemType = nil;
         selectedItemType = [[NSString alloc] initWithString:theBrocure.projectType];
         selectedItemName = [[NSString alloc] initWithString:theBrocure.projectName];
-    }
-    /*
-     * Searched "All" is not in keys array
-     * Close the menu and return
-     */
-    if (selectedTableIndex < 0) {
-        [self menuBtnTapped:_uib_menu];
-        return;
-    }
-    [_uic_mainCollection reloadData];
+//    }
+//    /*
+//     * Searched "All" is not in keys array
+//     * Close the menu and return
+//     */
+//    if (selectedTableIndex < 0) {
+//        [self menuBtnTapped:_uib_menu];
+//        return;
+//    }
+//    [_uic_mainCollection reloadData];
     [self menuBtnTapped: _uib_menu];
-    int tapIndex = 0;
-    NSArray *brochureArray = [dict_projectByTypes objectForKeyedSubscript: selectedItemType];
-    for (Brochure *tmp in brochureArray) {
-        if ([tmp.projectName isEqualToString: selectedItemName]) {
-            tapIndex = (int)[brochureArray indexOfObjectIdenticalTo: tmp];
-        }
-    }
-    [self collectionView:_uic_mainCollection didSelectItemAtIndexPath:[NSIndexPath indexPathForRow:tapIndex inSection:0]];
+//    int tapIndex = 0;
+//    NSArray *brochureArray = [dict_projectByTypes objectForKeyedSubscript: selectedItemType];
+//    for (Brochure *tmp in brochureArray) {
+//        if ([tmp.projectName isEqualToString: selectedItemName]) {
+//            tapIndex = (int)[brochureArray indexOfObjectIdenticalTo: tmp];
+//        }
+//    }
+    [self collectionView:_uic_mainCollection didSelectItemAtIndexPath:[NSIndexPath indexPathForRow:selectedTableIndex inSection:0]];
 }
 
 #pragma mark - Collection Delegate Methods
