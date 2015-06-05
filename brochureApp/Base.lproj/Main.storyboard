@@ -41,7 +41,7 @@
                                         <rect key="frame" x="16" y="0.0" width="568" height="580"/>
                                         <color key="backgroundColor" red="0.45098039220000002" green="0.5568627451" blue="0.68235294120000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="8Zv-s3-Nx7">
-                                            <size key="itemSize" width="144" height="136"/>
+                                            <size key="itemSize" width="273" height="261"/>
                                             <size key="headerReferenceSize" width="50" height="50"/>
                                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                             <inset key="sectionInset" minX="20" minY="40" maxX="20" maxY="0.0"/>
@@ -51,19 +51,19 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                                    <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="273" height="261"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4Z1-lj-eVs">
+                                                            <rect key="frame" x="0.0" y="0.0" width="273" height="224"/>
+                                                            <color key="backgroundColor" red="1" green="0.018931817279999999" blue="0.0036962686020000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thumb" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wWx-1G-Zgn">
-                                                            <rect key="frame" x="48" y="121" width="54" height="21"/>
+                                                            <rect key="frame" x="109" y="232" width="54" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4Z1-lj-eVs">
-                                                            <rect key="frame" x="0.0" y="0.0" width="150" height="113"/>
-                                                            <color key="backgroundColor" red="1" green="0.018931817279999999" blue="0.0036962686020000001" alpha="1" colorSpace="calibratedRGB"/>
-                                                        </imageView>
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 </view>
@@ -71,11 +71,11 @@
                                                     <constraint firstItem="wWx-1G-Zgn" firstAttribute="centerX" secondItem="5dW-89-kZ8" secondAttribute="centerX" id="0JI-fW-0rh"/>
                                                     <constraint firstAttribute="bottom" secondItem="4Z1-lj-eVs" secondAttribute="bottom" constant="37" id="8uT-MM-VRp"/>
                                                     <constraint firstItem="4Z1-lj-eVs" firstAttribute="top" secondItem="5dW-89-kZ8" secondAttribute="top" id="InS-Kg-JvD"/>
-                                                    <constraint firstItem="wWx-1G-Zgn" firstAttribute="top" secondItem="5dW-89-kZ8" secondAttribute="topMargin" constant="113" id="Okg-Lf-OqL"/>
+                                                    <constraint firstItem="wWx-1G-Zgn" firstAttribute="top" secondItem="5dW-89-kZ8" secondAttribute="topMargin" constant="224" id="Okg-Lf-OqL"/>
                                                     <constraint firstAttribute="trailing" secondItem="4Z1-lj-eVs" secondAttribute="trailing" id="Ta4-YQ-JrH"/>
                                                     <constraint firstItem="4Z1-lj-eVs" firstAttribute="leading" secondItem="5dW-89-kZ8" secondAttribute="leading" id="gQb-wU-wQp"/>
                                                 </constraints>
-                                                <size key="customSize" width="150" height="150"/>
+                                                <size key="customSize" width="273" height="261"/>
                                                 <connections>
                                                     <outlet property="cellThumb" destination="4Z1-lj-eVs" id="Sjl-Oo-kkw"/>
                                                     <outlet property="titleLabel" destination="wWx-1G-Zgn" id="RC1-pV-4do"/>
@@ -121,7 +121,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fah-Q6-HRF" userLabel="Menu_Container">
                                 <rect key="frame" x="-200" y="0.0" width="200" height="600"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jWi-IU-xVU">
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jWi-IU-xVU">
                                         <rect key="frame" x="74" y="543" width="52" height="30"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <state key="normal" title="Visit Us">
@@ -145,7 +145,7 @@
                                             <action selector="askForAMissingFile:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qd8-ar-CbA"/>
                                         </connections>
                                     </button>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wJH-zy-Sxd" userLabel="View - Filter_Container">
+                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wJH-zy-Sxd" userLabel="View - Filter_Container">
                                         <rect key="frame" x="0.0" y="313" width="200" height="146"/>
                                         <subviews>
                                             <button opaque="NO" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TN3-TK-cOL">

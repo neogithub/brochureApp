@@ -29,8 +29,7 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
-    arr_projects = [[NSMutableArray alloc] initWithObjects:@"All", nil];
-    [arr_projects addObjectsFromArray: arr_projectNames];
+    arr_projects = [[NSMutableArray alloc] initWithArray:arr_projectNames];
     searchResult = [[NSMutableArray alloc] initWithArray:arr_projects];
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     [self.tableView setSeparatorInset:UIEdgeInsetsZero];
@@ -46,9 +45,9 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    int theIndex = (int)[[selectedIndexDefault objectForKey:@"selectedIndex"] integerValue];
-    NSIndexPath *indexPath=[NSIndexPath indexPathForRow:theIndex inSection:0];
-    [self.tableView selectRowAtIndexPath:indexPath animated:NO  scrollPosition:UITableViewScrollPositionNone];
+//    int theIndex = (int)[[selectedIndexDefault objectForKey:@"selectedIndex"] integerValue];
+//    NSIndexPath *indexPath=[NSIndexPath indexPathForRow:theIndex inSection:0];
+//    [self.tableView selectRowAtIndexPath:indexPath animated:NO  scrollPosition:UITableViewScrollPositionNone];
     
     [self.tableView setContentOffset:CGPointMake(0.0, self.searchDisplayController.searchBar.frame.size.height)];
 }
@@ -63,7 +62,6 @@
 - (void)updateTableContent:(NSArray *)newContent
 {
     [arr_projects removeAllObjects];
-    [arr_projects addObject:@"All"];
     [arr_projects addObjectsFromArray:newContent];
     [self.tableView reloadData];
     

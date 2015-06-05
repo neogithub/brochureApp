@@ -78,20 +78,25 @@ NSMutableDictionary     *dict_projectByTypes = nil;
     [super viewDidLoad];
     
     /*
-     * Init a array as a demo data
+     * Init a array with all projects' names in alpha order
      */
     arr_projectNames = [[NSArray alloc] initWithArray:[[[LibraryAPI sharedInstance] getProjectNames]
                                                        sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)]];
+    /*
+     * Init a arry wit all projects' type (no duplicates) in alpha order
+     */
+    arr_porjectTypes = [[NSArray alloc] initWithArray:[[[LibraryAPI sharedInstance] getProjectTypes]
+                                                       sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)]];
     
-    arr_porjectTypes = [[NSArray alloc] initWithArray:[[LibraryAPI sharedInstance] getProjectTypes]];
-    
-    [arr_porjectTypes sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
-    
+    /*
+     * Create a dictionary:
+     * Key --> Project Type
+     * Object --> An array of projects of that type
+     */
     NSMutableArray *typeGroupes = [[NSMutableArray alloc] init];
     for (int i = 0; i < arr_porjectTypes.count; i++) {
         [typeGroupes addObject:[[LibraryAPI sharedInstance] getSelectedProjectByType:arr_porjectTypes[i]]];
     }
-    
     arr_projectOfAType = [[NSArray alloc] initWithArray:typeGroupes];
     
     dict_projectByTypes = [[NSMutableDictionary alloc] init];
@@ -109,7 +114,7 @@ NSMutableDictionary     *dict_projectByTypes = nil;
      * Set up side menu's table view
      */
     [self setUpSideTableView];
-    sectionNum = (int)arr_porjectTypes.count;
+    sectionNum = 1;//(int)arr_porjectTypes.count;
     selectedTableIndex = 0;
     
     /*
@@ -354,6 +359,9 @@ NSMutableDictionary     *dict_projectByTypes = nil;
  */
 - (void)didSelectedTheCell:(NSIndexPath *)index withTitle:(NSString *)title
 {
+    /*
+     * Under normal mode (no search)
+     */
     if (title == nil) {
         if (index.row == 0) {
             sectionNum = (int)arr_porjectTypes.count;
@@ -373,6 +381,9 @@ NSMutableDictionary     *dict_projectByTypes = nil;
         }
         selectedTableIndex = (int)index.row;
     }
+    /*
+     * Tap a cell under search mode
+     */
     else {
         sectionNum = 1;
         selectedTableIndex = (int)[arr_projectNames indexOfObject:title]+1;
@@ -396,7 +407,7 @@ NSMutableDictionary     *dict_projectByTypes = nil;
     NSArray *brochureArray = [dict_projectByTypes objectForKeyedSubscript: selectedItemType];
     for (Brochure *tmp in brochureArray) {
         if ([tmp.projectName isEqualToString: selectedItemName]) {
-            tapIndex = [brochureArray indexOfObjectIdenticalTo: tmp];
+            tapIndex = (int)[brochureArray indexOfObjectIdenticalTo: tmp];
         }
     }
     [self collectionView:_uic_mainCollection didSelectItemAtIndexPath:[NSIndexPath indexPathForRow:tapIndex inSection:0]];
@@ -413,18 +424,18 @@ NSMutableDictionary     *dict_projectByTypes = nil;
     /*
      * If a section is selected, according to tapped table cell index to load data
      */
-    if (sectionNum == 1) {
-        int typeIndex = [arr_porjectTypes indexOfObject: selectedItemType];
-        return [[arr_projectOfAType objectAtIndex: typeIndex] count];        
-    }
+//    if (sectionNum == 1) {
+//        int typeIndex = (int)[arr_porjectTypes indexOfObject: selectedItemType];
+//        return [[arr_projectOfAType objectAtIndex: typeIndex] count];        
+//    }
     /*
      * If selected "All" load all data from Dictionary
      */
-    else {
-        return [[arr_projectOfAType objectAtIndex: section] count];
-    }
+//    else {
+//        return [[arr_projectOfAType objectAtIndex: section] count];
+//    }
     
-    return 0;
+    return arr_projectNames.count;
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
@@ -443,37 +454,37 @@ NSMutableDictionary     *dict_projectByTypes = nil;
     {
         tmp = [[arr_projectOfAType objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
     }
-    galleryCell.titleLabel.text = tmp.projectName;
+    galleryCell.titleLabel.text = arr_projectNames[indexPath.row];//tmp.projectName;
     [galleryCell.titleLabel setFont:[UIFont systemFontOfSize:16]];
     return galleryCell;
 }
 
--(UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
-{
-    UICollectionReusableView *reusableview = nil;
-    
-    if (kind == UICollectionElementKindSectionHeader) {
-        CollectionHeaderView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderView" forIndexPath:indexPath];
-        NSString *title = [NSString new];
-        /*
-         * If selected "All" section
-         * Go through all keys
-         */
-        if (selectedTableIndex == 0) {
-            title = [arr_porjectTypes objectAtIndex: indexPath.section];
-        }
-        /*
-         * If selected specific one
-         * use "selectedTableIndex" to get the key
-         */
-        else {
-            title = selectedItemType;
-        }
-        headerView.title_label.text = [title uppercaseString];
-        reusableview = headerView;
-    }
-    return reusableview;
-}
+//-(UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
+//{
+//    UICollectionReusableView *reusableview = nil;
+//    
+//    if (kind == UICollectionElementKindSectionHeader) {
+//        CollectionHeaderView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderView" forIndexPath:indexPath];
+//        NSString *title = [NSString new];
+//        /*
+//         * If selected "All" section
+//         * Go through all keys
+//         */
+//        if (selectedTableIndex == 0) {
+//            title = [arr_porjectTypes objectAtIndex: indexPath.section];
+//        }
+//        /*
+//         * If selected specific one
+//         * use "selectedTableIndex" to get the key
+//         */
+//        else {
+//            title = selectedItemType;
+//        }
+//        headerView.title_label.text = [title uppercaseString];
+//        reusableview = headerView;
+//    }
+//    return reusableview;
+//}
 
 /*
  * Tap a cell to presnet detail viewcontroller's content
