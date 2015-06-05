@@ -18,6 +18,7 @@
 
 {
     NSArray                     *arr_rawData;
+    NSArray                     *arr_collectionData;
 }
 
 @property (weak, nonatomic) IBOutlet    UIButton                    *uib_backBtn;
@@ -54,6 +55,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     _uil_title.text = projectBrochure.projectName;
+    arr_collectionData = projectBrochure.projectGallery;
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -113,7 +115,7 @@
 - (IBAction)tapGalleryBtn:(id)sender {
     _gallery = [[XHGalleryViewController alloc] init];
     _gallery.delegate = self;
-    _gallery.startIndex = 0;
+    _gallery.startIndex = (int)[sender tag];
     _gallery.view.frame = self.view.bounds;
     _gallery.arr_rawData = [arr_rawData objectAtIndex:0];
 //    [self addChildViewController:_gallery];
@@ -132,22 +134,34 @@
 }
 
 #pragma mark - Gallery collection view delegate methods
--(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
     return 1;
 }
--(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 10;
+    return arr_collectionData.count;
 }
--(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
                  cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     UICollectionViewCell *galleryCell = [collectionView
                                 dequeueReusableCellWithReuseIdentifier:@"imageCell"
                                 forIndexPath:indexPath];
+    UIImageView *imageview = [[UIImageView alloc] initWithImage:[UIImage imageNamed:arr_collectionData[indexPath.row]]];
+    imageview.frame = galleryCell.bounds;
+    imageview.contentMode = UIViewContentModeScaleAspectFit;
+    [galleryCell addSubview: imageview];
     return galleryCell;
 }
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    UIButton *tmp = [UIButton new];
+    tmp.tag = indexPath.row;
+    [self tapGalleryBtn:tmp];
+}
+
 #pragma mark - Email Delegates
 -(void)prepareEmailData
 {
