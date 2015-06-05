@@ -14,6 +14,7 @@
                                     UICollectionViewDataSource,
                                     MFMailComposeViewControllerDelegate,
                                     MFMailComposeViewControllerDelegate,
+                                    UIDocumentInteractionControllerDelegate,
                                     XHGalleryDelegate>
 
 {
@@ -23,6 +24,7 @@
 
 @property (weak, nonatomic) IBOutlet    UIButton                    *uib_backBtn;
 @property (weak, nonatomic) IBOutlet    UICollectionView            *uic_galleryCollection;
+@property (weak, nonatomic) IBOutlet    UIImageView                 *uiiv_pdfThumb;
 
 @property (nonatomic, strong)           embEmailData                *emailData;
 @property (nonatomic, strong)           XHGalleryViewController     *gallery;
@@ -48,6 +50,10 @@
      */
     _uic_galleryCollection.delegate = self;
     _uic_galleryCollection.dataSource = self;
+    
+    UITapGestureRecognizer *tapOnPdf = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapOnPdfThumb:)];
+    _uiiv_pdfThumb.userInteractionEnabled = YES;
+    [_uiiv_pdfThumb addGestureRecognizer: tapOnPdf];
 }
 /*
  * Read data from parent ViewController (sectionIndex & rowIndex)
@@ -74,6 +80,20 @@
 }
 
 #pragma mark - Action of buttons
+
+- (void)tapOnPdfThumb:(UIGestureRecognizer *)gesture
+{
+
+}
+
+- (void)documentInteractionControllerDidDismissOptionsMenu:(UIDocumentInteractionController *)controller{
+    [[UIApplication sharedApplication] setStatusBarHidden:YES ];
+}
+
+- (UIViewController *)documentInteractionControllerViewControllerForPreview:(UIDocumentInteractionController *)controller
+{
+    return self;
+}
 
 - (IBAction)tapOnBackBtn:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];

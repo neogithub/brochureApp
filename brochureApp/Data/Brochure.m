@@ -20,6 +20,8 @@
 
 @synthesize projectUrl;
 
+@synthesize projectPdfFile;
+
 @synthesize projectThumb;
 
 @synthesize projectGallery;

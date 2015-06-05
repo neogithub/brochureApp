@@ -29,7 +29,7 @@
                                             @"price" : @"the price of this project",
                                             @"description" : @"the description of this project"
                                             };
-        brochure_sample1.projectUrl = @"www.neoscape.com";
+        brochure_sample1.projectUrl = @"http://www.urartuuniversity.com/content_images/pdf-sample.pdf";
         brochure_sample1.projectGallery = @[@"grfx_launching.jpg", @"grfx_launching.png"];
         brochure_sample1.projectCompanies = @[@"company1", @"company2"];
         brochure_sample1.projectThumb = nil;

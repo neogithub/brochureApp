@@ -18,7 +18,9 @@
 
 @property (nonatomic, retain) NSString      *projectType;       // Residence, Commercial, Mixed...
 
-@property (nonatomic, retain) NSString      *projectUrl;        // The link to fentch pdf data
+@property (nonatomic, retain) NSString      *projectUrl;        // The link to share pdf data
+
+@property (nonatomic, retain) NSString      *projectPdfFile;    // The PDF file
 
 @property (nonatomic, retain) NSData        *projectThumb;      //image data
 
