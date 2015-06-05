@@ -29,6 +29,7 @@
 		8279D6871B0FCD550087A7FD /* grfx_launching.png in Resources */ = {isa = PBXBuildFile; fileRef = 8279D6851B0FCD550087A7FD /* grfx_launching.png */; };
 		8280BCE91B1F310000085E70 /* Brochure.m in Sources */ = {isa = PBXBuildFile; fileRef = 8280BCE81B1F310000085E70 /* Brochure.m */; };
 		8286995D1B221E2400BDE47F /* ballston leasing book with cards-2.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 8286995C1B221E2400BDE47F /* ballston leasing book with cards-2.pdf */; };
+		828699601B22246800BDE47F /* brochure.json in Resources */ = {isa = PBXBuildFile; fileRef = 8286995F1B22246800BDE47F /* brochure.json */; };
 		82882A781B20A00800631FE0 /* galleryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 82882A771B20A00800631FE0 /* galleryCell.m */; };
 		82AA3B741B0E57AB0001020F /* ebZoomingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 82AA3B6B1B0E57AB0001020F /* ebZoomingScrollView.m */; };
 		82AA3B751B0E57AB0001020F /* embDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82AA3B6D1B0E57AB0001020F /* embDataViewController.m */; };
@@ -87,6 +88,7 @@
 		8280BCE71B1F310000085E70 /* Brochure.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Brochure.h; path = Data/Brochure.h; sourceTree = "<group>"; };
 		8280BCE81B1F310000085E70 /* Brochure.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Brochure.m; path = Data/Brochure.m; sourceTree = "<group>"; };
 		8286995C1B221E2400BDE47F /* ballston leasing book with cards-2.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = "ballston leasing book with cards-2.pdf"; path = "src/ballston leasing book with cards-2.pdf"; sourceTree = "<group>"; };
+		8286995F1B22246800BDE47F /* brochure.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = brochure.json; path = Data/brochure.json; sourceTree = "<group>"; };
 		82882A761B20A00800631FE0 /* galleryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = galleryCell.h; path = Utilities/galleryCell.h; sourceTree = "<group>"; };
 		82882A771B20A00800631FE0 /* galleryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = galleryCell.m; path = Utilities/galleryCell.m; sourceTree = "<group>"; };
 		82AA3B6A1B0E57AB0001020F /* ebZoomingScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ebZoomingScrollView.h; path = Utilities/ebZoomingScrollView.h; sourceTree = "<group>"; };
@@ -223,6 +225,7 @@
 				825C05761B1F3FB700830ADB /* LibraryAPI.m */,
 				825C05771B1F3FB700830ADB /* PersistencyManager.h */,
 				825C05781B1F3FB700830ADB /* PersistencyManager.m */,
+				8286995F1B22246800BDE47F /* brochure.json */,
 			);
 			name = Data;
 			sourceTree = "<group>";
@@ -342,6 +345,7 @@
 				8270B03B1B0CC2A30018D7BD /* LaunchScreen.xib in Resources */,
 				8270B0381B0CC2A30018D7BD /* Images.xcassets in Resources */,
 				8279D6861B0FCD550087A7FD /* grfx_launching.jpg in Resources */,
+				828699601B22246800BDE47F /* brochure.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

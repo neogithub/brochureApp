@@ -1,0 +1,52 @@
+[
+	{
+		"name" : "Victory Center",
+		"date" : "04-15-2015",
+		"type" : "residence",
+		"share_url"  : "www.neoscape.com",
+		"summary" : 
+			{
+				"location" : "the location",
+				"price" : "the price",
+				"description" : "the description",
+			},
+		"gallery" : 
+			[
+				{
+					"caption" : "Caption",
+					"file" : "grfx_launching.jpg",
+					"type" : "image"
+				},
+				{
+					"caption" : "Caption",
+					"file" : "grfx_launching.png",
+					"type" : "image"
+				}
+			]
+	},
+	{
+		"name" : "Ballston Quarter",
+		"date" : "05-30-2015",
+		"type" : "commercial",
+		"share_url"  : "www.neoscape.com",
+		"summary" : 
+			{
+				"location" : "the location",
+				"price" : "the price",
+				"description" : "the description",
+			},
+		"gallery" : 
+			[
+				{
+					"caption" : "Caption",
+					"file" : "grfx_launching.jpg",
+					"type" : "image"
+				},
+				{
+					"caption" : "Caption",
+					"file" : "grfx_launching.png",
+					"type" : "image"
+				}
+			]
+	}
+]
