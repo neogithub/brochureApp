@@ -47,8 +47,6 @@
      */
     _uic_galleryCollection.delegate = self;
     _uic_galleryCollection.dataSource = self;
-
-    // Do any additional setup after loading the view.
 }
 /*
  * Read data from parent ViewController (sectionIndex & rowIndex)

@@ -24,9 +24,13 @@
         brochure_sample1.projectName = @"Victory Center";
         brochure_sample1.projectDate = @"04-15-2015";
         brochure_sample1.projectType = @"residence";
-        brochure_sample1.projectSummary = @"Victory Center Project Summary";
+        brochure_sample1.projectSummary = @{
+                                            @"location" : @"the location of this project",
+                                            @"price" : @"the price of this project",
+                                            @"description" : @"the description of this project"
+                                            };
         brochure_sample1.projectUrl = @"www.neoscape.com";
-        brochure_sample1.projectGallery = @[@"image1", @"image2"];
+        brochure_sample1.projectGallery = @[@"grfx_launching.jpg", @"grfx_launching.png"];
         brochure_sample1.projectCompanies = @[@"company1", @"company2"];
         brochure_sample1.projectThumb = nil;
         
@@ -34,9 +38,13 @@
         brochure_sample2.projectName = @"Ballston Quarter";
         brochure_sample2.projectDate = @"05-30-2015";
         brochure_sample2.projectType = @"commercial";
-        brochure_sample2.projectSummary = @"Ballston Quarter Project Summary";
+        brochure_sample2.projectSummary = @{
+                                            @"location" : @"the location of this project",
+                                            @"price" : @"the price of this project",
+                                            @"description" : @"the description of this project"
+                                            };
         brochure_sample2.projectUrl = @"www.neoscape.com";
-        brochure_sample2.projectGallery = @[@"image1", @"image2"];
+        brochure_sample2.projectGallery = @[@"grfx_launching.jpg", @"grfx_launching.png"];
         brochure_sample2.projectCompanies = @[@"company1", @"company2"];
         brochure_sample2.projectThumb = nil;
         
@@ -44,9 +52,13 @@
         brochure_sample3.projectName = @"1325 Boylston";
         brochure_sample3.projectDate = @"06-30-2014";
         brochure_sample3.projectType = @"master plan";
-        brochure_sample3.projectSummary = @"1325 Boylston Summary";
+        brochure_sample3.projectSummary = @{
+                                            @"location" : @"the location of this project",
+                                            @"price" : @"the price of this project",
+                                            @"description" : @"the description of this project"
+                                            };
         brochure_sample3.projectUrl = @"www.neoscape.com";
-        brochure_sample3.projectGallery = @[@"image1", @"image2"];
+        brochure_sample3.projectGallery = @[@"grfx_launching.jpg", @"grfx_launching.png"];
         brochure_sample3.projectCompanies = @[@"company1", @"company2"];
         brochure_sample3.projectThumb = nil;
         
@@ -54,9 +66,13 @@
         brochure_sample4.projectName = @"Pike and Rose";
         brochure_sample4.projectDate = @"01-30-2012";
         brochure_sample4.projectType = @"mixed";
-        brochure_sample4.projectSummary = @"Pike and Rose Summary";
+        brochure_sample4.projectSummary = @{
+                                            @"location" : @"the location of this project",
+                                            @"price" : @"the price of this project",
+                                            @"description" : @"the description of this project"
+                                            };
         brochure_sample4.projectUrl = @"www.neoscape.com";
-        brochure_sample4.projectGallery = @[@"image1", @"image2"];
+        brochure_sample4.projectGallery = @[@"grfx_launching.jpg", @"grfx_launching.png"];
         brochure_sample4.projectCompanies = @[@"company1", @"company2"];
         brochure_sample4.projectThumb = nil;
         
@@ -64,9 +80,13 @@
         brochure_sample5.projectName = @"Assembly Row";
         brochure_sample5.projectDate = @"09-30-2012";
         brochure_sample5.projectType = @"master plan";
-        brochure_sample5.projectSummary = @"Assembly Row Summary";
+        brochure_sample5.projectSummary = @{
+                                            @"location" : @"the location of this project",
+                                            @"price" : @"the price of this project",
+                                            @"description" : @"the description of this project"
+                                            };
         brochure_sample5.projectUrl = @"www.neoscape.com";
-        brochure_sample5.projectGallery = @[@"image1", @"image2"];
+        brochure_sample5.projectGallery = @[@"grfx_launching.jpg", @"grfx_launching.png"];
         brochure_sample5.projectCompanies = @[@"company1", @"company2"];
         brochure_sample5.projectThumb = nil;
         
@@ -74,9 +94,13 @@
         brochure_sample6.projectName = @"Skanska";
         brochure_sample6.projectDate = @"11-30-2014";
         brochure_sample6.projectType = @"master plan";
-        brochure_sample6.projectSummary = @"Skanska Summary";
+        brochure_sample6.projectSummary = @{
+                                            @"location" : @"the location of this project",
+                                            @"price" : @"the price of this project",
+                                            @"description" : @"the description of this project"
+                                            };
         brochure_sample6.projectUrl = @"www.neoscape.com";
-        brochure_sample6.projectGallery = @[@"image1", @"image2"];
+        brochure_sample6.projectGallery = @[@"grfx_launching.jpg", @"grfx_launching.png"];
         brochure_sample6.projectCompanies = @[@"company1", @"company2"];
         brochure_sample6.projectThumb = nil;
         
