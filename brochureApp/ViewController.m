@@ -282,7 +282,7 @@ NSMutableDictionary     *dict_projectByTypes = nil;
     _emailData = [[embEmailData alloc] init];
     _emailData.to = @[@"evan.buxton@neoscape.com", @"xiaohe.hu@neoscape.com"];
     _emailData.subject = @"Missing Brochure File Needed";
-    _emailData.body = @"Project Name: \n\nFinished Time: \n\nPlease add the file, thank you!";
+    _emailData.body = @"Project Name: \n\nFinished Time: \n";
     [self prepareEmailData];
 }
 

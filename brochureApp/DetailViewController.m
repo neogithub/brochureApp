@@ -119,7 +119,7 @@
     _emailData = [[embEmailData alloc] init];
     _emailData.to = nil;
     _emailData.subject = nil;
-    _emailData.body = nil;//kMAILBODY;
+    _emailData.body = [NSString stringWithFormat:@"<a href = '%@'>Download the PDF file</a><br />",projectBrochure.projectUrl];
     [self prepareEmailData];
 }
 
