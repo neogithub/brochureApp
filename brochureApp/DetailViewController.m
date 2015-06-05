@@ -10,19 +10,25 @@
 #import "embEmailData.h"
 #import <MessageUI/MessageUI.h>
 #import "XHGalleryViewController.h"
-@interface DetailViewController () <MFMailComposeViewControllerDelegate, MFMailComposeViewControllerDelegate, XHGalleryDelegate>
+@interface DetailViewController () <UICollectionViewDelegate,
+                                    UICollectionViewDataSource,
+                                    MFMailComposeViewControllerDelegate,
+                                    MFMailComposeViewControllerDelegate,
+                                    XHGalleryDelegate>
 
 {
     NSArray                     *arr_rawData;
 }
 
 @property (weak, nonatomic) IBOutlet    UIButton                    *uib_backBtn;
+@property (weak, nonatomic) IBOutlet    UICollectionView            *uic_galleryCollection;
+
 @property (nonatomic, strong)           embEmailData                *emailData;
 @property (nonatomic, strong)           XHGalleryViewController     *gallery;
 @end
 
 @implementation DetailViewController
-@synthesize sectionNum, rowNum;
+@synthesize projectBrochure;
 
 - (BOOL)prefersStatusBarHidden
 {
@@ -35,6 +41,12 @@
     if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
         self.navigationController.interactivePopGestureRecognizer.enabled = YES;
     }
+    
+    /*
+     * Set collection view's delegate & datasource
+     */
+    _uic_galleryCollection.delegate = self;
+    _uic_galleryCollection.dataSource = self;
 
     // Do any additional setup after loading the view.
 }
@@ -43,7 +55,7 @@
  */
 - (void)viewWillAppear:(BOOL)animated
 {
-    _uil_title.text = [NSString stringWithFormat:@"Section %i row %i", sectionNum+1, rowNum+1];
+    _uil_title.text = projectBrochure.projectName;
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -67,6 +79,27 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+/*
+ * Tap on the summery button
+ * The action is defined in storyboard
+ */
+- (IBAction)showSummary:(id)sender {
+    
+}
+
+/*
+ * Tap the share(email) button
+ * Currenly all data for email is empty
+ */
+- (IBAction)tapShareBtn:(id)sender {
+    _emailData = [[embEmailData alloc] init];
+    _emailData.to = nil;
+    _emailData.subject = nil;
+    _emailData.body = nil;//kMAILBODY;
+    [self prepareEmailData];
+}
+
+#pragma mark - Gallery actions and delegate method
 /*
  * Read gallery data from plist
  */
@@ -100,26 +133,23 @@
   */
 }
 
-/*
- * Tap on the summery button
- * The action is defined in storyboard
- */
-- (IBAction)showSummary:(id)sender {
-    
+#pragma mark - Gallery collection view delegate methods
+-(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
+{
+    return 1;
 }
-
-/*
- * Tap the share(email) button
- * Currenly all data for email is empty
- */
-- (IBAction)tapShareBtn:(id)sender {
-    _emailData = [[embEmailData alloc] init];
-    _emailData.to = nil;
-    _emailData.subject = nil;
-    _emailData.body = nil;//kMAILBODY;
-    [self prepareEmailData];
+-(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    return 10;
 }
-
+-(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
+                 cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    UICollectionViewCell *galleryCell = [collectionView
+                                dequeueReusableCellWithReuseIdentifier:@"imageCell"
+                                forIndexPath:indexPath];
+    return galleryCell;
+}
 #pragma mark - Email Delegates
 -(void)prepareEmailData
 {

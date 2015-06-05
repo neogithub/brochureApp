@@ -444,16 +444,6 @@ NSMutableDictionary     *dict_projectByTypes = nil;
     galleryCell *galleryCell = [collectionView
                                        dequeueReusableCellWithReuseIdentifier:@"myCell"
                                        forIndexPath:indexPath];
-    Brochure *tmp;
-    if (sectionNum == 1)
-    {
-        NSArray *projects = [dict_projectByTypes objectForKey: selectedItemType];
-        tmp = [projects objectAtIndex:indexPath.row];
-    }
-    else
-    {
-        tmp = [[arr_projectOfAType objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
-    }
     galleryCell.titleLabel.text = arr_projectNames[indexPath.row];//tmp.projectName;
     [galleryCell.titleLabel setFont:[UIFont systemFontOfSize:16]];
     return galleryCell;
@@ -494,9 +484,9 @@ NSMutableDictionary     *dict_projectByTypes = nil;
 {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     _detail_vc = [storyboard instantiateViewControllerWithIdentifier:@"DetailViewController"];
-    _detail_vc.view.frame = self.view.bounds;
-    _detail_vc.sectionNum = (int)indexPath.section;
-    _detail_vc.rowNum = (int)indexPath.row;
+    _detail_vc.view.frame = self.view.bounds;;
+    Brochure *selected = [[[LibraryAPI sharedInstance] getSelectedProjectByName:arr_projectNames[indexPath.row]] objectAtIndex:0];
+    _detail_vc.projectBrochure = selected;
     [self.navigationController pushViewController:_detail_vc animated:YES];
 //    [self presentViewController:_detail_vc animated:YES completion:^(void){     }];
 

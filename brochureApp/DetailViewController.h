@@ -7,9 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "Brochure.h"
 @interface DetailViewController : UIViewController
-@property (readwrite, nonatomic) int         sectionNum;
-@property (readwrite, nonatomic) int         rowNum;
-@property (weak, nonatomic) IBOutlet UILabel *uil_title;
+@property (nonatomic, strong)        Brochure   *projectBrochure;
+@property (weak, nonatomic) IBOutlet UILabel    *uil_title;
 @end
