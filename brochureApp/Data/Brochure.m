@@ -20,7 +20,7 @@
 
 @synthesize projectUrl;
 
-@synthesize projectPdfFile;
+@synthesize projectPdfFiles;
 
 @synthesize projectThumb;
 

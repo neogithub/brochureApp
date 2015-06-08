@@ -39,6 +39,8 @@
 		82BE2DDE1B0E1B3B0018D05B /* XHGalleryUIControls.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82BE2DDD1B0E1B3B0018D05B /* XHGalleryUIControls.framework */; };
 		82BE2DE11B0E1DF00018D05B /* SummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82BE2DE01B0E1DF00018D05B /* SummaryViewController.m */; };
 		82C835D61B25E57300DCFE1D /* summaryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 82C835D51B25E57300DCFE1D /* summaryCell.m */; };
+		82C835D91B25EB2B00DCFE1D /* xhViewStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 82C835D81B25EB2B00DCFE1D /* xhViewStack.m */; };
+		82C835DB1B25F4D200DCFE1D /* 1325Boylston_Floorplans_(Low).pdf in Resources */ = {isa = PBXBuildFile; fileRef = 82C835DA1B25F4D200DCFE1D /* 1325Boylston_Floorplans_(Low).pdf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -107,6 +109,9 @@
 		82BE2DE01B0E1DF00018D05B /* SummaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SummaryViewController.m; sourceTree = "<group>"; };
 		82C835D41B25E57300DCFE1D /* summaryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = summaryCell.h; path = Utilities/summaryCell.h; sourceTree = "<group>"; };
 		82C835D51B25E57300DCFE1D /* summaryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = summaryCell.m; path = Utilities/summaryCell.m; sourceTree = "<group>"; };
+		82C835D71B25EB2B00DCFE1D /* xhViewStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = xhViewStack.h; path = Utilities/xhViewStack.h; sourceTree = "<group>"; };
+		82C835D81B25EB2B00DCFE1D /* xhViewStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = xhViewStack.m; path = Utilities/xhViewStack.m; sourceTree = "<group>"; };
+		82C835DA1B25F4D200DCFE1D /* 1325Boylston_Floorplans_(Low).pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = "1325Boylston_Floorplans_(Low).pdf"; path = "src/1325Boylston_Floorplans_(Low).pdf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -217,6 +222,8 @@
 				82882A771B20A00800631FE0 /* galleryCell.m */,
 				82C835D41B25E57300DCFE1D /* summaryCell.h */,
 				82C835D51B25E57300DCFE1D /* summaryCell.m */,
+				82C835D71B25EB2B00DCFE1D /* xhViewStack.h */,
+				82C835D81B25EB2B00DCFE1D /* xhViewStack.m */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -238,6 +245,7 @@
 		8286995E1B221E2D00BDE47F /* src */ = {
 			isa = PBXGroup;
 			children = (
+				82C835DA1B25F4D200DCFE1D /* 1325Boylston_Floorplans_(Low).pdf */,
 				8286995C1B221E2400BDE47F /* ballston leasing book with cards-2.pdf */,
 				8279D6841B0FCD550087A7FD /* grfx_launching.jpg */,
 				8279D6851B0FCD550087A7FD /* grfx_launching.png */,
@@ -348,6 +356,7 @@
 				825297741B0FC90700E98C42 /* photoData.plist in Resources */,
 				8286995D1B221E2400BDE47F /* ballston leasing book with cards-2.pdf in Resources */,
 				8270B03B1B0CC2A30018D7BD /* LaunchScreen.xib in Resources */,
+				82C835DB1B25F4D200DCFE1D /* 1325Boylston_Floorplans_(Low).pdf in Resources */,
 				8270B0381B0CC2A30018D7BD /* Images.xcassets in Resources */,
 				8279D6861B0FCD550087A7FD /* grfx_launching.jpg in Resources */,
 				828699601B22246800BDE47F /* brochure.json in Resources */,
@@ -368,6 +377,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				82C835D91B25EB2B00DCFE1D /* xhViewStack.m in Sources */,
 				8270B0331B0CC2A30018D7BD /* ViewController.m in Sources */,
 				82AA3B771B0E57AB0001020F /* FGalleryPhotoView.m in Sources */,
 				8270B0301B0CC2A30018D7BD /* AppDelegate.m in Sources */,

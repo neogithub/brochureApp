@@ -4,7 +4,15 @@
 		"date" : "04-15-2015",
 		"type" : "residence",
 		"shareUrl"  : "http://www.neoscape.com",
-		"pdf" : "ballston leasing book with cards-2.pdf",
+		"pdf" : 
+			[
+				{
+					"file" : "1325Boylston_Floorplans_(Low).pdf"
+				},
+				{
+					"file" : "ballston leasing book with cards-2.pdf"
+				}
+			],
 		"summary" : 
 			{
 				"location" : "the location",
@@ -50,7 +58,15 @@
 		"date" : "05-30-2015",
 		"type" : "commercial",
 		"shareUrl"  : "www.neoscape.com",
-		"pdf" : "ballston leasing book with cards-2.pdf",
+		"pdf" :
+			[
+				{
+					"file" : "1325Boylston_Floorplans_(Low).pdf"
+				},
+				{
+					"file" : "ballston leasing book with cards-2.pdf"
+				}
+			],
 		"summary" : 
 			{
 				"location" : "the location",
@@ -96,7 +112,15 @@
 		"date" : "06-30-2014",
 		"type" : "master plan",
 		"shareUrl"  : "www.neoscape.com",
-		"pdf" : "ballston leasing book with cards-2.pdf",
+		"pdf" :
+			[
+				{
+					"file" : "1325Boylston_Floorplans_(Low).pdf"
+				},
+				{
+					"file" : "ballston leasing book with cards-2.pdf"
+				}
+			],
 		"summary" : 
 			{
 				"location" : "the location",
@@ -142,7 +166,15 @@
 		"date" : "05-30-2015",
 		"type" : "commercial",
 		"shareUrl"  : "www.neoscape.com",
-		"pdf" : "ballston leasing book with cards-2.pdf",
+		"pdf" :
+			[
+				{
+					"file" : "1325Boylston_Floorplans_(Low).pdf"
+				},
+				{
+					"file" : "ballston leasing book with cards-2.pdf"
+				}
+			],
 		"summary" : 
 			{
 				"location" : "the location",
@@ -188,7 +220,15 @@
 		"date" : "05-30-2015",
 		"type" : "commercial",
 		"shareUrl"  : "www.neoscape.com",
-		"pdf" : "ballston leasing book with cards-2.pdf",
+		"pdf" :
+			[
+				{
+					"file" : "1325Boylston_Floorplans_(Low).pdf"
+				},
+				{
+					"file" : "ballston leasing book with cards-2.pdf"
+				}
+			],
 		"summary" : 
 			{
 				"location" : "the location",
@@ -234,7 +274,15 @@
 		"date" : "05-30-2015",
 		"type" : "commercial",
 		"shareUrl"  : "www.neoscape.com",
-		"pdf" : "ballston leasing book with cards-2.pdf",
+		"pdf" :
+			[
+				{
+					"file" : "1325Boylston_Floorplans_(Low).pdf"
+				},
+				{
+					"file" : "ballston leasing book with cards-2.pdf"
+				}
+			],
 		"summary" : 
 			{
 				"location" : "the location",

@@ -20,7 +20,7 @@
 
 @property (nonatomic, retain) NSString      *projectUrl;        // The link to share pdf data
 
-@property (nonatomic, retain) NSString      *projectPdfFile;    // The PDF file
+@property (nonatomic, retain) NSArray       *projectPdfFiles;    // The PDF files array
 
 @property (nonatomic, retain) NSData        *projectThumb;      //image data
 

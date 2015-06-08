@@ -88,6 +88,8 @@ NSMutableDictionary     *dict_projectByTypes = nil;
     arr_porjectTypes = [[NSArray alloc] initWithArray:[[[LibraryAPI sharedInstance] getProjectTypes]
                                                        sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)]];
     
+    NSLog(@"the projects are %@", arr_projectNames);
+    
     /*
      * Create a dictionary:
      * Key --> Project Type

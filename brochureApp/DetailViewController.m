@@ -11,6 +11,8 @@
 #import <MessageUI/MessageUI.h>
 #import "XHGalleryViewController.h"
 #import "SummaryViewController.h"
+#import "xhViewStack.h"
+
 @interface DetailViewController () <UICollectionViewDelegate,
                                     UICollectionViewDataSource,
                                     MFMailComposeViewControllerDelegate,
@@ -84,11 +86,11 @@
 
 - (void)tapOnPdfThumb:(UIGestureRecognizer *)gesture
 {
-    NSString *fileToOpen = [[NSBundle mainBundle] pathForResource:[projectBrochure.projectPdfFile stringByDeletingPathExtension] ofType:@"pdf"];
-    NSURL *url = [NSURL fileURLWithPath:fileToOpen];
-    UIDocumentInteractionController* preview = [UIDocumentInteractionController interactionControllerWithURL:url];
-    preview.delegate = self;
-    [preview presentPreviewAnimated:YES];
+//    NSString *fileToOpen = [[NSBundle mainBundle] pathForResource:[projectBrochure.projectPdfFile stringByDeletingPathExtension] ofType:@"pdf"];
+//    NSURL *url = [NSURL fileURLWithPath:fileToOpen];
+//    UIDocumentInteractionController* preview = [UIDocumentInteractionController interactionControllerWithURL:url];
+//    preview.delegate = self;
+//    [preview presentPreviewAnimated:YES];
 }
 
 - (void)documentInteractionControllerDidDismissOptionsMenu:(UIDocumentInteractionController *)controller{
@@ -145,7 +147,7 @@
     _gallery.delegate = self;
     _gallery.startIndex = (int)[sender tag];
     _gallery.view.frame = self.view.bounds;
-    _gallery.arr_rawData = [arr_rawData objectAtIndex:0];
+//    _gallery.arr_rawData = [arr_rawData objectAtIndex:0];
 //    [self addChildViewController:_gallery];
 //    [self.view addSubview: _gallery.view];
     [self.navigationController pushViewController:_gallery animated:YES];
