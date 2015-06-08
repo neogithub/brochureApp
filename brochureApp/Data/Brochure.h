@@ -22,7 +22,7 @@
 
 @property (nonatomic, retain) NSArray       *projectPdfFiles;    // The PDF files array
 
-@property (nonatomic, retain) NSData        *projectThumb;      //image data
+@property (nonatomic, retain) NSArray       *projectThumbs;      // Brochure thumb images
 
 @property (nonatomic, retain) NSArray       *projectGallery;    // array of image data
 

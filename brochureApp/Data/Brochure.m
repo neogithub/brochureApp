@@ -22,7 +22,7 @@
 
 @synthesize projectPdfFiles;
 
-@synthesize projectThumb;
+@synthesize projectThumbs;
 
 @synthesize projectGallery;
 

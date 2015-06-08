@@ -27,7 +27,6 @@
                                            JSONObjectWithData:allCoursesData
                                            options:NSJSONReadingMutableContainers
                                            error:&error];
-        NSLog(@"the raw data is %@", rawData);
         
         
         for (int i = 0; i < rawData.count; i++) {
@@ -40,10 +39,9 @@
             brochure.projectSummary = brochureData[@"summary"];
             brochure.projectUrl = brochureData[@"shareUrl"];
             brochure.projectGallery = brochureData[@"gallery"];
+            brochure.projectThumbs = brochureData[@"thumbs"];
             //Need to add to json
             brochure.projectCompanies = @[@"company1", @"company2"];
-            //Need to add to json
-            brochure.projectThumb = nil;
             [brochures addObject:brochure];
         }
         
@@ -195,7 +193,7 @@
     
     _selectedBrochure.projectUrl = [data objectForKey:@"url"];
     
-    _selectedBrochure.projectThumb = [data objectForKey:@"thumb"];
+    _selectedBrochure.projectThumbs = [data objectForKey:@"thumb"];
     
     _selectedBrochure.projectGallery = [data objectForKey:@"gallery"];
     

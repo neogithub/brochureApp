@@ -18,11 +18,13 @@
                                     MFMailComposeViewControllerDelegate,
                                     MFMailComposeViewControllerDelegate,
                                     UIDocumentInteractionControllerDelegate,
-                                    XHGalleryDelegate>
+                                    XHGalleryDelegate,
+                                    xhViewStackDelegate>
 
 {
     NSArray                     *arr_rawData;
     NSArray                     *arr_collectionData;
+    xhViewStack                 *stackView;
 }
 
 @property (weak, nonatomic) IBOutlet    UIButton                    *uib_backBtn;
@@ -65,6 +67,7 @@
 {
     _uil_title.text = projectBrochure.projectName;
     arr_collectionData = [projectBrochure.projectGallery valueForKey:@"file"];
+    [self createStackView];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -80,6 +83,21 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - Create Stack view for pdf thumbs
+- (void)createStackView
+{
+    stackView = [[xhViewStack alloc] initWithFrame:_uiiv_pdfThumb.bounds andImages:projectBrochure.projectThumbs];
+    stackView.delegate = self;
+    stackView.startIndex = 0;
+    [_uiiv_pdfThumb addSubview: stackView];
+}
+
+- (void)didFinishedSwippingViewStack:(xhViewStack *)viewStack
+{
+    int currentPage = [viewStack getCurrentPageIndex];
+    NSLog(@"\n\nThe current page is %i", currentPage);
 }
 
 #pragma mark - Action of buttons
@@ -147,7 +165,7 @@
     _gallery.delegate = self;
     _gallery.startIndex = (int)[sender tag];
     _gallery.view.frame = self.view.bounds;
-//    _gallery.arr_rawData = [arr_rawData objectAtIndex:0];
+    _gallery.arr_rawData = projectBrochure.projectGallery;//[arr_rawData objectAtIndex:0];
 //    [self addChildViewController:_gallery];
 //    [self.view addSubview: _gallery.view];
     [self.navigationController pushViewController:_gallery animated:YES];

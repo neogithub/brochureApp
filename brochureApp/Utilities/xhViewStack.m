@@ -76,11 +76,14 @@ static float    backAlpha                   = 1.7;
         uiv_container.layer.shadowColor = [UIColor blackColor].CGColor;
         uiv_container.tag = i+10;
         
-        ebZoomingScrollView *uis_scrollView = [[ebZoomingScrollView alloc] initWithFrame:uiv_container.bounds image:_arr_mapImg[i] shouldZoom:YES];
-        uis_scrollView.clipsToBounds = YES;
-        uis_scrollView.userInteractionEnabled = YES;
-        uis_scrollView.delegate = self;
-        uis_scrollView.tag = 1;
+//        ebZoomingScrollView *uis_scrollView = [[ebZoomingScrollView alloc] initWithFrame:uiv_container.bounds image:_arr_mapImg[i] shouldZoom:YES];
+//        uis_scrollView.clipsToBounds = YES;
+//        uis_scrollView.userInteractionEnabled = YES;
+//        uis_scrollView.delegate = self;
+//        uis_scrollView.tag = 1;
+        UIImage *content = [UIImage imageNamed:[[_arr_rawImg objectAtIndex:i] objectForKey:@"file"]];
+        UIImageView *uiiv_image = [[UIImageView alloc] initWithImage:content];
+        uiiv_image.frame = uiv_container.bounds;
         
         if (i != _arr_mapImg.count - 1) {
             uiv_container.center = CGPointMake(uiv_container.center.x, uiv_container.center.y - 40);
@@ -92,7 +95,7 @@ static float    backAlpha                   = 1.7;
         }
         [self addSwipeToScr:uiv_container];
         
-        [uiv_container addSubview: uis_scrollView];
+        [uiv_container addSubview: uiiv_image];
         [self addSubview: uiv_container];
     }
     [self updateTopView];
