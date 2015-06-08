@@ -307,7 +307,6 @@
                                 </state>
                                 <connections>
                                     <action selector="showSummary:" destination="qCc-Y6-SPe" eventType="touchUpInside" id="psc-si-D20"/>
-                                    <segue destination="btL-LP-7hn" kind="presentation" id="eij-2h-gfo"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7MJ-Z6-DqQ">
@@ -435,20 +434,38 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="O6h-rX-CZt">
                                 <rect key="frame" x="75" y="28" width="509" height="552"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="E9F-02-2z7">
-                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="itemSize" width="196" height="150"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="3jm-tU-hZ6">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="summaryCell" id="3jm-tU-hZ6" customClass="summaryCell">
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="196" height="150"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fsW-ai-A9x">
+                                                    <rect key="frame" x="8" y="54" width="180" height="42"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <color key="backgroundColor" red="1" green="0.018931817279999999" blue="0.0036962686020000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="fsW-ai-A9x" firstAttribute="top" secondItem="3jm-tU-hZ6" secondAttribute="topMargin" constant="46" id="0lc-p1-9ln"/>
+                                            <constraint firstItem="fsW-ai-A9x" firstAttribute="leading" secondItem="3jm-tU-hZ6" secondAttribute="leadingMargin" id="332-k2-mqD"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="fsW-ai-A9x" secondAttribute="bottom" constant="46" id="GAS-58-eCe"/>
+                                            <constraint firstItem="fsW-ai-A9x" firstAttribute="trailing" secondItem="3jm-tU-hZ6" secondAttribute="trailingMargin" id="HEe-7h-Pkm"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="cellTitle" destination="fsW-ai-A9x" id="AW3-EF-1Zq"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -463,6 +480,9 @@
                             <constraint firstItem="0L4-Kz-4ZY" firstAttribute="leading" secondItem="0P8-Ww-8SO" secondAttribute="leadingMargin" id="sPr-pq-Gtv"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="uic_summaryColletion" destination="O6h-rX-CZt" id="vds-q4-39x"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a0r-Pv-D86" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

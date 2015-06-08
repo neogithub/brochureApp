@@ -10,4 +10,6 @@
 
 @interface SummaryViewController : UIViewController
 
+@property (nonatomic, strong) NSDictionary      *dict_summaryData;
+
 @end

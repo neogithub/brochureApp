@@ -10,6 +10,7 @@
 #import "embEmailData.h"
 #import <MessageUI/MessageUI.h>
 #import "XHGalleryViewController.h"
+#import "SummaryViewController.h"
 @interface DetailViewController () <UICollectionViewDelegate,
                                     UICollectionViewDataSource,
                                     MFMailComposeViewControllerDelegate,
@@ -25,7 +26,7 @@
 @property (weak, nonatomic) IBOutlet    UIButton                    *uib_backBtn;
 @property (weak, nonatomic) IBOutlet    UICollectionView            *uic_galleryCollection;
 @property (weak, nonatomic) IBOutlet    UIImageView                 *uiiv_pdfThumb;
-
+@property (nonatomic, strong)           SummaryViewController       *summaryView;
 @property (nonatomic, strong)           embEmailData                *emailData;
 @property (nonatomic, strong)           XHGalleryViewController     *gallery;
 @end
@@ -108,7 +109,10 @@
  * The action is defined in storyboard
  */
 - (IBAction)showSummary:(id)sender {
-    NSLog(@"the summary is %@", projectBrochure.projectSummary);
+    _summaryView = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"SummaryViewController"];
+    _summaryView.view.frame = self.view.bounds;
+    _summaryView.dict_summaryData = [[NSDictionary alloc] initWithDictionary:projectBrochure.projectSummary];
+    [self presentViewController:_summaryView animated:YES completion:^(void){   }];
 }
 
 /*

@@ -38,6 +38,7 @@
 		82AA3B781B0E57AB0001020F /* XHGalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82AA3B731B0E57AB0001020F /* XHGalleryViewController.m */; };
 		82BE2DDE1B0E1B3B0018D05B /* XHGalleryUIControls.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82BE2DDD1B0E1B3B0018D05B /* XHGalleryUIControls.framework */; };
 		82BE2DE11B0E1DF00018D05B /* SummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82BE2DE01B0E1DF00018D05B /* SummaryViewController.m */; };
+		82C835D61B25E57300DCFE1D /* summaryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 82C835D51B25E57300DCFE1D /* summaryCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,6 +105,8 @@
 		82BE2DDD1B0E1B3B0018D05B /* XHGalleryUIControls.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = XHGalleryUIControls.framework; sourceTree = "<group>"; };
 		82BE2DDF1B0E1DF00018D05B /* SummaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SummaryViewController.h; sourceTree = "<group>"; };
 		82BE2DE01B0E1DF00018D05B /* SummaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SummaryViewController.m; sourceTree = "<group>"; };
+		82C835D41B25E57300DCFE1D /* summaryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = summaryCell.h; path = Utilities/summaryCell.h; sourceTree = "<group>"; };
+		82C835D51B25E57300DCFE1D /* summaryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = summaryCell.m; path = Utilities/summaryCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -212,6 +215,8 @@
 				822F07591B1621BA005EF909 /* XHSideMenuTableViewController.m */,
 				82882A761B20A00800631FE0 /* galleryCell.h */,
 				82882A771B20A00800631FE0 /* galleryCell.m */,
+				82C835D41B25E57300DCFE1D /* summaryCell.h */,
+				82C835D51B25E57300DCFE1D /* summaryCell.m */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -373,6 +378,7 @@
 				82AA3B781B0E57AB0001020F /* XHGalleryViewController.m in Sources */,
 				82AA3B761B0E57AB0001020F /* embModelController.m in Sources */,
 				8270B0561B0CDFB50018D7BD /* CollectionHeaderView.m in Sources */,
+				82C835D61B25E57300DCFE1D /* summaryCell.m in Sources */,
 				8252976D1B0F7AD300E98C42 /* xhWebViewController.m in Sources */,
 				825C057A1B1F3FB700830ADB /* PersistencyManager.m in Sources */,
 				822F075A1B1621BA005EF909 /* XHSideMenuTableViewController.m in Sources */,
