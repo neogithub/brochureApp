@@ -67,7 +67,9 @@
 {
     _uil_title.text = projectBrochure.projectName;
     arr_collectionData = [projectBrochure.projectGallery valueForKey:@"file"];
-    [self createStackView];
+    if (stackView == nil) {
+        [self createStackView];
+    }
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -96,8 +98,26 @@
 
 - (void)didFinishedSwippingViewStack:(xhViewStack *)viewStack
 {
-    int currentPage = [viewStack getCurrentPageIndex];
-    NSLog(@"\n\nThe current page is %i", currentPage);
+    return;
+}
+
+- (void)didTapOnImage:(UIView *)theView
+{
+    int currentPage = [stackView getCurrentPageIndex];
+    NSLog(@"\n\n the tapped view is %i", currentPage);
+    [self loadBrochureFile: currentPage];
+}
+
+- (void)loadBrochureFile:(int)index
+{
+    int convertedIndex = abs(index - ((int)projectBrochure.projectPdfFiles.count - 1));
+    NSString *fileName = [projectBrochure.projectPdfFiles[convertedIndex] objectForKey:@"file"];
+    NSString *fileToOpen = [[NSBundle mainBundle] pathForResource:[fileName stringByDeletingPathExtension] ofType:@"pdf"];
+    NSURL *url = [NSURL fileURLWithPath:fileToOpen];
+    UIDocumentInteractionController* preview = [UIDocumentInteractionController interactionControllerWithURL:url];
+    preview.delegate = self;
+    [preview presentPreviewAnimated:YES];
+
 }
 
 #pragma mark - Action of buttons

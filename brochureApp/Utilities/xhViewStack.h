@@ -10,6 +10,7 @@
 @class xhViewStack;
 @protocol xhViewStackDelegate
 - (void)didFinishedSwippingViewStack:(xhViewStack *)viewStack;
+- (void)didTapOnImage:(UIView *)theView;
 @end
 
 

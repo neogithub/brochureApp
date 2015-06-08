@@ -74,14 +74,14 @@ static float    backAlpha                   = 1.7;
         uiv_container.layer.shadowRadius = 15;
         uiv_container.layer.shadowOpacity = 0.4;
         uiv_container.layer.shadowColor = [UIColor blackColor].CGColor;
-        uiv_container.tag = i+10;
+        uiv_container.tag = i;
         
 //        ebZoomingScrollView *uis_scrollView = [[ebZoomingScrollView alloc] initWithFrame:uiv_container.bounds image:_arr_mapImg[i] shouldZoom:YES];
 //        uis_scrollView.clipsToBounds = YES;
 //        uis_scrollView.userInteractionEnabled = YES;
 //        uis_scrollView.delegate = self;
 //        uis_scrollView.tag = 1;
-        UIImage *content = [UIImage imageNamed:[[_arr_rawImg objectAtIndex:i] objectForKey:@"file"]];
+        UIImage *content = [UIImage imageNamed:[[_arr_mapImg objectAtIndex:i] objectForKey:@"file"]];
         UIImageView *uiiv_image = [[UIImageView alloc] initWithImage:content];
         uiiv_image.frame = uiv_container.bounds;
         
@@ -95,10 +95,23 @@ static float    backAlpha                   = 1.7;
         }
         [self addSwipeToScr:uiv_container];
         
+        //Add tap gesture to UIImageView
+        UITapGestureRecognizer *tapImage = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapImage:)];
+        [uiiv_image addGestureRecognizer:tapImage];
+        uiiv_image.userInteractionEnabled = YES;
+        uiv_container.userInteractionEnabled = YES;
+        
         [uiv_container addSubview: uiiv_image];
         [self addSubview: uiv_container];
     }
     [self updateTopView];
+}
+
+#pragma mark Tap on the image
+- (void)tapImage:(UIGestureRecognizer *)gesture
+{
+    UIView *tappedView = gesture.view;
+    [self.delegate didTapOnImage:tappedView];
 }
 
 #pragma mark Add hotspots view to zooming scroll view
