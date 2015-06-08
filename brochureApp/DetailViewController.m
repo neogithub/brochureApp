@@ -108,7 +108,7 @@
  * The action is defined in storyboard
  */
 - (IBAction)showSummary:(id)sender {
-    
+    NSLog(@"the summary is %@", projectBrochure.projectSummary);
 }
 
 /*
