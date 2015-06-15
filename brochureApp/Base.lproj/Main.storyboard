@@ -387,6 +387,7 @@
                         <outlet property="uib_backBtn" destination="78i-aE-eoM" id="oxQ-Sc-nZt"/>
                         <outlet property="uic_galleryCollection" destination="gos-5F-2gg" id="qzh-XR-Kg5"/>
                         <outlet property="uiiv_pdfThumb" destination="CXc-sG-q0H" id="WWk-Ig-vv8"/>
+                        <outlet property="uil_detailText" destination="gL6-ZI-veC" id="MaA-JY-FTH"/>
                         <outlet property="uil_title" destination="OTM-KR-fok" id="8s7-y2-sMv"/>
                     </connections>
                 </viewController>

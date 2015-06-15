@@ -487,6 +487,7 @@ NSMutableDictionary     *dict_projectByTypes = nil;
     _detail_vc.view.frame = self.view.bounds;;
     Brochure *selected = [[[LibraryAPI sharedInstance] getSelectedProjectByName:arr_projectNames[indexPath.row]] objectAtIndex:0];
     _detail_vc.projectBrochure = selected;
+    _detail_vc.uil_detailText.text = selected.projectName;
     [self.navigationController pushViewController:_detail_vc animated:YES];
 //    [self presentViewController:_detail_vc animated:YES completion:^(void){     }];
 

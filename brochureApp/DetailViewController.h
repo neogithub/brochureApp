@@ -11,4 +11,5 @@
 @interface DetailViewController : UIViewController
 @property (nonatomic, strong)        Brochure   *projectBrochure;
 @property (weak, nonatomic) IBOutlet UILabel    *uil_title;
+@property (weak, nonatomic) IBOutlet UILabel *uil_detailText;
 @end
