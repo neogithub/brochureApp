@@ -41,6 +41,7 @@ NSMutableDictionary     *dict_projectByTypes = nil;
 }
 @property (nonatomic, strong)        embEmailData               *emailData;
 @property (weak, nonatomic) IBOutlet UIButton                   *uib_missingFile;
+@property (weak, nonatomic) IBOutlet UILabel                    *uil_version;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint         *cvContainerLeadingConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint         *cvContainerTrailingConstraint;
@@ -64,7 +65,6 @@ NSMutableDictionary     *dict_projectByTypes = nil;
 @property (weak, nonatomic) IBOutlet UIButton                   *uib_filterCommercial;
 @property (weak, nonatomic) IBOutlet UIButton                   *uib_filterMaster;
 
-
 @end
 
 @implementation ViewController
@@ -76,6 +76,12 @@ NSMutableDictionary     *dict_projectByTypes = nil;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    /*
+     * Init side menu's version label text
+     */
+    NSString * version = [[NSBundle mainBundle] objectForInfoDictionaryKey: @"CFBundleShortVersionString"];
+    [_uil_version setText:[NSString stringWithFormat:@"v%@", version]];
+    [_uil_version setFont:[UIFont systemFontOfSize:12.0]];
     
     /*
      * Init a array with all projects' names in alpha order

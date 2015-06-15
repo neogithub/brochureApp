@@ -191,11 +191,18 @@
                                         </subviews>
                                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ooA-e4-PZN" userLabel="version">
+                                        <rect key="frame" x="79" y="571" width="42" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.43529411764705883" green="0.44313725490196076" blue="0.47450980392156861" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="Snk-I5-Jw6" firstAttribute="top" secondItem="fah-Q6-HRF" secondAttribute="top" id="1bO-eb-dXt"/>
                                     <constraint firstItem="hqi-Pd-qtE" firstAttribute="top" secondItem="Snk-I5-Jw6" secondAttribute="bottom" constant="208" id="1uY-IA-EX4"/>
+                                    <constraint firstAttribute="bottom" secondItem="ooA-e4-PZN" secondAttribute="bottom" constant="8" id="5Oe-t3-Jwf"/>
                                     <constraint firstAttribute="trailing" secondItem="Snk-I5-Jw6" secondAttribute="trailing" id="7Hs-1f-hhV"/>
                                     <constraint firstItem="Snk-I5-Jw6" firstAttribute="leading" secondItem="fah-Q6-HRF" secondAttribute="leading" id="G1H-yg-quR"/>
                                     <constraint firstAttribute="bottom" secondItem="jWi-IU-xVU" secondAttribute="bottom" constant="27" id="JDQ-KN-YfW"/>
@@ -204,10 +211,13 @@
                                     <constraint firstAttribute="width" constant="200" id="ZnA-Xw-i6q"/>
                                     <constraint firstItem="hqi-Pd-qtE" firstAttribute="top" secondItem="wJH-zy-Sxd" secondAttribute="bottom" constant="31" id="d5e-Jm-TdD"/>
                                     <constraint firstAttribute="centerX" secondItem="hqi-Pd-qtE" secondAttribute="centerX" id="dbu-xV-XfM"/>
+                                    <constraint firstAttribute="centerY" secondItem="ooA-e4-PZN" secondAttribute="centerY" constant="-281.5" id="kv2-hq-gpW"/>
                                     <constraint firstItem="wJH-zy-Sxd" firstAttribute="leading" secondItem="fah-Q6-HRF" secondAttribute="leading" id="lYX-I0-LPf"/>
                                     <constraint firstAttribute="trailing" secondItem="wJH-zy-Sxd" secondAttribute="trailing" id="lrl-JS-XIY"/>
                                     <constraint firstItem="jWi-IU-xVU" firstAttribute="top" secondItem="Snk-I5-Jw6" secondAttribute="bottom" constant="261" id="sVc-X8-2HK"/>
                                     <constraint firstItem="jWi-IU-xVU" firstAttribute="top" secondItem="hqi-Pd-qtE" secondAttribute="bottom" constant="23" id="sgV-fw-5Vt"/>
+                                    <constraint firstItem="ooA-e4-PZN" firstAttribute="top" secondItem="hqi-Pd-qtE" secondAttribute="bottom" constant="51" id="t3E-tf-ypV"/>
+                                    <constraint firstAttribute="centerX" secondItem="ooA-e4-PZN" secondAttribute="centerX" constant="-0.5" id="zAY-JP-zwl"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ndi-HU-AaS">
@@ -253,6 +263,7 @@
                         <outlet property="uib_menu" destination="ndi-HU-AaS" id="HOc-T0-sye"/>
                         <outlet property="uib_missingFile" destination="hqi-Pd-qtE" id="Row-tY-nEU"/>
                         <outlet property="uic_mainCollection" destination="Y1i-Vi-dyV" id="fH3-b6-yQP"/>
+                        <outlet property="uil_version" destination="ooA-e4-PZN" id="WRr-MV-Tyl"/>
                         <outlet property="uiv_collectionContainer" destination="iu9-uW-Omc" id="cdS-MF-STq"/>
                         <outlet property="uiv_filterContainer" destination="wJH-zy-Sxd" id="z3A-Aj-YOq"/>
                         <outlet property="uiv_menuContainer" destination="fah-Q6-HRF" id="8oR-Yy-knb"/>
