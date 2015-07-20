@@ -16,6 +16,7 @@
 		825297741B0FC90700E98C42 /* photoData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 825297731B0FC90700E98C42 /* photoData.plist */; };
 		825C05791B1F3FB700830ADB /* LibraryAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 825C05761B1F3FB700830ADB /* LibraryAPI.m */; };
 		825C057A1B1F3FB700830ADB /* PersistencyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 825C05781B1F3FB700830ADB /* PersistencyManager.m */; };
+		82638A7E1B5D66F200D1CFE9 /* 237Park_EBrochure.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 82638A7D1B5D66F200D1CFE9 /* 237Park_EBrochure.pdf */; };
 		8270B02D1B0CC2A30018D7BD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8270B02C1B0CC2A30018D7BD /* main.m */; };
 		8270B0301B0CC2A30018D7BD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8270B02F1B0CC2A30018D7BD /* AppDelegate.m */; };
 		8270B0331B0CC2A30018D7BD /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8270B0321B0CC2A30018D7BD /* ViewController.m */; };
@@ -69,6 +70,7 @@
 		825C05761B1F3FB700830ADB /* LibraryAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LibraryAPI.m; path = Data/LibraryAPI.m; sourceTree = "<group>"; };
 		825C05771B1F3FB700830ADB /* PersistencyManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PersistencyManager.h; path = Data/PersistencyManager.h; sourceTree = "<group>"; };
 		825C05781B1F3FB700830ADB /* PersistencyManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PersistencyManager.m; path = Data/PersistencyManager.m; sourceTree = "<group>"; };
+		82638A7D1B5D66F200D1CFE9 /* 237Park_EBrochure.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = 237Park_EBrochure.pdf; path = src/237Park_EBrochure.pdf; sourceTree = "<group>"; };
 		8270B0271B0CC2A30018D7BD /* brochureApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = brochureApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8270B02B1B0CC2A30018D7BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8270B02C1B0CC2A30018D7BD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -245,6 +247,7 @@
 		8286995E1B221E2D00BDE47F /* src */ = {
 			isa = PBXGroup;
 			children = (
+				82638A7D1B5D66F200D1CFE9 /* 237Park_EBrochure.pdf */,
 				82C835DA1B25F4D200DCFE1D /* 1325Boylston_Floorplans_(Low).pdf */,
 				8286995C1B221E2400BDE47F /* ballston leasing book with cards-2.pdf */,
 				8279D6841B0FCD550087A7FD /* grfx_launching.jpg */,
@@ -352,6 +355,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8279D6871B0FCD550087A7FD /* grfx_launching.png in Resources */,
+				82638A7E1B5D66F200D1CFE9 /* 237Park_EBrochure.pdf in Resources */,
 				8270B0361B0CC2A30018D7BD /* Main.storyboard in Resources */,
 				825297741B0FC90700E98C42 /* photoData.plist in Resources */,
 				8286995D1B221E2400BDE47F /* ballston leasing book with cards-2.pdf in Resources */,

@@ -370,5 +370,62 @@
                 "type" : "image"
              }
 			]
-	}
+	},
+	{
+		"name" : "237 Park",
+		"date" : "06-30-2014",
+		"type" : "master plan",
+		"shareUrl"  : "www.neoscape.com",
+		"pdf" :
+			[
+				{
+					"file" : "237Park_EBrochure.pdf"
+				}
+			],
+		"thumbs" :
+			[
+				{
+					"file" : "grfx_launching.jpg"
+				}
+			],
+		"summary" : 
+			{
+				"location" : "the location",
+				"price" : "the price",
+				"description" : "the description",
+			},
+		"gallery" : 
+			[
+             {
+                "caption" : "Caption",
+                "file" : "grfx_launching.jpg",
+                "type" : "image"
+             },
+             {
+                "caption" : "Caption",
+                "file" : "grfx_launching.png",
+                "type" : "image"
+             },
+             {
+                "caption" : "Caption",
+                "file" : "grfx_launching.jpg",
+                "type" : "image"
+             },
+             {
+                "caption" : "Caption",
+                "file" : "grfx_launching.png",
+                "type" : "image"
+             },
+             {
+                "caption" : "Caption",
+                "file" : "grfx_launching.jpg",
+                "type" : "image"
+             },
+             {
+                "caption" : "Caption",
+                "file" : "grfx_launching.png",
+                "type" : "image"
+             }
+			]
+	}	
 ]
