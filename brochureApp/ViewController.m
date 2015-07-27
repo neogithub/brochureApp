@@ -494,7 +494,7 @@ NSMutableDictionary     *dict_projectByTypes = nil;
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [MBProgressHUD showHUDAddedTo:self.view animated:NO];
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     _detail_vc = [storyboard instantiateViewControllerWithIdentifier:@"DetailViewController"];
