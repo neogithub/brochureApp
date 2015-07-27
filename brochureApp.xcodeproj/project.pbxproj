@@ -45,6 +45,7 @@
 		82A1289E1B669D2200564266 /* fact-grid-02-lg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 82A128981B669D2200564266 /* fact-grid-02-lg@2x.png */; };
 		82A1289F1B669D2200564266 /* fact-grid-03-lg.png in Resources */ = {isa = PBXBuildFile; fileRef = 82A128991B669D2200564266 /* fact-grid-03-lg.png */; };
 		82A128A01B669D2200564266 /* fact-grid-03-lg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 82A1289A1B669D2200564266 /* fact-grid-03-lg@2x.png */; };
+		82A128A31B66B43000564266 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 82A128A21B66B43000564266 /* MBProgressHUD.m */; };
 		82AA3B741B0E57AB0001020F /* ebZoomingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 82AA3B6B1B0E57AB0001020F /* ebZoomingScrollView.m */; };
 		82AA3B751B0E57AB0001020F /* embDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82AA3B6D1B0E57AB0001020F /* embDataViewController.m */; };
 		82AA3B761B0E57AB0001020F /* embModelController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82AA3B6F1B0E57AB0001020F /* embModelController.m */; };
@@ -122,6 +123,8 @@
 		82A128981B669D2200564266 /* fact-grid-02-lg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "fact-grid-02-lg@2x.png"; path = "src/fact-grid-02-lg@2x.png"; sourceTree = "<group>"; };
 		82A128991B669D2200564266 /* fact-grid-03-lg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "fact-grid-03-lg.png"; path = "src/fact-grid-03-lg.png"; sourceTree = "<group>"; };
 		82A1289A1B669D2200564266 /* fact-grid-03-lg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "fact-grid-03-lg@2x.png"; path = "src/fact-grid-03-lg@2x.png"; sourceTree = "<group>"; };
+		82A128A11B66B43000564266 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBProgressHUD.h; path = Utilities/MBProgressHUD.h; sourceTree = "<group>"; };
+		82A128A21B66B43000564266 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBProgressHUD.m; path = Utilities/MBProgressHUD.m; sourceTree = "<group>"; };
 		82AA3B6A1B0E57AB0001020F /* ebZoomingScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ebZoomingScrollView.h; path = Utilities/ebZoomingScrollView.h; sourceTree = "<group>"; };
 		82AA3B6B1B0E57AB0001020F /* ebZoomingScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ebZoomingScrollView.m; path = Utilities/ebZoomingScrollView.m; sourceTree = "<group>"; };
 		82AA3B6C1B0E57AB0001020F /* embDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = embDataViewController.h; path = Utilities/embDataViewController.h; sourceTree = "<group>"; };
@@ -248,6 +251,8 @@
 				822F07591B1621BA005EF909 /* XHSideMenuTableViewController.m */,
 				82882A761B20A00800631FE0 /* galleryCell.h */,
 				82882A771B20A00800631FE0 /* galleryCell.m */,
+				82A128A11B66B43000564266 /* MBProgressHUD.h */,
+				82A128A21B66B43000564266 /* MBProgressHUD.m */,
 				82C835D41B25E57300DCFE1D /* summaryCell.h */,
 				82C835D51B25E57300DCFE1D /* summaryCell.m */,
 				82C835D71B25EB2B00DCFE1D /* xhViewStack.h */,
@@ -458,6 +463,7 @@
 				8252976D1B0F7AD300E98C42 /* xhWebViewController.m in Sources */,
 				825C057A1B1F3FB700830ADB /* PersistencyManager.m in Sources */,
 				822F075A1B1621BA005EF909 /* XHSideMenuTableViewController.m in Sources */,
+				82A128A31B66B43000564266 /* MBProgressHUD.m in Sources */,
 				825297701B0F7B4900E98C42 /* Reachability.m in Sources */,
 				82882A781B20A00800631FE0 /* galleryCell.m in Sources */,
 				82BE2DE11B0E1DF00018D05B /* SummaryViewController.m in Sources */,

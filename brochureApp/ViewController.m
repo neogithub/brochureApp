@@ -15,6 +15,7 @@
 #import "XHSideMenuTableViewController.h"
 #import "LibraryAPI.h"
 #import "galleryCell.h"
+#import "MBProgressHUD.h"
 #define menuWidth  200.0;
 #define topGap     30;
 
@@ -142,11 +143,16 @@ NSMutableDictionary     *dict_projectByTypes = nil;
         self.navigationController.interactivePopGestureRecognizer.enabled = NO;
         self.navigationController.interactivePopGestureRecognizer.delegate = nil;
     }
+    
 }
 
 - (void)viewWillLayoutSubviews
 {
     
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
 }
 
 #pragma mark - Action of buttons
@@ -488,6 +494,8 @@ NSMutableDictionary     *dict_projectByTypes = nil;
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     _detail_vc = [storyboard instantiateViewControllerWithIdentifier:@"DetailViewController"];
     _detail_vc.view.frame = self.view.bounds;;

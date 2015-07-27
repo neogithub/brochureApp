@@ -12,15 +12,15 @@
 #import "XHGalleryViewController.h"
 #import "SummaryViewController.h"
 #import "xhViewStack.h"
-
+#import "MBProgressHUD.h"
 @interface DetailViewController () <UICollectionViewDelegate,
                                     UICollectionViewDataSource,
                                     MFMailComposeViewControllerDelegate,
                                     MFMailComposeViewControllerDelegate,
                                     UIDocumentInteractionControllerDelegate,
                                     XHGalleryDelegate,
-                                    xhViewStackDelegate>
-
+                                    xhViewStackDelegate,
+                                    MBProgressHUDDelegate>
 {
     NSArray                     *arr_rawData;
     NSArray                     *arr_collectionData;
@@ -82,6 +82,10 @@
     }
 }
 
+- (void)viewDidDisappear:(BOOL)animated {
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -106,6 +110,7 @@
 
 - (void)didTapOnImage:(UIView *)theView
 {
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     int currentPage = [stackView getCurrentPageIndex];
     NSLog(@"\n\n the tapped view is %i", currentPage);
     [self loadBrochureFile: currentPage];
@@ -163,6 +168,9 @@
  * Currenly all data for email is empty
  */
 - (IBAction)tapShareBtn:(id)sender {
+    
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
     _emailData = [[embEmailData alloc] init];
     _emailData.to = nil;
     _emailData.subject = nil;
@@ -228,6 +236,8 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
     UIButton *tmp = [UIButton new];
     tmp.tag = indexPath.row;
     [self tapGalleryBtn:tmp];
@@ -332,6 +342,7 @@
                                                        delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
         [alert show];
     }
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
 }
 
 - (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error
@@ -364,7 +375,7 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
--(void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult)result
+- (void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult)result
 {
     NSLog(@"FINISHED");
 }
