@@ -121,7 +121,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fah-Q6-HRF" userLabel="Menu_Container">
                                 <rect key="frame" x="-200" y="0.0" width="200" height="600"/>
                                 <subviews>
-                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jWi-IU-xVU">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jWi-IU-xVU">
                                         <rect key="frame" x="74" y="543" width="52" height="30"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <state key="normal" title="Visit Us">
@@ -194,7 +194,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ooA-e4-PZN" userLabel="version">
                                         <rect key="frame" x="79" y="571" width="42" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -461,10 +461,13 @@
                                             <rect key="frame" x="0.0" y="0.0" width="196" height="150"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5XH-9x-IWr">
+                                                    <rect key="frame" x="0.0" y="0.0" width="196" height="150"/>
+                                                </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fsW-ai-A9x">
-                                                    <rect key="frame" x="8" y="54" width="180" height="42"/>
+                                                    <rect key="frame" x="0.0" y="108" width="196" height="42"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -472,12 +475,17 @@
                                         </view>
                                         <color key="backgroundColor" red="1" green="0.018931817279999999" blue="0.0036962686020000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
-                                            <constraint firstItem="fsW-ai-A9x" firstAttribute="top" secondItem="3jm-tU-hZ6" secondAttribute="topMargin" constant="46" id="0lc-p1-9ln"/>
-                                            <constraint firstItem="fsW-ai-A9x" firstAttribute="leading" secondItem="3jm-tU-hZ6" secondAttribute="leadingMargin" id="332-k2-mqD"/>
-                                            <constraint firstAttribute="bottomMargin" secondItem="fsW-ai-A9x" secondAttribute="bottom" constant="46" id="GAS-58-eCe"/>
-                                            <constraint firstItem="fsW-ai-A9x" firstAttribute="trailing" secondItem="3jm-tU-hZ6" secondAttribute="trailingMargin" id="HEe-7h-Pkm"/>
+                                            <constraint firstItem="fsW-ai-A9x" firstAttribute="top" secondItem="3jm-tU-hZ6" secondAttribute="top" constant="108" id="3Pt-tc-YBg"/>
+                                            <constraint firstAttribute="trailing" secondItem="fsW-ai-A9x" secondAttribute="trailing" id="B5b-mi-4s4"/>
+                                            <constraint firstAttribute="bottom" secondItem="fsW-ai-A9x" secondAttribute="bottom" id="GNN-oP-0Il"/>
+                                            <constraint firstAttribute="trailing" secondItem="5XH-9x-IWr" secondAttribute="trailing" id="WeQ-g0-2eC"/>
+                                            <constraint firstItem="5XH-9x-IWr" firstAttribute="top" secondItem="3jm-tU-hZ6" secondAttribute="top" id="aKF-y7-3wJ"/>
+                                            <constraint firstItem="fsW-ai-A9x" firstAttribute="leading" secondItem="3jm-tU-hZ6" secondAttribute="leading" id="lCM-bi-6fJ"/>
+                                            <constraint firstAttribute="bottom" secondItem="5XH-9x-IWr" secondAttribute="bottom" id="vio-Tk-xsI"/>
+                                            <constraint firstItem="5XH-9x-IWr" firstAttribute="leading" secondItem="3jm-tU-hZ6" secondAttribute="leading" id="zu3-SV-zSz"/>
                                         </constraints>
                                         <connections>
+                                            <outlet property="cellThumb" destination="5XH-9x-IWr" id="tTT-Oc-Pby"/>
                                             <outlet property="cellTitle" destination="fsW-ai-A9x" id="AW3-EF-1Zq"/>
                                         </connections>
                                     </collectionViewCell>

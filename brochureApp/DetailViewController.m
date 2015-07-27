@@ -94,6 +94,9 @@
     stackView.delegate = self;
     stackView.startIndex = 0;
     [_uiiv_pdfThumb addSubview: stackView];
+    if (projectBrochure.projectThumbs.count == 1) {
+        
+    }
 }
 
 - (void)didFinishedSwippingViewStack:(xhViewStack *)viewStack

@@ -385,45 +385,50 @@
 		"thumbs" :
 			[
 				{
-					"file" : "grfx_launching.jpg"
+					"file" : "RXR_237Park_FullRes.jpg"
 				}
 			],
 		"summary" : 
 			{
-				"location" : "the location",
-				"price" : "the price",
-				"description" : "the description",
+				"location" : "fact-grid-01-lg.png",
+				"price" : "fact-grid-02-lg.png",
+				"description" : "fact-grid-03-lg.png",
 			},
 		"gallery" : 
 			[
              {
                 "caption" : "Caption",
-                "file" : "grfx_launching.jpg",
+                "file" : "RXR_237Park_FullRes-5.jpg",
                 "type" : "image"
              },
              {
                 "caption" : "Caption",
-                "file" : "grfx_launching.png",
+                "file" : "RXR_237Park_FullRes-6.jpg",
                 "type" : "image"
              },
              {
                 "caption" : "Caption",
-                "file" : "grfx_launching.jpg",
+                "file" : "RXR_237Park_FullRes.jpg",
                 "type" : "image"
              },
              {
                 "caption" : "Caption",
-                "file" : "grfx_launching.png",
+                "file" : "RXR_237Park_IMG_0340_edit.jpg",
                 "type" : "image"
              },
              {
                 "caption" : "Caption",
-                "file" : "grfx_launching.jpg",
+                "file" : "RXR_237Park_IMG_0350.JPG",
                 "type" : "image"
              },
              {
                 "caption" : "Caption",
-                "file" : "grfx_launching.png",
+                "file" : "RXR_237Park_IMG_0354.JPG",
+                "type" : "image"
+             },
+             {
+                "caption" : "Caption",
+                "file" : "RXR_237Park_IMG_0352_crop.jpg",
                 "type" : "image"
              }
 			]

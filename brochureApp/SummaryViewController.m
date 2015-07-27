@@ -71,7 +71,8 @@
     summaryCell *summaryCell = [collectionView
                                          dequeueReusableCellWithReuseIdentifier:@"summaryCell"
                                          forIndexPath:indexPath];
-    summaryCell.cellTitle.text = [arr_summaryValues objectAtIndex: indexPath.row];
+//    summaryCell.cellTitle.text = [arr_summaryValues objectAtIndex: indexPath.row];
+    [summaryCell.cellThumb setImage:[UIImage imageNamed:[arr_summaryValues objectAtIndex: indexPath.row]]];
     
     return summaryCell;
 }

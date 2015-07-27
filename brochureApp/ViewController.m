@@ -18,7 +18,7 @@
 #define menuWidth  200.0;
 #define topGap     30;
 
-NSString                *homePage = @"http://www.neoscape.com";
+NSString                *homePage = @"http://webcampub.multivista.com/index.cfm?fuseaction=aPublicWebcam.page&WebcamPublicPageUID=C8A2F78F-8A9E-445F-A73E-749257863052";//@"http://www.neoscape.com";
 NSString                *infoEmail = @"info@neoscape.com";
 NSString                *requestEmail = @"info@neoscape.com";
 NSArray                 *arr_projectNames = nil;

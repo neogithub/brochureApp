@@ -10,5 +10,5 @@
 
 @interface summaryCell : UICollectionViewCell
 @property (weak, nonatomic) IBOutlet UILabel *cellTitle;
-
+@property (weak, nonatomic) IBOutlet UIImageView *cellThumb;
 @end
